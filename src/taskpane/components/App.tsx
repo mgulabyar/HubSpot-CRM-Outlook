@@ -162,7 +162,6 @@ export default function App() {
             </Grid>
           </Grid>
 
-          {/* */}
           <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1 }}>
             <Chip 
               label="CRM Connected" 
@@ -192,7 +191,7 @@ export default function App() {
 
           <Divider sx={{ borderColor: HUBSPOT_BRAND.border }} />
 
-          {/* Action Module Matrix */}
+          {/* Matrix */}
           <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1.2 }}>
             <Button
               variant="contained"

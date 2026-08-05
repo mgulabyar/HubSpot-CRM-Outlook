@@ -95,7 +95,6 @@ export default function App() {
         </Stack>
       </Box>
 
-      {/* Main */}
       <Box sx={{ p: 1.5, flexGrow: 1 }}>
         <Stack spacing={2.5}>
 

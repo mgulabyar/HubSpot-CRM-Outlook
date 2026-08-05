@@ -242,7 +242,6 @@ export default function App() {
             </Button>
           </Stack>
 
-          {/* Test   */}
           {saved && (
             <Alert severity="success" sx={{ borderRadius: "4px", fontSize: "12px", boxShadow: "none" }}>
               Draft saved successfully. Data pipeline test operational.

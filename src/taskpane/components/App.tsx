@@ -191,7 +191,6 @@ export default function App() {
 
           <Divider sx={{ borderColor: HUBSPOT_BRAND.border }} />
 
-          {/* Matrix */}
           <Stack direction="row" sx={{ flexWrap: "wrap", gap: 1.2 }}>
             <Button
               variant="contained"

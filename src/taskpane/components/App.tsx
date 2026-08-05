@@ -72,7 +72,7 @@ export default function App() {
         flexDirection: "column",
       }}
     >
-      {/* Clean Seamless Header Block */}
+      {/* Clean Header Block */}
       <Box
         sx={{
           position: "sticky",

@@ -95,8 +95,8 @@ export default function App() {
         </Stack>
       </Box>
 
-      {/* Main Workspace Frame */}
-      <Box sx={{ p: 2.5, flexGrow: 1 }}>
+      {/* Main  Frame */}
+      <Box sx={{ p: 1.5, flexGrow: 1 }}>
         <Stack spacing={2.5}>
 
           {/* Form Matrix Architecture */}

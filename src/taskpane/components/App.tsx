@@ -98,7 +98,6 @@ export default function App() {
       <Box sx={{ p: 1.5, flexGrow: 1 }}>
         <Stack spacing={2.5}>
 
-          {/* Form Matrix Architecture */}
           <Grid container spacing={2}>
             <Grid size={12}>
               <TextField

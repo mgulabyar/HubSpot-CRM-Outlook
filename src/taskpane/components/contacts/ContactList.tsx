@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Chip,
@@ -8,12 +9,19 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+
+import DeleteIcon from "@mui/icons-material/Delete"
 import type { HubSpotRecord } from "../../types/hubspot";
 
 type ContactListProps = {
   contacts: HubSpotRecord[];
-  notesByContact: Record<string, HubSpotRecord | null>;
+  notesByContact: Record<
+    string,
+    HubSpotRecord | null
+  >;
   loading: boolean;
+  deletingId: string | null;
+  onDelete: (contactId: string) => Promise<void>;
 };
 
 function getNoteContent(
@@ -25,6 +33,7 @@ function getNoteContent(
     return {
       subject: "",
       notes: "",
+      fullBody: "",
     };
   }
 
@@ -39,6 +48,7 @@ function getNoteContent(
   return {
     subject: subjectMatch?.[1]?.trim() || "",
     notes: notesMatch?.[1]?.trim() || "",
+    fullBody: body,
   };
 }
 
@@ -46,6 +56,8 @@ export default function ContactList({
   contacts,
   notesByContact,
   loading,
+  deletingId,
+  onDelete,
 }: ContactListProps) {
   if (loading) {
     return (
@@ -169,10 +181,10 @@ export default function ContactList({
                 {noteContent.subject && (
                   <Box
                     sx={{
-                      mt: 0.5,
                       p: 1,
                       borderRadius: "4px",
-                      bgcolor: "rgba(255, 122, 89, 0.06)",
+                      bgcolor:
+                        "rgba(255, 122, 89, 0.06)",
                     }}
                   >
                     <Typography
@@ -231,6 +243,56 @@ export default function ContactList({
                     </Typography>
                   </Box>
                 )}
+
+                {!noteContent.subject &&
+                  !noteContent.notes &&
+                  noteContent.fullBody && (
+                    <Box
+                      sx={{
+                        p: 1,
+                        borderRadius: "4px",
+                        bgcolor: "#f8fafc",
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "#475569",
+                          whiteSpace: "pre-wrap",
+                        }}
+                      >
+                        {noteContent.fullBody}
+                      </Typography>
+                    </Box>
+                  )}
+
+                <Button
+                  variant="outlined"
+                  color="error"
+                  size="small"
+                  disabled={deletingId === contact.id}
+                  startIcon={
+                    <DeleteIcon 
+                      sx={{
+                        fontSize: "16px !important",
+                      }}
+                    />
+                  }
+                  onClick={() => {
+                    void onDelete(contact.id);
+                  }}
+                  sx={{
+                    alignSelf: "flex-start",
+                    mt: 0.5,
+                    textTransform: "none",
+                    borderRadius: "4px",
+                    fontSize: "12px",
+                  }}
+                >
+                  {deletingId === contact.id
+                    ? "Deleting..."
+                    : "Delete Contact"}
+                </Button>
               </Stack>
             </CardContent>
           </Card>

@@ -1,12 +1,8 @@
 import axios from "axios";
+import { API_BASE_URL, API_ENDPOINTS } from "../config/api";
 import {
-  API_BASE_URL,
-  API_ENDPOINTS,
-} from "../config/api";
-import {
-  CompanyFormData,
+  ContactCreateResponse,
   ContactFormData,
-  DealFormData,
   HubSpotApiResponse,
   HubSpotListResponse,
   HubSpotRecord,
@@ -20,70 +16,51 @@ const hubspotApi = axios.create({
   },
 });
 
-export const getContacts = async (limit = 10) => {
-  const response = await hubspotApi.get<
-    HubSpotApiResponse<HubSpotListResponse<HubSpotRecord>>
-  >(API_ENDPOINTS.contacts, {
-    params: { limit },
-  });
-
-  return response.data.data;
-};
-export const createContact = async (
-  payload: ContactFormData
-) => {
-  const response = await hubspotApi.post<
-    HubSpotApiResponse<{
-      contact: HubSpotRecord;
-      note: HubSpotRecord | null;
-    }>
-  >(API_ENDPOINTS.contacts, payload);
+export const getContacts = async (limit = 20) => {
+  const response = await hubspotApi.get<HubSpotApiResponse<HubSpotListResponse<HubSpotRecord>>>(
+    API_ENDPOINTS.contacts,
+    {
+      params: {
+        limit,
+      },
+    }
+  );
 
   return response.data.data;
 };
 
-export const getCompanies = async (limit = 10) => {
-  const response = await hubspotApi.get<
-    HubSpotApiResponse<HubSpotListResponse<HubSpotRecord>>
-  >(API_ENDPOINTS.companies, {
-    params: { limit },
-  });
+export const getContactNotes = async (contactId: string) => {
+  const response = await hubspotApi.get<HubSpotApiResponse<HubSpotListResponse<HubSpotRecord>>>(
+    `${API_ENDPOINTS.contacts}/${contactId}/notes`
+  );
 
   return response.data.data;
 };
 
-export const createCompany = async (payload: CompanyFormData) => {
-  const response = await hubspotApi.post<
-    HubSpotApiResponse<HubSpotRecord>
-  >(API_ENDPOINTS.companies, payload);
+export const createContact = async (payload: ContactFormData) => {
+  const response = await hubspotApi.post<HubSpotApiResponse<ContactCreateResponse>>(
+    API_ENDPOINTS.contacts,
+    payload
+  );
 
   return response.data.data;
 };
 
-export const getDeals = async (limit = 10) => {
-  const response = await hubspotApi.get<
-    HubSpotApiResponse<HubSpotListResponse<HubSpotRecord>>
-  >(API_ENDPOINTS.deals, {
-    params: { limit },
-  });
+export const updateContact = async (contactId: string, payload: Partial<ContactFormData>) => {
+  const response = await hubspotApi.patch<HubSpotApiResponse<HubSpotRecord>>(
+    `${API_ENDPOINTS.contacts}/${contactId}`,
+    payload
+  );
 
   return response.data.data;
 };
 
-export const createDeal = async (payload: DealFormData) => {
-  const response = await hubspotApi.post<
-    HubSpotApiResponse<HubSpotRecord>
-  >(API_ENDPOINTS.deals, payload);
-
-  return response.data.data;
-};
-
-export const checkBackendHealth = async () => {
-  const response = await hubspotApi.get<
+export const deleteContact = async (contactId: string) => {
+  const response = await hubspotApi.delete<
     HubSpotApiResponse<{
       message: string;
     }>
-  >(API_ENDPOINTS.health);
+  >(`${API_ENDPOINTS.contacts}/${contactId}`);
 
-  return response.data.data;
+  return response.data;
 };

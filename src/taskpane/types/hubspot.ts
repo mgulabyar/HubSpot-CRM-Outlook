@@ -1,13 +1,14 @@
-export type HubSpotProperties = Record<string, string | null>;
+export type HubSpotProperties = Record<
+  string,
+  string | null
+>;
 
 export interface HubSpotRecord {
-  note: any;
-  contact: any;
   id: string;
   properties: HubSpotProperties;
-  createdAt: string;
-  updatedAt: string;
-  archived: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  archived?: boolean;
   url?: string;
 }
 
@@ -38,19 +39,7 @@ export interface ContactFormData {
   notes?: string;
 }
 
-export interface CompanyFormData {
-  name: string;
-  domain: string;
-  phone: string;
-  city: string;
-  country: string;
-}
-
-export interface DealFormData {
-  dealname: string;
-  amount: string;
-  dealstage: string;
-  pipeline: string;
-  closedate: string;
-  description: string;
+export interface ContactCreateResponse {
+  contact: HubSpotRecord;
+  note: HubSpotRecord | null;
 }

@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Box,
-  Button,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Alert, Box, Button, Stack, TextField } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -19,7 +13,7 @@ export type ContactFormValues = {
 
 type ContactFormProps = {
   loading: boolean;
-  onSubmit: (values: ContactFormValues) => Promise<void>;
+  onSubmit: (values: ContactFormValues) => Promise<boolean>;
   onFindContact: (email: string) => Promise<void>;
 };
 
@@ -38,23 +32,14 @@ const HUBSPOT_BRAND = {
   charcoalHover: "#1e2a36",
 };
 
-export default function ContactForm({
-  loading,
-  onSubmit,
-  onFindContact,
-}: ContactFormProps) {
-  const [form, setForm] =
-    useState<ContactFormValues>(initialForm);
-  const [validationError, setValidationError] =
-    useState("");
+export default function ContactForm({ loading, onSubmit, onFindContact }: ContactFormProps) {
+  const [form, setForm] = useState<ContactFormValues>(initialForm);
+
+  const [validationError, setValidationError] = useState("");
 
   const handleChange =
     (field: keyof ContactFormValues) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-      >
-    ) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((previous) => ({
         ...previous,
         [field]: event.target.value,
@@ -74,14 +59,17 @@ export default function ContactForm({
       return;
     }
 
-    await onSubmit(form);
+    const submitted = await onSubmit(form);
+
+    if (submitted) {
+      setForm(initialForm);
+      setValidationError("");
+    }
   };
 
   const handleFindContact = async () => {
     if (!form.email.trim()) {
-      setValidationError(
-        "Enter an email address to find a contact."
-      );
+      setValidationError("Enter an email address to find a contact.");
       return;
     }
 
@@ -186,12 +174,10 @@ export default function ContactForm({
         <Button
           variant="contained"
           disabled={loading}
-          startIcon={
-            <SaveIcon
-              sx={{ fontSize: "16px !important" }}
-            />
-          }
-          onClick={handleSubmit}
+          startIcon={<SaveIcon sx={{ fontSize: "16px !important" }} />}
+          onClick={() => {
+            void handleSubmit();
+          }}
           sx={{
             textTransform: "none",
             borderRadius: "4px",
@@ -213,12 +199,10 @@ export default function ContactForm({
         <Button
           variant="contained"
           disabled={loading}
-          startIcon={
-            <SearchIcon
-              sx={{ fontSize: "16px !important" }}
-            />
-          }
-          onClick={handleFindContact}
+          startIcon={<SearchIcon sx={{ fontSize: "16px !important" }} />}
+          onClick={() => {
+            void handleFindContact();
+          }}
           sx={{
             textTransform: "none",
             borderRadius: "4px",

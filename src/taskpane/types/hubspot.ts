@@ -1,6 +1,8 @@
 export type HubSpotProperties = Record<string, string | null>;
 
 export interface HubSpotRecord {
+  note: any;
+  contact: any;
   id: string;
   properties: HubSpotProperties;
   createdAt: string;

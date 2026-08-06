@@ -1,4 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import {
   Alert,
   Box,
@@ -34,9 +38,19 @@ function splitFullName(fullName: string) {
 }
 
 export default function ContactsPage() {
-  const [contacts, setContacts] = useState<HubSpotRecord[]>([]);
-  const [loadingContacts, setLoadingContacts] = useState(true);
-  const [savingContact, setSavingContact] = useState(false);
+  const [contacts, setContacts] = useState<
+    HubSpotRecord[]
+  >([]);
+
+  const [notesByContact, setNotesByContact] =
+    useState<Record<string, HubSpotRecord | null>>({});
+
+  const [loadingContacts, setLoadingContacts] =
+    useState(true);
+
+  const [savingContact, setSavingContact] =
+    useState(false);
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -68,15 +82,27 @@ export default function ContactsPage() {
 
       const name = splitFullName(values.name);
 
-      await createContact({
+      const result = await createContact({
         firstname: name.firstname,
         lastname: name.lastname,
         email: values.email.trim(),
         phone: "",
         company: values.company.trim(),
+        subject: values.subject.trim(),
+        notes: values.notes.trim(),
       });
 
-      setSuccess("Contact successfully saved to HubSpot.");
+      if (result.note && result.contact?.id) {
+        setNotesByContact((previous) => ({
+          ...previous,
+          [result.contact.id]: result.note,
+        }));
+      }
+
+      setSuccess(
+        "Contact and CRM note saved successfully."
+      );
+
       await loadContacts();
     } catch (requestError) {
       setError(getApiErrorMessage(requestError));
@@ -99,7 +125,9 @@ export default function ContactsPage() {
       );
 
       if (!matchedContact) {
-        setError("No contact found with this email address.");
+        setError(
+          "No contact found with this email address."
+        );
         return;
       }
 
@@ -148,8 +176,10 @@ export default function ContactsPage() {
           variant="outlined"
           sx={{
             color: HUBSPOT_BRAND.primary,
-            borderColor: "rgba(255, 122, 89, 0.3)",
-            bgcolor: "rgba(255, 122, 89, 0.08)",
+            borderColor:
+              "rgba(255, 122, 89, 0.3)",
+            bgcolor:
+              "rgba(255, 122, 89, 0.08)",
             fontSize: "11px",
             fontWeight: 600,
           }}
@@ -161,15 +191,21 @@ export default function ContactsPage() {
           variant="outlined"
           sx={{
             color: HUBSPOT_BRAND.charcoal,
-            borderColor: "rgba(45, 62, 80, 0.2)",
-            bgcolor: "rgba(45, 62, 80, 0.06)",
+            borderColor:
+              "rgba(45, 62, 80, 0.2)",
+            bgcolor:
+              "rgba(45, 62, 80, 0.06)",
             fontSize: "11px",
             fontWeight: 600,
           }}
         />
       </Stack>
 
-      <Divider sx={{ borderColor: HUBSPOT_BRAND.border }} />
+      <Divider
+        sx={{
+          borderColor: HUBSPOT_BRAND.border,
+        }}
+      />
 
       {error && (
         <Alert
@@ -203,7 +239,11 @@ export default function ContactsPage() {
         onFindContact={handleFindContact}
       />
 
-      <Divider sx={{ borderColor: HUBSPOT_BRAND.border }} />
+      <Divider
+        sx={{
+          borderColor: HUBSPOT_BRAND.border,
+        }}
+      />
 
       <Box>
         <Typography
@@ -219,6 +259,7 @@ export default function ContactsPage() {
 
         <ContactList
           contacts={contacts}
+          notesByContact={notesByContact}
           loading={loadingContacts}
         />
       </Box>

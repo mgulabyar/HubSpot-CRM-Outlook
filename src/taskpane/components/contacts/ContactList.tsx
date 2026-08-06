@@ -12,11 +12,39 @@ import type { HubSpotRecord } from "../../types/hubspot";
 
 type ContactListProps = {
   contacts: HubSpotRecord[];
+  notesByContact: Record<string, HubSpotRecord | null>;
   loading: boolean;
 };
 
+function getNoteContent(
+  note: HubSpotRecord | null | undefined
+) {
+  const body = note?.properties?.hs_note_body;
+
+  if (!body) {
+    return {
+      subject: "",
+      notes: "",
+    };
+  }
+
+  const subjectMatch = body.match(
+    /^Subject Line:\s*(.*)$/m
+  );
+
+  const notesMatch = body.match(
+    /^Internal Notes:\s*([\s\S]*)$/m
+  );
+
+  return {
+    subject: subjectMatch?.[1]?.trim() || "",
+    notes: notesMatch?.[1]?.trim() || "",
+  };
+}
+
 export default function ContactList({
   contacts,
+  notesByContact,
   loading,
 }: ContactListProps) {
   if (loading) {
@@ -51,6 +79,8 @@ export default function ContactList({
     <Stack spacing={1.2}>
       {contacts.map((contact) => {
         const properties = contact.properties;
+        const note = notesByContact[contact.id];
+        const noteContent = getNoteContent(note);
 
         const fullName =
           [properties.firstname, properties.lastname]
@@ -69,12 +99,20 @@ export default function ContactList({
               bgcolor: "#fff",
             }}
           >
-            <CardContent sx={{ p: 1.5, "&:last-child": { pb: 1.5 } }}>
+            <CardContent
+              sx={{
+                p: 1.5,
+                "&:last-child": {
+                  pb: 1.5,
+                },
+              }}
+            >
               <Stack spacing={1}>
                 <Box
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
+                    alignItems: "flex-start",
                     gap: 1,
                   }}
                 >
@@ -95,7 +133,8 @@ export default function ContactList({
                       height: 22,
                       fontSize: "10px",
                       color: "#ff7a59",
-                      bgcolor: "rgba(255, 122, 89, 0.08)",
+                      bgcolor:
+                        "rgba(255, 122, 89, 0.08)",
                     }}
                   />
                 </Box>
@@ -106,6 +145,7 @@ export default function ContactList({
                   variant="caption"
                   sx={{ color: "#475569" }}
                 >
+                  Email:{" "}
                   {properties.email || "No email"}
                 </Typography>
 
@@ -113,8 +153,84 @@ export default function ContactList({
                   variant="caption"
                   sx={{ color: "#64748b" }}
                 >
+                  Company:{" "}
                   {properties.company || "No company"}
                 </Typography>
+
+                {properties.phone && (
+                  <Typography
+                    variant="caption"
+                    sx={{ color: "#64748b" }}
+                  >
+                    Phone: {properties.phone}
+                  </Typography>
+                )}
+
+                {noteContent.subject && (
+                  <Box
+                    sx={{
+                      mt: 0.5,
+                      p: 1,
+                      borderRadius: "4px",
+                      bgcolor: "rgba(255, 122, 89, 0.06)",
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        display: "block",
+                        color: "#1e2a3c",
+                        fontWeight: 700,
+                      }}
+                    >
+                      Subject Line
+                    </Typography>
+
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        display: "block",
+                        color: "#475569",
+                        mt: 0.3,
+                      }}
+                    >
+                      {noteContent.subject}
+                    </Typography>
+                  </Box>
+                )}
+
+                {noteContent.notes && (
+                  <Box
+                    sx={{
+                      p: 1,
+                      borderRadius: "4px",
+                      bgcolor: "#f8fafc",
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        display: "block",
+                        color: "#1e2a3c",
+                        fontWeight: 700,
+                      }}
+                    >
+                      Internal Notes
+                    </Typography>
+
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        display: "block",
+                        color: "#475569",
+                        mt: 0.3,
+                        whiteSpace: "pre-wrap",
+                      }}
+                    >
+                      {noteContent.notes}
+                    </Typography>
+                  </Box>
+                )}
               </Stack>
             </CardContent>
           </Card>

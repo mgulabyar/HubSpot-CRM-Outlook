@@ -43,12 +43,18 @@ export default function ContactForm({
   onSubmit,
   onFindContact,
 }: ContactFormProps) {
-  const [form, setForm] = useState<ContactFormValues>(initialForm);
-  const [validationError, setValidationError] = useState("");
+  const [form, setForm] =
+    useState<ContactFormValues>(initialForm);
+  const [validationError, setValidationError] =
+    useState("");
 
   const handleChange =
     (field: keyof ContactFormValues) =>
-    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (
+      event: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement
+      >
+    ) => {
       setForm((previous) => ({
         ...previous,
         [field]: event.target.value,
@@ -58,6 +64,11 @@ export default function ContactForm({
     };
 
   const handleSubmit = async () => {
+    if (!form.name.trim()) {
+      setValidationError("Full name is required.");
+      return;
+    }
+
     if (!form.email.trim()) {
       setValidationError("Email address is required.");
       return;
@@ -68,7 +79,9 @@ export default function ContactForm({
 
   const handleFindContact = async () => {
     if (!form.email.trim()) {
-      setValidationError("Enter an email address to find a contact.");
+      setValidationError(
+        "Enter an email address to find a contact."
+      );
       return;
     }
 
@@ -173,7 +186,11 @@ export default function ContactForm({
         <Button
           variant="contained"
           disabled={loading}
-          startIcon={<SaveIcon sx={{ fontSize: "16px !important" }} />}
+          startIcon={
+            <SaveIcon
+              sx={{ fontSize: "16px !important" }}
+            />
+          }
           onClick={handleSubmit}
           sx={{
             textTransform: "none",
@@ -196,7 +213,11 @@ export default function ContactForm({
         <Button
           variant="contained"
           disabled={loading}
-          startIcon={<SearchIcon sx={{ fontSize: "16px !important" }} />}
+          startIcon={
+            <SearchIcon
+              sx={{ fontSize: "16px !important" }}
+            />
+          }
           onClick={handleFindContact}
           sx={{
             textTransform: "none",

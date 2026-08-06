@@ -29,10 +29,14 @@ export const getContacts = async (limit = 10) => {
 
   return response.data.data;
 };
-
-export const createContact = async (payload: ContactFormData) => {
+export const createContact = async (
+  payload: ContactFormData
+) => {
   const response = await hubspotApi.post<
-    HubSpotApiResponse<HubSpotRecord>
+    HubSpotApiResponse<{
+      contact: HubSpotRecord;
+      note: HubSpotRecord | null;
+    }>
   >(API_ENDPOINTS.contacts, payload);
 
   return response.data.data;

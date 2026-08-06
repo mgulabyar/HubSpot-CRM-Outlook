@@ -32,6 +32,8 @@ export interface ContactFormData {
   email: string;
   phone: string;
   company: string;
+  subject?: string;
+  notes?: string;
 }
 
 export interface CompanyFormData {

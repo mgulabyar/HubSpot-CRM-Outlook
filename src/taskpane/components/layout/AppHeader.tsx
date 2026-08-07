@@ -13,7 +13,7 @@ export default function AppHeader() {
         py: 1.8,
         bgcolor: "#1e293b", 
         borderBottom: "1px solid #334155", 
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", // Soft elite elevation layer
+        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
       }}
     >
       <Stack spacing={0.4}>
@@ -22,9 +22,9 @@ export default function AppHeader() {
           component="h1"
           sx={{
             textAlign: "center",
-            fontSize: "18px", // Balanced typography size for narrow taskpanes
-            fontWeight: 700, // Solid premium bold font weight
-            color: "#F5714E", // Your exact unified HubSpot brand accent orange color
+            fontSize: "18px", 
+            fontWeight: 600, 
+            color: "#F5714E", 
             letterSpacing: "0.5px",
             lineHeight: 1.2,
           }}

@@ -92,7 +92,7 @@ export default function ContactEditDialog({
   open={open} 
   onClose={loading ? undefined : onClose} 
   fullWidth 
-  maxWidth="sm" // Increased from "xs" to "sm" for extra width panel control
+  maxWidth="sm" 
   slotProps={{
     paper: {
       sx: {
@@ -100,8 +100,8 @@ export default function ContactEditDialog({
         backgroundImage: "none", 
         borderRadius: "8px",
         border: "1px solid #334155",
-        mx: 1.5, // Sidebar layout safety margins
-        width: "calc(100% - 24px)", // Forces full space utilization in taskpane
+        mx: 1.5,
+        width: "calc(100% - 24px)",
       }
     }
   }}

@@ -220,7 +220,6 @@ export default function ContactEditDialog({
         }}
       />
 
-      {/* Subject Line Input */}
       <TextField
         fullWidth
         size="small"
@@ -252,7 +251,6 @@ export default function ContactEditDialog({
         }}
       />
 
-      {/* Internal Notes Multiline Input */}
       <TextField
         fullWidth
         size="small"
@@ -288,7 +286,6 @@ export default function ContactEditDialog({
     </Stack>
   </DialogContent>
 
-  {/* Highly Professional Balanced Horizontal Action Buttons */}
   <DialogActions sx={{ px: 1.5, pb: 2, gap: 1 }}>
     <Button
       onClick={onClose}
@@ -318,7 +315,7 @@ export default function ContactEditDialog({
       sx={{
         flex: 1, 
         textTransform: "none",
-        bgcolor: "#F5714E", // Your exact standard orange color
+        bgcolor: "#F5714E",
         color: "#fff",
         fontSize: "13px",
         fontWeight: 600,

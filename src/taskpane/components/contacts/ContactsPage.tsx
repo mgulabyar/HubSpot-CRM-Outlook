@@ -400,7 +400,6 @@ export default function ContactsPage() {
       }}
     />
 
-    {/* Dynamic Total Count Badge */}
     <Chip
       label={`${contacts.length} Contacts`}
       size="small"

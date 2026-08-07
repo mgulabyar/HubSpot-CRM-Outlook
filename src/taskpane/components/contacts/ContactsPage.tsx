@@ -308,7 +308,7 @@ export default function ContactsPage() {
       console.log("[ContactsPage] backend delete result:", result);
 
       /*
-       * 
+      
        */
       setContacts((oldContacts) => {
         const newContacts = oldContacts.filter((contact) => String(contact.id) !== cleanId);

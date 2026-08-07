@@ -263,7 +263,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
     }}
   />
 
-  {/* Highly Professional Balanced Horizontal Buttons */}
   <Box
     sx={{
       display: "flex",
@@ -274,11 +273,9 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
       pt: 0.5,
     }}
   >
-    {/* Save Contact Button */}
     <Button
       variant="contained"
       disabled={loading}
-      // startIcon={<SaveIcon sx={{ fontSize: "15px !important" }} />}
       onClick={() => {
         void handleSubmit();
       }}
@@ -286,7 +283,7 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
         flex: 1,
         textTransform: "none",
         borderRadius: "6px",
-        bgcolor: "#F5714E", // Unified branding color
+        bgcolor: "#F5714E", 
         color: "#fff",
         fontSize: "13px",
         fontWeight: 600,
@@ -308,7 +305,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
     <Button
       variant="contained"
       disabled={loading}
-      // startIcon={<SearchIcon sx={{ fontSize: "15px !important" }} />}
       onClick={() => {
         void handleFindContact();
       }}
@@ -316,7 +312,7 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
         flex: 1,
         textTransform: "none",
         borderRadius: "6px",
-        bgcolor: "#334155", // Perfectly matches dark mode accents
+        bgcolor: "#334155", 
         color: "#f8fafc",
         fontSize: "13px",
         fontWeight: 600,

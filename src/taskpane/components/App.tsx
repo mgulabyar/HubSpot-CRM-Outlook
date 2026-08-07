@@ -12,15 +12,14 @@ export default function App() {
         bgcolor: "#0f172a",
         display: "flex",
         flexDirection: "column",
-        overflowX: "hidden", 
+        overflowX: "hidden",
       }}
     >
-
       <AppHeader />
 
       <Box
         sx={{
-          p: 0.5, 
+          p: 0.5,
           flexGrow: 1,
         }}
       >

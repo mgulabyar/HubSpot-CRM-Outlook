@@ -307,8 +307,6 @@ export default function ContactsPage() {
 
       console.log("[ContactsPage] backend delete result:", result);
 
-      
-    
       setContacts((oldContacts) => {
         const newContacts = oldContacts.filter((contact) => String(contact.id) !== cleanId);
 
@@ -350,218 +348,218 @@ export default function ContactsPage() {
 
   return (
     <>
-    
-<Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center",}}>
-    <Typography
-      variant="subtitle1"
-      sx={{
-        color: "#f8fafc",
-        fontWeight: 600,
-        fontSize: "16px",
-        letterSpacing: "0.3px",
-      }}
-    >
-      Contacts
-    </Typography>
+      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              color: "#f8fafc",
+              fontWeight: 600,
+              fontSize: "16px",
+              letterSpacing: "0.3px",
+            }}
+          >
+            Contacts
+          </Typography>
 
-    <Typography
-      variant="caption"
-      sx={{
-        color: "#94a3b8", 
-        display: "block",
-        mt: 0.5,
-        fontSize: "12px",
-      }}
-    >
-      Manage HubSpot contacts from Outlook.
-    </Typography>
-  </Box>
+          <Typography
+            variant="caption"
+            sx={{
+              color: "#94a3b8",
+              display: "block",
+              mt: 0.5,
+              fontSize: "12px",
+            }}
+          >
+            Manage HubSpot contacts from Outlook.
+          </Typography>
+        </Box>
 
-  <Stack
-    direction="row"
-    spacing={1}
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: 1,
-    }}
-  >
-    <Chip
-      label="CRM Connected"
-      size="small"
-      variant="outlined"
-      sx={{
-        color: "#f8fafc",
-        bgcolor: "#F5714E", 
-        border: "none",
-        fontSize: "10.5px",
-        fontWeight: 600,
-        height: 32,
-        width: 110,
-        borderRadius: "50px",
-      }}
-    />
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 1,
+          }}
+        >
+          <Chip
+            label="CRM Connected"
+            size="small"
+            variant="outlined"
+            sx={{
+              color: "#f8fafc",
+              bgcolor: "#F5714E",
+              border: "none",
+              fontSize: "10.5px",
+              fontWeight: 600,
+              height: 32,
+              width: 110,
+              borderRadius: "50px",
+            }}
+          />
 
-    <Chip
-      label={`${contacts.length} Contacts`}
-      size="small"
-      variant="outlined"
-      sx={{
-        color: "#cbd5e1",
-        borderColor: "#334155",
-        bgcolor: "#1e293b",
-        fontSize: "10.5px",
-        fontWeight: 600,
-        height: 32,
-        width: 110,
-        borderRadius: "50px",
-      }}
-    />
-  </Stack>
+          <Chip
+            label={`${contacts.length} Contacts`}
+            size="small"
+            variant="outlined"
+            sx={{
+              color: "#cbd5e1",
+              borderColor: "#334155",
+              bgcolor: "#1e293b",
+              fontSize: "10.5px",
+              fontWeight: 600,
+              height: 32,
+              width: 110,
+              borderRadius: "50px",
+            }}
+          />
+        </Stack>
 
-  <Divider sx={{ borderColor: "#1e293b" }} />
+        <Divider sx={{ borderColor: "#1e293b" }} />
 
-  <ContactForm
-    loading={savingContact}
-    onSubmit={handleCreateContact}
-    onFindContact={handleFindContact}
-  />
+        <ContactForm
+          loading={savingContact}
+          onSubmit={handleCreateContact}
+          onFindContact={handleFindContact}
+        />
 
-  <Divider sx={{ borderColor: "#1e293b" }} />
+        <Divider sx={{ borderColor: "#1e293b" }} />
 
-  <Box>
-    <Typography
-      variant="subtitle2"
-      sx={{
-        color: "#f8fafc",
-        fontWeight: 600,
-        mb: 1.5,
-        fontSize: "13.5px",
-        letterSpacing: "0.2px"
-      }}
-    >
-      Recent Contacts
-    </Typography>
+        <Box>
+          <Typography
+            variant="subtitle2"
+            sx={{
+              color: "#f8fafc",
+              fontWeight: 600,
+              mb: 1.5,
+              fontSize: "13.5px",
+              letterSpacing: "0.2px",
+            }}
+          >
+            Recent Contacts
+          </Typography>
 
-    <ContactList
-      contacts={contacts}
-      notesByContact={notesByContact}
-      loading={loadingContacts}
-      deletingId={deletingId}
-      onDelete={handleDeleteContact}
-      onEdit={handleOpenEdit}
-    />
-  </Box>
-</Stack>
+          <ContactList
+            contacts={contacts}
+            notesByContact={notesByContact}
+            loading={loadingContacts}
+            deletingId={deletingId}
+            onDelete={handleDeleteContact}
+            onEdit={handleOpenEdit}
+          />
+        </Box>
+      </Stack>
 
-<ContactEditDialog
-  open={editDialogOpen}
-  contact={editingContact}
-  note={editingNote}
-  loading={savingContact}
-  onClose={handleCloseEdit}
-  onSave={handleUpdateContact}
-/>
+      <ContactEditDialog
+        open={editDialogOpen}
+        contact={editingContact}
+        note={editingNote}
+        loading={savingContact}
+        onClose={handleCloseEdit}
+        onSave={handleUpdateContact}
+      />
 
-<Dialog
-  open={Boolean(pendingDeleteContact)}
-  onClose={handleCancelDelete}
-  maxWidth="xs"
-  fullWidth
-  slotProps={{
-    paper: {
-      sx: {
-        bgcolor: "#1e293b", 
-        backgroundImage: "none",
-        borderRadius: "8px",
-        border: "1px solid #334155",
-      }
-    }
-  }}
->
-  <DialogTitle sx={{ fontSize: "15px", fontWeight: 600, color: "#f8fafc", pb: 1 }}>
-    Delete contact
-  </DialogTitle>
+      <Dialog
+        open={Boolean(pendingDeleteContact)}
+        onClose={handleCancelDelete}
+        maxWidth="xs"
+        fullWidth
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "#1e293b",
+              backgroundImage: "none",
+              borderRadius: "8px",
+              border: "1px solid #334155",
+            },
+          },
+        }}
+      >
+        <DialogTitle sx={{ fontSize: "15px", fontWeight: 600, color: "#f8fafc", pb: 1 }}>
+          Delete contact
+        </DialogTitle>
 
-  <DialogContent sx={{ pb: 2 }}>
-    <DialogContentText sx={{ fontSize: "12.5px", color: "#cbd5e1", lineHeight: 1.45 }}>
-      Are you sure you want to delete{" "}
-      <strong style={{ color: "#f8fafc" }}>{pendingDeleteName}</strong>? This action cannot be undone.
-    </DialogContentText>
-  </DialogContent>
+        <DialogContent sx={{ pb: 2 }}>
+          <DialogContentText sx={{ fontSize: "12.5px", color: "#cbd5e1", lineHeight: 1.45 }}>
+            Are you sure you want to delete{" "}
+            <strong style={{ color: "#f8fafc" }}>{pendingDeleteName}</strong>? This action cannot be
+            undone.
+          </DialogContentText>
+        </DialogContent>
 
-  <DialogActions sx={{ px: 1.5, pb: 1.5, gap: 0.5 }}>
-    <Button
-      onClick={handleCancelDelete}
-      disabled={Boolean(deletingId)}
-      sx={{ 
-        textTransform: "none", 
-        fontSize: "12.5px", 
-        color: "#94a3b8",
-        fontWeight: 500,
-        "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" }
-      }}
-    >
-      Cancel
-    </Button>
+        <DialogActions sx={{ px: 1.5, pb: 1.5, gap: 0.5 }}>
+          <Button
+            onClick={handleCancelDelete}
+            disabled={Boolean(deletingId)}
+            sx={{
+              textTransform: "none",
+              fontSize: "12.5px",
+              color: "#94a3b8",
+              fontWeight: 500,
+              "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" },
+            }}
+          >
+            Cancel
+          </Button>
 
-    <Button
-      onClick={handleConfirmDelete}
-      disabled={Boolean(deletingId)}
-      variant="contained"
-      color="error"
-      sx={{ 
-        textTransform: "none", 
-        fontSize: "12.5px", 
-        fontWeight: 600,
-        borderRadius: "6px",
-        boxShadow: "none",
-        bgcolor: "#dc2626",
-        "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" }
-      }}
-    >
-      {deletingId ? "Deleting..." : "Delete"}
-    </Button>
-  </DialogActions>
-</Dialog>
+          <Button
+            onClick={handleConfirmDelete}
+            disabled={Boolean(deletingId)}
+            variant="contained"
+            color="error"
+            sx={{
+              textTransform: "none",
+              fontSize: "12.5px",
+              fontWeight: 600,
+              borderRadius: "6px",
+              boxShadow: "none",
+              bgcolor: "#dc2626",
+              "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
+            }}
+          >
+            {deletingId ? "Deleting..." : "Delete"}
+          </Button>
+        </DialogActions>
+      </Dialog>
 
-<Snackbar
-  open={toast.open}
-  autoHideDuration={3000}
-  onClose={closeToast}
-  anchorOrigin={{
-    vertical: "top",
-    horizontal: "right",
-  }}
-  sx={{
-    zIndex: 2000,
-  }}
->
-  <Alert
-    severity={toast.severity}
-    variant="outlined" 
-    onClose={closeToast}
-    sx={{
-      width: "100%",
-      fontSize: "12px",
-      borderRadius: "6px",
-      bgcolor: "#1e293b",
-      color: toast.severity === "error" ? "#fca5a5" : "#fef08a",
-      borderColor: toast.severity === "error" ? "rgba(239, 68, 68, 0.3)" : "rgba(234, 179, 8, 0.3)",
-      "& .MuiAlert-icon": {
-        color: toast.severity === "error" ? "#ef4444" : "#eab308",
-      },
-      "& .MuiAlert-action": {
-        color: "#94a3b8"
-      }
-    }}
-  >
-    {toast.message}
-  </Alert>
-</Snackbar>
-
+      <Snackbar
+        open={toast.open}
+        autoHideDuration={3000}
+        onClose={closeToast}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        sx={{
+          zIndex: 2000,
+        }}
+      >
+        <Alert
+          severity={toast.severity}
+          variant="outlined"
+          onClose={closeToast}
+          sx={{
+            width: "100%",
+            fontSize: "12px",
+            borderRadius: "6px",
+            bgcolor: "#1e293b",
+            color: toast.severity === "error" ? "#fca5a5" : "#fef08a",
+            borderColor:
+              toast.severity === "error" ? "rgba(239, 68, 68, 0.3)" : "rgba(234, 179, 8, 0.3)",
+            "& .MuiAlert-icon": {
+              color: toast.severity === "error" ? "#ef4444" : "#eab308",
+            },
+            "& .MuiAlert-action": {
+              color: "#94a3b8",
+            },
+          }}
+        >
+          {toast.message}
+        </Alert>
+      </Snackbar>
     </>
   );
 }

@@ -17,28 +17,19 @@ import type { HubSpotRecord } from "../../types/hubspot";
 
 type ContactListProps = {
   contacts: HubSpotRecord[];
-  notesByContact: Record<
-    string,
-    HubSpotRecord | null
-  >;
+  notesByContact: Record<string, HubSpotRecord | null>;
   loading: boolean;
   deletingId: string | null;
   onDelete: (contactId: string) => Promise<void>;
   onEdit: (contactId: string) => void;
 };
 
-function getNoteContent(
-  note: HubSpotRecord | null | undefined
-) {
+function getNoteContent(note: HubSpotRecord | null | undefined) {
   const body = note?.properties?.hs_note_body || "";
 
-  const subjectMatch = body.match(
-    /^Subject Line:\s*(.*)$/m
-  );
+  const subjectMatch = body.match(/^Subject Line:\s*(.*)$/m);
 
-  const notesMatch = body.match(
-    /^Internal Notes:\s*([\s\S]*)$/m
-  );
+  const notesMatch = body.match(/^Internal Notes:\s*([\s\S]*)$/m);
 
   return {
     subject: subjectMatch?.[1]?.trim() || "",
@@ -68,10 +59,7 @@ export default function ContactList({
   onDelete,
   onEdit,
 }: ContactListProps) {
-  console.log(
-    "[ContactList] rendered contacts:",
-    contacts.length
-  );
+  console.log("[ContactList] rendered contacts:", contacts.length);
 
   if (loading) {
     return (
@@ -110,17 +98,11 @@ export default function ContactList({
         const noteContent = getNoteContent(note);
 
         const fullName =
-          [
-            properties.firstname,
-            properties.lastname,
-          ]
-            .filter(Boolean)
-            .join(" ") ||
+          [properties.firstname, properties.lastname].filter(Boolean).join(" ") ||
           properties.email ||
           "Unnamed Contact";
 
-        const isDeleting =
-          deletingId === contactId;
+        const isDeleting = deletingId === contactId;
 
         return (
           <Card
@@ -183,36 +165,23 @@ export default function ContactList({
                       height: 22,
                       fontSize: "10px",
                       color: "#ff7a59",
-                      bgcolor:
-                        "rgba(255, 122, 89, 0.08)",
+                      bgcolor: "rgba(255, 122, 89, 0.08)",
                     }}
                   />
                 </Box>
 
                 <Divider />
 
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#475569" }}
-                >
-                  <strong>Email:</strong>{" "}
-                  {properties.email || "No email"}
+                <Typography variant="caption" sx={{ color: "#475569" }}>
+                  <strong>Email:</strong> {properties.email || "No email"}
                 </Typography>
 
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#64748b" }}
-                >
-                  <strong>Company:</strong>{" "}
-                  {properties.company || "No company"}
+                <Typography variant="caption" sx={{ color: "#64748b" }}>
+                  <strong>Company:</strong> {properties.company || "No company"}
                 </Typography>
 
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#64748b" }}
-                >
-                  <strong>Phone:</strong>{" "}
-                  {properties.phone || "No phone"}
+                <Typography variant="caption" sx={{ color: "#64748b" }}>
+                  <strong>Phone:</strong> {properties.phone || "No phone"}
                 </Typography>
 
                 {noteContent.subject && (
@@ -220,8 +189,7 @@ export default function ContactList({
                     sx={{
                       p: 1,
                       borderRadius: "4px",
-                      bgcolor:
-                        "rgba(255, 122, 89, 0.06)",
+                      bgcolor: "rgba(255, 122, 89, 0.06)",
                     }}
                   >
                     <Typography
@@ -320,10 +288,7 @@ export default function ContactList({
                         event.preventDefault();
                         event.stopPropagation();
 
-                        console.log(
-                          "[ContactList] edit clicked:",
-                          contactId
-                        );
+                        console.log("[ContactList] edit clicked:", contactId);
 
                         onEdit(contactId);
                       }}
@@ -331,8 +296,7 @@ export default function ContactList({
                         color: "#2d3e50",
                         borderRadius: "4px",
                         "&:hover": {
-                          bgcolor:
-                            "rgba(45, 62, 80, 0.08)",
+                          bgcolor: "rgba(45, 62, 80, 0.08)",
                         },
                       }}
                     >
@@ -350,18 +314,10 @@ export default function ContactList({
                         event.preventDefault();
                         event.stopPropagation();
 
-                        console.log(
-                          "[ContactList] DELETE ICON CLICKED:",
-                          contactId
-                        );
+                        console.log("[ContactList] DELETE ICON CLICKED:", contactId);
 
-                        if (
-                          typeof onDelete !==
-                          "function"
-                        ) {
-                          console.log(
-                            "[ContactList] onDelete prop is missing"
-                          );
+                        if (typeof onDelete !== "function") {
+                          console.log("[ContactList] onDelete prop is missing");
 
                           return;
                         }
@@ -372,8 +328,7 @@ export default function ContactList({
                         color: "#dc2626",
                         borderRadius: "4px",
                         "&:hover": {
-                          bgcolor:
-                            "rgba(220, 38, 38, 0.08)",
+                          bgcolor: "rgba(220, 38, 38, 0.08)",
                         },
                       }}
                     >

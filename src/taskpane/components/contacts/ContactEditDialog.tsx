@@ -8,10 +8,7 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import type {
-  ContactFormValues,
-  HubSpotRecord,
-} from "../../types/hubspot";
+import type { ContactFormValues, HubSpotRecord } from "../../types/hubspot";
 
 type ContactEditDialogProps = {
   open: boolean;
@@ -19,9 +16,7 @@ type ContactEditDialogProps = {
   note: HubSpotRecord | null;
   loading: boolean;
   onClose: () => void;
-  onSave: (
-    values: ContactFormValues
-  ) => Promise<boolean>;
+  onSave: (values: ContactFormValues) => Promise<boolean>;
 };
 
 const emptyForm: ContactFormValues = {
@@ -32,18 +27,12 @@ const emptyForm: ContactFormValues = {
   notes: "",
 };
 
-function getNoteValues(
-  note: HubSpotRecord | null
-) {
+function getNoteValues(note: HubSpotRecord | null) {
   const body = note?.properties?.hs_note_body || "";
 
-  const subjectMatch = body.match(
-    /^Subject Line:\s*(.*)$/m
-  );
+  const subjectMatch = body.match(/^Subject Line:\s*(.*)$/m);
 
-  const notesMatch = body.match(
-    /^Internal Notes:\s*([\s\S]*)$/m
-  );
+  const notesMatch = body.match(/^Internal Notes:\s*([\s\S]*)$/m);
 
   return {
     subject: subjectMatch?.[1]?.trim() || "",
@@ -59,8 +48,7 @@ export default function ContactEditDialog({
   onClose,
   onSave,
 }: ContactEditDialogProps) {
-  const [form, setForm] =
-    useState<ContactFormValues>(emptyForm);
+  const [form, setForm] = useState<ContactFormValues>(emptyForm);
 
   useEffect(() => {
     if (!contact) {
@@ -68,10 +56,8 @@ export default function ContactEditDialog({
       return;
     }
 
-    const firstName =
-      contact.properties.firstname || "";
-    const lastName =
-      contact.properties.lastname || "";
+    const firstName = contact.properties.firstname || "";
+    const lastName = contact.properties.lastname || "";
     const noteValues = getNoteValues(note);
 
     setForm({
@@ -85,11 +71,7 @@ export default function ContactEditDialog({
 
   const handleChange =
     (field: keyof ContactFormValues) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-      >
-    ) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((previous) => ({
         ...previous,
         [field]: event.target.value,
@@ -106,12 +88,7 @@ export default function ContactEditDialog({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={loading ? undefined : onClose}
-      fullWidth
-      maxWidth="xs"
-    >
+    <Dialog open={open} onClose={loading ? undefined : onClose} fullWidth maxWidth="xs">
       <DialogTitle
         sx={{
           color: "#1e2a3c",

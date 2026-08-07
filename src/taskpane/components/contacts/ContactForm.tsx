@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Alert, Box, Button, Stack, TextField } from "@mui/material";
-import SaveIcon from "@mui/icons-material/Save";
-import SearchIcon from "@mui/icons-material/Search";
 import type { ContactFormValues } from "../../types/hubspot";
 
 type ContactFormProps = {
@@ -18,12 +16,6 @@ const initialForm: ContactFormValues = {
   notes: "",
 };
 
-const HUBSPOT_BRAND = {
-  primary: "#ff7a59",
-  primaryHover: "#ea6541",
-  charcoal: "#2d3e50",
-  charcoalHover: "#1e2a36",
-};
 
 export default function ContactForm({ loading, onSubmit, onFindContact }: ContactFormProps) {
   const [form, setForm] = useState<ContactFormValues>(initialForm);
@@ -74,12 +66,11 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
   spacing={2.5} 
   sx={{ 
     p: 2, 
-    bgcolor: "#1e293b", // Premium Deep Slate Dark Background for the whole form container
+    bgcolor: "#1e293b",
     borderRadius: "8px",
     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
   }}
 >
-  {/* Modernized Dark Mode Alert */}
   {validationError && (
     <Alert
       severity="warning"
@@ -88,7 +79,7 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
       sx={{
         borderRadius: "6px",
         fontSize: "12px",
-        color: "#fef08a", // Soft premium yellow text
+        color: "#fef08a",
         borderColor: "rgba(234, 179, 8, 0.3)",
         bgcolor: "rgba(234, 179, 8, 0.06)",
         "& .MuiAlert-icon": {
@@ -100,7 +91,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
     </Alert>
   )}
 
-  {/* Full Name Input */}
   <TextField
     fullWidth
     size="small"
@@ -115,16 +105,16 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
         color: "#94a3b8", 
         fontSize: "13px",
         fontWeight: 500,
-        bgcolor: "#1e293b", // Matches form background to perfectly fix overlapping/cut line lines
+        bgcolor: "#1e293b", 
         px: 0.6
       },
       "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
       "& .MuiOutlinedInput-root": {
-        color: "#f8fafc", // Crisp white input text values
+        color: "#f8fafc", 
         fontSize: "13px",
-        bgcolor: "#0f172a", // Deep dark inner background pod
+        bgcolor: "#0f172a", 
         borderRadius: "6px",
-        "& fieldset": { borderColor: "#334155" }, // Clean subtle dark border
+        "& fieldset": { borderColor: "#334155" },
         "&:hover fieldset": { borderColor: "#475569" },
         "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
         "& input": { color: "#f8fafc" },
@@ -132,7 +122,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
     }}
   />
 
-  {/* Email Address Input */}
   <TextField
     fullWidth
     size="small"
@@ -165,7 +154,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
     }}
   />
 
-  {/* Company Name Input */}
   <TextField
     fullWidth
     size="small"
@@ -197,7 +185,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
     }}
   />
 
-  {/* Subject Line Input */}
   <TextField
     fullWidth
     size="small"
@@ -229,7 +216,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
     }}
   />
 
-  {/* Internal Notes Multiline Input */}
   <TextField
     fullWidth
     size="small"

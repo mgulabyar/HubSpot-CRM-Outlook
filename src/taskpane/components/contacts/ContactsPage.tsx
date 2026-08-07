@@ -418,7 +418,6 @@ export default function ContactsPage() {
 
   <Divider sx={{ borderColor: "#1e293b" }} />
 
-  {/* Contact Handling Actions Form Module */}
   <ContactForm
     loading={savingContact}
     onSubmit={handleCreateContact}
@@ -427,7 +426,6 @@ export default function ContactsPage() {
 
   <Divider sx={{ borderColor: "#1e293b" }} />
 
-  {/* Recent Contacts Stream Layout Container */}
   <Box>
     <Typography
       variant="subtitle2"
@@ -453,7 +451,6 @@ export default function ContactsPage() {
   </Box>
 </Stack>
 
-{/* Separate Modules / Dialog Overlays Rendering Safely Below main structure */}
 <ContactEditDialog
   open={editDialogOpen}
   contact={editingContact}
@@ -463,7 +460,6 @@ export default function ContactsPage() {
   onSave={handleUpdateContact}
 />
 
-{/* Safe Strongly-Typed Delete Confirmation Dialog Modal */}
 <Dialog
   open={Boolean(pendingDeleteContact)}
   onClose={handleCancelDelete}
@@ -472,8 +468,8 @@ export default function ContactsPage() {
   slotProps={{
     paper: {
       sx: {
-        bgcolor: "#1e293b", // Matte slate surface container background 
-        backgroundImage: "none", // Critical layout parameter to prevent MUI opacity tint bugs
+        bgcolor: "#1e293b", 
+        backgroundImage: "none",
         borderRadius: "8px",
         border: "1px solid #334155",
       }

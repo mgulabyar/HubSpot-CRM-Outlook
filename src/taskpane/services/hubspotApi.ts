@@ -3,6 +3,8 @@ import { API_BASE_URL, API_ENDPOINTS } from "../config/api";
 import {
   ContactCreateResponse,
   ContactFormData,
+  ContactUpdateData,
+  ContactUpdateResponse,
   HubSpotApiResponse,
   HubSpotListResponse,
   HubSpotRecord,
@@ -29,6 +31,14 @@ export const getContacts = async (limit = 20) => {
   return response.data.data;
 };
 
+export const getContact = async (contactId: string) => {
+  const response = await hubspotApi.get<HubSpotApiResponse<HubSpotRecord>>(
+    `${API_ENDPOINTS.contacts}/${contactId}`
+  );
+
+  return response.data.data;
+};
+
 export const getContactNotes = async (contactId: string) => {
   const response = await hubspotApi.get<HubSpotApiResponse<HubSpotListResponse<HubSpotRecord>>>(
     `${API_ENDPOINTS.contacts}/${contactId}/notes`
@@ -46,8 +56,8 @@ export const createContact = async (payload: ContactFormData) => {
   return response.data.data;
 };
 
-export const updateContact = async (contactId: string, payload: Partial<ContactFormData>) => {
-  const response = await hubspotApi.patch<HubSpotApiResponse<HubSpotRecord>>(
+export const updateContact = async (contactId: string, payload: ContactUpdateData) => {
+  const response = await hubspotApi.patch<HubSpotApiResponse<ContactUpdateResponse>>(
     `${API_ENDPOINTS.contacts}/${contactId}`,
     payload
   );
@@ -56,11 +66,7 @@ export const updateContact = async (contactId: string, payload: Partial<ContactF
 };
 
 export const deleteContact = async (contactId: string) => {
-  const response = await hubspotApi.delete<
-    HubSpotApiResponse<{
-      message: string;
-    }>
-  >(`${API_ENDPOINTS.contacts}/${contactId}`);
+  const response = await hubspotApi.delete(`${API_ENDPOINTS.contacts}/${contactId}`);
 
   return response.data;
 };

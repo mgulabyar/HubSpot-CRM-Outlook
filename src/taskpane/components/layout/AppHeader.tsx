@@ -12,7 +12,7 @@ export default function AppHeader() {
         px: 2,
         py: 1.8,
         bgcolor: "#1e293b", 
-        borderBottom: "1px solid #334155", // Subtle professional dark divider separation line
+        borderBottom: "1px solid #334155", 
         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", // Soft elite elevation layer
       }}
     >

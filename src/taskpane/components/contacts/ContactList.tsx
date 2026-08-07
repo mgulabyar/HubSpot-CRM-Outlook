@@ -242,7 +242,6 @@ export default function ContactList({
                     </Typography>
                   </Box>
 
-                  {/* Subject Line */}
                   {noteContent.subject && (
                     <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                       <Typography

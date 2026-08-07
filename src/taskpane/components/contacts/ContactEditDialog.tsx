@@ -112,7 +112,7 @@ export default function ContactEditDialog({
       fontWeight: 600,
       fontSize: "16px",
       pt: 2,
-      px: 1.5, // Reduced from standard 3 to tight 1.5 padding
+      px: 1.5, 
       pb: 0.5,
     }}
   >
@@ -121,7 +121,7 @@ export default function ContactEditDialog({
 
   <DialogContent 
     sx={{ 
-      px: 1.5, // Tight padding to let text fields expand fully
+      px: 1.5, 
       pb: 1.5, 
     }}
   >

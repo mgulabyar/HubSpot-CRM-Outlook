@@ -35,8 +35,8 @@ export default function AppHeader() {
         <Typography
           variant="caption"
           sx={{
-            color: "#94a3b8", // Bright crisp silver-grey text color for optimal contrast
-            fontSize: "11px", // Highly readable micro metadata scale
+            color: "#94a3b8", 
+            fontSize: "11px", 
             textAlign: "center",
             fontWeight: 500,
             letterSpacing: "0.2px"

@@ -10,8 +10,8 @@ export default function AppHeader() {
         top: 0,
         zIndex: 1100,
         px: 2,
-        py: 1.8, // Slightly more compact padding for a sleek title height
-        bgcolor: "#1e293b", // Matches the premium deep slate form/card background
+        py: 1.8,
+        bgcolor: "#1e293b", 
         borderBottom: "1px solid #334155", // Subtle professional dark divider separation line
         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", // Soft elite elevation layer
       }}

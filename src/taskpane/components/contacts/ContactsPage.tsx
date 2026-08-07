@@ -487,7 +487,7 @@ export default function ContactsPage() {
     </DialogContentText>
   </DialogContent>
 
-  <DialogActions sx={{ px: 3, pb: 2, gap: 0.5 }}>
+  <DialogActions sx={{ px: 1.5, pb: 1.5, gap: 0.5 }}>
     <Button
       onClick={handleCancelDelete}
       disabled={Boolean(deletingId)}
@@ -522,7 +522,6 @@ export default function ContactsPage() {
   </DialogActions>
 </Dialog>
 
-{/* Elite Low-Contrast Snackbar Toast Interface */}
 <Snackbar
   open={toast.open}
   autoHideDuration={3000}
@@ -537,13 +536,13 @@ export default function ContactsPage() {
 >
   <Alert
     severity={toast.severity}
-    variant="outlined" // Switched to outlined mode for high-quality clean appearance
+    variant="outlined" 
     onClose={closeToast}
     sx={{
       width: "100%",
       fontSize: "12px",
       borderRadius: "6px",
-      bgcolor: "#1e293b", // Avoids solid heavy colored screens, syncs perfectly with dashboard themes
+      bgcolor: "#1e293b",
       color: toast.severity === "error" ? "#fca5a5" : "#fef08a",
       borderColor: toast.severity === "error" ? "rgba(239, 68, 68, 0.3)" : "rgba(234, 179, 8, 0.3)",
       "& .MuiAlert-icon": {

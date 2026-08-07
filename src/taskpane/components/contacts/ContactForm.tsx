@@ -63,9 +63,9 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
 
   return (
   <Stack 
-  spacing={2.5} 
+  spacing={1.5} 
   sx={{ 
-    p: 2, 
+    p: 1.5, 
     bgcolor: "#1e293b",
     borderRadius: "8px",
     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
@@ -314,7 +314,7 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
         },
       }}
     >
-      Find Contact
+      Search
     </Button>
   </Box>
 </Stack>

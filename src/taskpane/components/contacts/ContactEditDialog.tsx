@@ -126,7 +126,6 @@ export default function ContactEditDialog({
     }}
   >
     <Stack spacing={2.2} sx={{ pt: 1.5 }}>
-      {/* Full Name Input */}
       <TextField
         fullWidth
         size="small"
@@ -158,7 +157,6 @@ export default function ContactEditDialog({
         }}
       />
 
-      {/* Email Address Input */}
       <TextField
         fullWidth
         size="small"
@@ -191,7 +189,6 @@ export default function ContactEditDialog({
         }}
       />
 
-      {/* Company Name Input */}
       <TextField
         fullWidth
         size="small"

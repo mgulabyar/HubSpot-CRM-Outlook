@@ -76,10 +76,6 @@ export default function ContactsPage() {
 
   const [editDialogOpen, setEditDialogOpen] = useState(false);
 
-  // Replaces window.confirm, which is unreliable/blocked inside the
-  // Office/Outlook Add-in sandboxed iframe and can silently resolve to
-  // false without throwing any error - this is why delete previously
-  // appeared to "do nothing" with no console errors.
   const [pendingDeleteContact, setPendingDeleteContact] = useState<HubSpotRecord | null>(null);
 
   const [toast, setToast] = useState<{

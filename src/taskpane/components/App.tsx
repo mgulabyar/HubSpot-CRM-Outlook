@@ -25,7 +25,7 @@ export default function App() {
         }}
       >
         <Stack spacing={1.5}>
-          {/* Main Contacts Feature Component Layer */}
+          {/* Main Component Layer */}
           <ContactsPage />
         </Stack>
       </Box>

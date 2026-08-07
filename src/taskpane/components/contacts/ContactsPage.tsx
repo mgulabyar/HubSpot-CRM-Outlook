@@ -309,7 +309,6 @@ export default function ContactsPage() {
 
       /*
        * Important:
-       * UI state se  remove hoga.
        */
       setContacts((oldContacts) => {
         const newContacts = oldContacts.filter((contact) => String(contact.id) !== cleanId);

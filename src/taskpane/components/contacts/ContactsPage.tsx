@@ -309,7 +309,6 @@ export default function ContactsPage() {
 
       /*
        * Important:
-       * Backend successful hone ke baad
        * UI state se  remove hoga.
        */
       setContacts((oldContacts) => {

@@ -1,34 +1,32 @@
 import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
-const HUBSPOT_BRAND = {
-  border: "#cbd6e2",
-  textDark: "#1e2a3c",
-};
-
 export default function AppHeader() {
   return (
     <Box
+      component="header"
       sx={{
         position: "sticky",
         top: 0,
         zIndex: 1100,
         px: 2,
-        py: 2,
-        bgcolor: "#fff",
-        borderBottom: `1px solid ${HUBSPOT_BRAND.border}`,
+        py: 1.8, // Slightly more compact padding for a sleek title height
+        bgcolor: "#1e293b", // Matches the premium deep slate form/card background
+        borderBottom: "1px solid #334155", // Subtle professional dark divider separation line
+        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", // Soft elite elevation layer
       }}
     >
-      <Stack spacing={0.5}>
+      <Stack spacing={0.4}>
         <Typography
-          // variant=""
+          variant="h6"
+          component="h1"
           sx={{
             textAlign: "center",
-            fontSize: "20px",
-            fontWeight: 600,
-            color:" #F5714E",
+            fontSize: "18px", // Balanced typography size for narrow taskpanes
+            fontWeight: 700, // Solid premium bold font weight
+            color: "#F5714E", // Your exact unified HubSpot brand accent orange color
             letterSpacing: "0.5px",
-            lineHeight: 1.1,
+            lineHeight: 1.2,
           }}
         >
           HubSpot CRM
@@ -37,9 +35,11 @@ export default function AppHeader() {
         <Typography
           variant="caption"
           sx={{
-            color: "#64748b",
-            fontSize: "12px",
+            color: "#94a3b8", // Bright crisp silver-grey text color for optimal contrast
+            fontSize: "11px", // Highly readable micro metadata scale
             textAlign: "center",
+            fontWeight: 500,
+            letterSpacing: "0.2px"
           }}
         >
           Outlook Add-in Workspace Engine

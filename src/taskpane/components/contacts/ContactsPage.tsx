@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Alert, Box, Chip, Divider, Snackbar, Stack, Typography } from "@mui/material";
-import ContactForm, { type ContactFormValues } from "./ContactForm";
+import ContactForm from "./ContactForm";
+import ContactEditDialog from "./ContactEditDialog";
 import ContactList from "./ContactList";
 import {
   createContact,
   deleteContact,
   getContactNotes,
   getContacts,
+  updateContact,
 } from "../../services/hubspotApi";
-import type { HubSpotRecord } from "../../types/hubspot";
+import type { ContactFormValues, HubSpotRecord } from "../../types/hubspot";
 import { getApiErrorMessage } from "../../utils/apiError";
 
 const HUBSPOT_BRAND = {
@@ -28,6 +30,21 @@ function splitFullName(fullName: string) {
   };
 }
 
+function getLatestNote(notes: HubSpotRecord[]) {
+  if (notes.length === 0) {
+    return null;
+  }
+
+  return [...notes].sort((first, second) => {
+    const firstDate = first.properties?.hs_timestamp || first.updatedAt || first.createdAt || "";
+
+    const secondDate =
+      second.properties?.hs_timestamp || second.updatedAt || second.createdAt || "";
+
+    return new Date(secondDate).getTime() - new Date(firstDate).getTime();
+  })[0];
+}
+
 export default function ContactsPage() {
   const [contacts, setContacts] = useState<HubSpotRecord[]>([]);
 
@@ -38,6 +55,12 @@ export default function ContactsPage() {
   const [savingContact, setSavingContact] = useState(false);
 
   const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const [editingContact, setEditingContact] = useState<HubSpotRecord | null>(null);
+
+  const [editingNote, setEditingNote] = useState<HubSpotRecord | null>(null);
+
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
 
   const [toast, setToast] = useState<{
     open: boolean;
@@ -65,26 +88,12 @@ export default function ContactsPage() {
   };
 
   const loadContactNotes = useCallback(async (loadedContacts: HubSpotRecord[]) => {
-    const notesEntries = await Promise.all(
+    const noteEntries = await Promise.all(
       loadedContacts.map(async (contact) => {
         try {
-          const notesResponse = await getContactNotes(contact.id);
+          const response = await getContactNotes(contact.id);
 
-          const notes = notesResponse.results || [];
-
-          if (notes.length === 0) {
-            return [contact.id, null] as const;
-          }
-
-          const latestNote = [...notes].sort((first, second) => {
-            const firstDate =
-              first.properties?.hs_timestamp || first.updatedAt || first.createdAt || "";
-
-            const secondDate =
-              second.properties?.hs_timestamp || second.updatedAt || second.createdAt || "";
-
-            return new Date(secondDate).getTime() - new Date(firstDate).getTime();
-          })[0];
+          const latestNote = getLatestNote(response.results || []);
 
           return [contact.id, latestNote] as const;
         } catch {
@@ -93,7 +102,13 @@ export default function ContactsPage() {
       })
     );
 
-    setNotesByContact(Object.fromEntries(notesEntries));
+    const notesMap: Record<string, HubSpotRecord | null> = {};
+
+    noteEntries.forEach(([contactId, note]) => {
+      notesMap[contactId] = note;
+    });
+
+    setNotesByContact(notesMap);
   }, []);
 
   const loadContacts = useCallback(async () => {
@@ -104,7 +119,6 @@ export default function ContactsPage() {
       const loadedContacts = response.results || [];
 
       setContacts(loadedContacts);
-
       await loadContactNotes(loadedContacts);
     } catch (requestError) {
       showToast(getApiErrorMessage(requestError), "error");
@@ -123,7 +137,7 @@ export default function ContactsPage() {
 
       const name = splitFullName(values.name);
 
-      const result = await createContact({
+      await createContact({
         firstname: name.firstname,
         lastname: name.lastname,
         email: values.email.trim(),
@@ -132,13 +146,6 @@ export default function ContactsPage() {
         subject: values.subject.trim(),
         notes: values.notes.trim(),
       });
-
-      if (result.note && result.contact?.id) {
-        setNotesByContact((previous) => ({
-          ...previous,
-          [result.contact.id]: result.note,
-        }));
-      }
 
       await loadContacts();
 
@@ -170,6 +177,67 @@ export default function ContactsPage() {
       showToast("Contact found successfully in HubSpot.", "success");
     } catch (requestError) {
       showToast(getApiErrorMessage(requestError), "error");
+    }
+  };
+
+  const handleOpenEdit = (contactId: string) => {
+    const selectedContact = contacts.find((contact) => contact.id === contactId);
+
+    if (!selectedContact) {
+      return;
+    }
+
+    setEditingContact(selectedContact);
+    setEditingNote(notesByContact[selectedContact.id] || null);
+    setEditDialogOpen(true);
+  };
+
+  const handleCloseEdit = () => {
+    if (savingContact) {
+      return;
+    }
+
+    setEditDialogOpen(false);
+    setEditingContact(null);
+    setEditingNote(null);
+  };
+
+  const handleUpdateContact = async (values: ContactFormValues): Promise<boolean> => {
+    if (!editingContact) {
+      return false;
+    }
+
+    try {
+      setSavingContact(true);
+
+      const name = splitFullName(values.name);
+      const currentNoteId = editingNote?.id;
+
+      await updateContact(editingContact.id, {
+        firstname: name.firstname,
+        lastname: name.lastname,
+        email: values.email.trim(),
+        company: values.company.trim(),
+        subject: values.subject.trim(),
+        notes: values.notes.trim(),
+        ...(currentNoteId ? { noteId: currentNoteId } : {}),
+      });
+
+      await loadContacts();
+
+      setEditDialogOpen(false);
+      setEditingContact(null);
+      setEditingNote(null);
+
+      showToast("Contact updated successfully.", "success");
+
+      return true;
+    } catch (requestError) {
+      showToast(getApiErrorMessage(requestError), "error");
+
+      return false;
+    } finally {
+      setSavingContact(false);
     }
   };
 
@@ -223,7 +291,7 @@ export default function ContactsPage() {
               mt: 0.4,
             }}
           >
-            Create and find HubSpot contacts from Outlook.
+            Manage HubSpot contacts from Outlook.
           </Typography>
         </Box>
 
@@ -298,9 +366,19 @@ export default function ContactsPage() {
             loading={loadingContacts}
             deletingId={deletingId}
             onDelete={handleDeleteContact}
+            onEdit={handleOpenEdit}
           />
         </Box>
       </Stack>
+
+      <ContactEditDialog
+        open={editDialogOpen}
+        contact={editingContact}
+        note={editingNote}
+        loading={savingContact}
+        onClose={handleCloseEdit}
+        onSave={handleUpdateContact}
+      />
 
       <Snackbar
         open={toast.open}

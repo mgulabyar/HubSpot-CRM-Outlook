@@ -3,16 +3,12 @@ import { Box, Stack } from "@mui/material";
 import AppHeader from "./layout/AppHeader";
 import ContactsPage from "./contacts/ContactsPage";
 
-const HUBSPOT_BRAND = {
-  background: "#f5f8fa",
-};
-
 export default function App() {
   return (
     <Box
       sx={{
         minHeight: "100vh",
-        bgcolor: HUBSPOT_BRAND.background,
+        bgcolor: "#f5f8fa",
         display: "flex",
         flexDirection: "column",
       }}

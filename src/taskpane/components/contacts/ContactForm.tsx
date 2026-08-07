@@ -2,14 +2,7 @@ import React, { useState } from "react";
 import { Alert, Box, Button, Stack, TextField } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import SearchIcon from "@mui/icons-material/Search";
-
-export type ContactFormValues = {
-  name: string;
-  email: string;
-  company: string;
-  subject: string;
-  notes: string;
-};
+import type { ContactFormValues } from "../../types/hubspot";
 
 type ContactFormProps = {
   loading: boolean;
@@ -59,9 +52,9 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
       return;
     }
 
-    const submitted = await onSubmit(form);
+    const successful = await onSubmit(form);
 
-    if (submitted) {
+    if (successful) {
       setForm(initialForm);
       setValidationError("");
     }

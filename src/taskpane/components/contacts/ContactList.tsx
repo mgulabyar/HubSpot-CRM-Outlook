@@ -1,49 +1,24 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Divider,
-  Stack,
-  Typography,
-} from "@mui/material";
-
-import DeleteIcon from "@mui/icons-material/Delete"
+import { Box, Button, Card, CardContent, Chip, Divider, Stack, Typography } from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/Delete";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import type { HubSpotRecord } from "../../types/hubspot";
 
 type ContactListProps = {
   contacts: HubSpotRecord[];
-  notesByContact: Record<
-    string,
-    HubSpotRecord | null
-  >;
+  notesByContact: Record<string, HubSpotRecord | null>;
   loading: boolean;
   deletingId: string | null;
   onDelete: (contactId: string) => Promise<void>;
+  onEdit: (contactId: string) => void;
 };
 
-function getNoteContent(
-  note: HubSpotRecord | null | undefined
-) {
-  const body = note?.properties?.hs_note_body;
+function getNoteContent(note: HubSpotRecord | null | undefined) {
+  const body = note?.properties?.hs_note_body || "";
 
-  if (!body) {
-    return {
-      subject: "",
-      notes: "",
-      fullBody: "",
-    };
-  }
+  const subjectMatch = body.match(/^Subject Line:\s*(.*)$/m);
 
-  const subjectMatch = body.match(
-    /^Subject Line:\s*(.*)$/m
-  );
-
-  const notesMatch = body.match(
-    /^Internal Notes:\s*([\s\S]*)$/m
-  );
+  const notesMatch = body.match(/^Internal Notes:\s*([\s\S]*)$/m);
 
   return {
     subject: subjectMatch?.[1]?.trim() || "",
@@ -52,12 +27,27 @@ function getNoteContent(
   };
 }
 
+function formatDate(value?: string) {
+  if (!value) {
+    return "Not available";
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "Not available";
+  }
+
+  return date.toLocaleString();
+}
+
 export default function ContactList({
   contacts,
   notesByContact,
   loading,
   deletingId,
   onDelete,
+  onEdit,
 }: ContactListProps) {
   if (loading) {
     return (
@@ -88,16 +78,14 @@ export default function ContactList({
   }
 
   return (
-    <Stack spacing={1.2}>
+    <Stack spacing={1.5}>
       {contacts.map((contact) => {
         const properties = contact.properties;
         const note = notesByContact[contact.id];
         const noteContent = getNoteContent(note);
 
         const fullName =
-          [properties.firstname, properties.lastname]
-            .filter(Boolean)
-            .join(" ") ||
+          [properties.firstname, properties.lastname].filter(Boolean).join(" ") ||
           properties.email ||
           "Unnamed Contact";
 
@@ -107,7 +95,7 @@ export default function ContactList({
             elevation={0}
             sx={{
               border: "1px solid #cbd6e2",
-              borderRadius: "4px",
+              borderRadius: "6px",
               bgcolor: "#fff",
             }}
           >
@@ -119,7 +107,7 @@ export default function ContactList({
                 },
               }}
             >
-              <Stack spacing={1}>
+              <Stack spacing={1.1}>
                 <Box
                   sx={{
                     display: "flex",
@@ -128,15 +116,29 @@ export default function ContactList({
                     gap: 1,
                   }}
                 >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "#1e2a3c",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {fullName}
-                  </Typography>
+                  <Box sx={{ minWidth: 0 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "#1e2a3c",
+                        fontWeight: 700,
+                        wordBreak: "break-word",
+                      }}
+                    >
+                      {fullName}
+                    </Typography>
+
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: "#94a3b8",
+                        display: "block",
+                        mt: 0.3,
+                      }}
+                    >
+                      ID: {contact.id}
+                    </Typography>
+                  </Box>
 
                   <Chip
                     label="Contact"
@@ -145,46 +147,31 @@ export default function ContactList({
                       height: 22,
                       fontSize: "10px",
                       color: "#ff7a59",
-                      bgcolor:
-                        "rgba(255, 122, 89, 0.08)",
+                      bgcolor: "rgba(255, 122, 89, 0.08)",
                     }}
                   />
                 </Box>
 
                 <Divider />
 
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#475569" }}
-                >
-                  Email:{" "}
-                  {properties.email || "No email"}
+                <Typography variant="caption" sx={{ color: "#475569" }}>
+                  <strong>Email:</strong> {properties.email || "No email"}
                 </Typography>
 
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#64748b" }}
-                >
-                  Company:{" "}
-                  {properties.company || "No company"}
+                <Typography variant="caption" sx={{ color: "#64748b" }}>
+                  <strong>Company:</strong> {properties.company || "No company"}
                 </Typography>
 
-                {properties.phone && (
-                  <Typography
-                    variant="caption"
-                    sx={{ color: "#64748b" }}
-                  >
-                    Phone: {properties.phone}
-                  </Typography>
-                )}
+                <Typography variant="caption" sx={{ color: "#64748b" }}>
+                  <strong>Phone:</strong> {properties.phone || "No phone"}
+                </Typography>
 
                 {noteContent.subject && (
                   <Box
                     sx={{
                       p: 1,
                       borderRadius: "4px",
-                      bgcolor:
-                        "rgba(255, 122, 89, 0.06)",
+                      bgcolor: "rgba(255, 122, 89, 0.06)",
                     }}
                   >
                     <Typography
@@ -204,6 +191,7 @@ export default function ContactList({
                         display: "block",
                         color: "#475569",
                         mt: 0.3,
+                        whiteSpace: "pre-wrap",
                       }}
                     >
                       {noteContent.subject}
@@ -244,55 +232,80 @@ export default function ContactList({
                   </Box>
                 )}
 
-                {!noteContent.subject &&
-                  !noteContent.notes &&
-                  noteContent.fullBody && (
-                    <Box
-                      sx={{
-                        p: 1,
-                        borderRadius: "4px",
-                        bgcolor: "#f8fafc",
-                      }}
-                    >
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          color: "#475569",
-                          whiteSpace: "pre-wrap",
-                        }}
-                      >
-                        {noteContent.fullBody}
-                      </Typography>
-                    </Box>
-                  )}
-
-                <Button
-                  variant="outlined"
-                  color="error"
-                  size="small"
-                  disabled={deletingId === contact.id}
-                  startIcon={
-                    <DeleteIcon 
-                      sx={{
-                        fontSize: "16px !important",
-                      }}
-                    />
-                  }
-                  onClick={() => {
-                    void onDelete(contact.id);
-                  }}
+                <Typography
+                  variant="caption"
                   sx={{
-                    alignSelf: "flex-start",
-                    mt: 0.5,
-                    textTransform: "none",
-                    borderRadius: "4px",
-                    fontSize: "12px",
+                    color: "#94a3b8",
+                    fontSize: "10px",
                   }}
                 >
-                  {deletingId === contact.id
-                    ? "Deleting..."
-                    : "Delete Contact"}
-                </Button>
+                  Created: {formatDate(contact.createdAt)}
+                </Typography>
+
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "#94a3b8",
+                    fontSize: "10px",
+                  }}
+                >
+                  Updated: {formatDate(contact.updatedAt)}
+                </Typography>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 1,
+                    pt: 0.5,
+                  }}
+                >
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    startIcon={
+                      <EditOutlinedIcon
+                        sx={{
+                          fontSize: "16px !important",
+                        }}
+                      />
+                    }
+                    onClick={() => onEdit(contact.id)}
+                    sx={{
+                      textTransform: "none",
+                      borderRadius: "4px",
+                      fontSize: "12px",
+                      color: "#2d3e50",
+                      borderColor: "#cbd6e2",
+                    }}
+                  >
+                    Edit
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    color="error"
+                    size="small"
+                    disabled={deletingId === contact.id}
+                    startIcon={
+                      <DeleteOutlineIcon
+                        sx={{
+                          fontSize: "16px !important",
+                        }}
+                      />
+                    }
+                    onClick={() => {
+                      void onDelete(contact.id);
+                    }}
+                    sx={{
+                      textTransform: "none",
+                      borderRadius: "4px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    {deletingId === contact.id ? "Deleting..." : "Delete"}
+                  </Button>
+                </Box>
               </Stack>
             </CardContent>
           </Card>

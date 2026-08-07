@@ -351,14 +351,14 @@ export default function ContactsPage() {
   return (
     <>
 <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-  <Box>
+  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center",}}>
     <Typography
       variant="subtitle1"
       sx={{
         color: "#f8fafc",
         fontWeight: 600,
         fontSize: "16px",
-        letterSpacing: "0.3px"
+        letterSpacing: "0.3px",
       }}
     >
       Contacts
@@ -381,7 +381,9 @@ export default function ContactsPage() {
     direction="row"
     spacing={1}
     sx={{
-      flexWrap: "wrap",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       gap: 1,
     }}
   >
@@ -391,12 +393,13 @@ export default function ContactsPage() {
       variant="outlined"
       sx={{
         color: "#f8fafc",
-        bgcolor: "#ec5429", 
+        bgcolor: "#F5714E", 
         border: "none",
         fontSize: "10.5px",
         fontWeight: 600,
-        height: 25,
-        borderRadius: "4px",
+        height: 32,
+        width: 110,
+        borderRadius: "50px",
       }}
     />
 
@@ -410,8 +413,9 @@ export default function ContactsPage() {
         bgcolor: "#1e293b",
         fontSize: "10.5px",
         fontWeight: 600,
-        height: 25,
-        borderRadius: "4px",
+        height: 32,
+        width: 110,
+        borderRadius: "50px",
       }}
     />
   </Stack>

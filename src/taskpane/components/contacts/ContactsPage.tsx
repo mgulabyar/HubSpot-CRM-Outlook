@@ -407,7 +407,7 @@ export default function ContactsPage() {
       sx={{
         color: "#cbd5e1",
         borderColor: "#334155",
-        bgcolor: "#1e293b", // Matches form inner structures safely
+        bgcolor: "#1e293b",
         fontSize: "10.5px",
         fontWeight: 600,
         height: 25,

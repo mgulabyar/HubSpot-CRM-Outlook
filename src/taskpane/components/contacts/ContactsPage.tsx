@@ -257,7 +257,6 @@ export default function ContactsPage() {
     }
   };
 
-  // dialog - it does not delete anything by itself.
   const handleDeleteContact = async (contactId: string): Promise<void> => {
     console.log("[ContactsPage] delete requested:", contactId);
 

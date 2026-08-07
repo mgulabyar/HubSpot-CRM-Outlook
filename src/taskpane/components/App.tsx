@@ -18,14 +18,13 @@ export default function App() {
 
       <AppHeader />
 
-      {/* Main Content Viewport */}
       <Box
         sx={{
-          p: 0.5, // Balanced corporate breathing room padding
+          p: 0.5, 
           flexGrow: 1,
         }}
       >
-        <Stack spacing={2.5}>
+        <Stack spacing={1.5}>
           {/* Main Contacts Feature Component Layer */}
           <ContactsPage />
         </Stack>

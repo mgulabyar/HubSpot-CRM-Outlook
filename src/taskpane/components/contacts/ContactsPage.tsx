@@ -350,178 +350,220 @@ export default function ContactsPage() {
 
   return (
     <>
-      <Stack spacing={2}>
-        <Box>
-          <Typography
-            variant="subtitle1"
-            sx={{
-              color: "#1e2a3c",
-              fontWeight: 700,
-            }}
-          >
-            Contacts
-          </Typography>
+<Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1.5, minHeight: "100vh" }}>
+  <Box>
+    <Typography
+      variant="subtitle1"
+      sx={{
+        color: "#f8fafc",
+        fontWeight: 600,
+        fontSize: "16px",
+        letterSpacing: "0.3px"
+      }}
+    >
+      Contacts
+    </Typography>
 
-          <Typography
-            variant="caption"
-            sx={{
-              color: "#64748b",
-              display: "block",
-              mt: 0.4,
-            }}
-          >
-            Manage HubSpot contacts from Outlook.
-          </Typography>
-        </Box>
+    <Typography
+      variant="caption"
+      sx={{
+        color: "#94a3b8", 
+        display: "block",
+        mt: 0.5,
+        fontSize: "12px",
+      }}
+    >
+      Manage HubSpot contacts from Outlook.
+    </Typography>
+  </Box>
 
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{
-            flexWrap: "wrap",
-            gap: 1,
-          }}
-        >
-          <Chip
-            label="CRM Connected"
-            size="small"
-            variant="outlined"
-            sx={{
-              color: HUBSPOT_BRAND.primary,
-              borderColor: "rgba(255, 122, 89, 0.3)",
-              bgcolor: "rgba(255, 122, 89, 0.08)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
+  <Stack
+    direction="row"
+    spacing={1}
+    sx={{
+      flexWrap: "wrap",
+      gap: 1,
+    }}
+  >
+    <Chip
+      label="CRM Connected"
+      size="small"
+      variant="outlined"
+      sx={{
+        color: "#f8fafc",
+        bgcolor: "#ec5429", 
+        border: "none",
+        fontSize: "10.5px",
+        fontWeight: 600,
+        height: 25,
+        borderRadius: "4px",
+      }}
+    />
 
-          <Chip
-            label={`${contacts.length} Contacts`}
-            size="small"
-            variant="outlined"
-            sx={{
-              color: HUBSPOT_BRAND.charcoal,
-              borderColor: "rgba(45, 62, 80, 0.2)",
-              bgcolor: "rgba(45, 62, 80, 0.06)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
-        </Stack>
+    {/* Dynamic Total Count Badge */}
+    <Chip
+      label={`${contacts.length} Contacts`}
+      size="small"
+      variant="outlined"
+      sx={{
+        color: "#cbd5e1",
+        borderColor: "#334155",
+        bgcolor: "#1e293b", // Matches form inner structures safely
+        fontSize: "10.5px",
+        fontWeight: 600,
+        height: 25,
+        borderRadius: "4px",
+      }}
+    />
+  </Stack>
 
-        <Divider
-          sx={{
-            borderColor: HUBSPOT_BRAND.border,
-          }}
-        />
+  {/* Sleek Dark Divider Separation */}
+  <Divider sx={{ borderColor: "#1e293b" }} />
 
-        <ContactForm
-          loading={savingContact}
-          onSubmit={handleCreateContact}
-          onFindContact={handleFindContact}
-        />
+  {/* Contact Handling Actions Form Module */}
+  <ContactForm
+    loading={savingContact}
+    onSubmit={handleCreateContact}
+    onFindContact={handleFindContact}
+  />
 
-        <Divider
-          sx={{
-            borderColor: HUBSPOT_BRAND.border,
-          }}
-        />
+  <Divider sx={{ borderColor: "#1e293b" }} />
 
-        <Box>
-          <Typography
-            variant="subtitle2"
-            sx={{
-              color: "#1e2a3c",
-              fontWeight: 700,
-              mb: 1.2,
-            }}
-          >
-            Recent Contacts
-          </Typography>
+  {/* Recent Contacts Stream Layout Container */}
+  <Box>
+    <Typography
+      variant="subtitle2"
+      sx={{
+        color: "#f8fafc",
+        fontWeight: 600,
+        mb: 1.5,
+        fontSize: "13.5px",
+        letterSpacing: "0.2px"
+      }}
+    >
+      Recent Contacts
+    </Typography>
 
-          <ContactList
-            contacts={contacts}
-            notesByContact={notesByContact}
-            loading={loadingContacts}
-            deletingId={deletingId}
-            onDelete={handleDeleteContact}
-            onEdit={handleOpenEdit}
-          />
-        </Box>
-      </Stack>
+    <ContactList
+      contacts={contacts}
+      notesByContact={notesByContact}
+      loading={loadingContacts}
+      deletingId={deletingId}
+      onDelete={handleDeleteContact}
+      onEdit={handleOpenEdit}
+    />
+  </Box>
+</Stack>
 
-      <ContactEditDialog
-        open={editDialogOpen}
-        contact={editingContact}
-        note={editingNote}
-        loading={savingContact}
-        onClose={handleCloseEdit}
-        onSave={handleUpdateContact}
-      />
+{/* Separate Modules / Dialog Overlays Rendering Safely Below main structure */}
+<ContactEditDialog
+  open={editDialogOpen}
+  contact={editingContact}
+  note={editingNote}
+  loading={savingContact}
+  onClose={handleCloseEdit}
+  onSave={handleUpdateContact}
+/>
 
-      <Dialog
-        open={Boolean(pendingDeleteContact)}
-        onClose={handleCancelDelete}
-        maxWidth="xs"
-        fullWidth
-      >
-        <DialogTitle sx={{ fontSize: "16px", fontWeight: 700 }}>
-          Delete contact
-        </DialogTitle>
+{/* Safe Strongly-Typed Delete Confirmation Dialog Modal */}
+<Dialog
+  open={Boolean(pendingDeleteContact)}
+  onClose={handleCancelDelete}
+  maxWidth="xs"
+  fullWidth
+  slotProps={{
+    paper: {
+      sx: {
+        bgcolor: "#1e293b", // Matte slate surface container background 
+        backgroundImage: "none", // Critical layout parameter to prevent MUI opacity tint bugs
+        borderRadius: "8px",
+        border: "1px solid #334155",
+      }
+    }
+  }}
+>
+  <DialogTitle sx={{ fontSize: "15px", fontWeight: 600, color: "#f8fafc", pb: 1 }}>
+    Delete contact
+  </DialogTitle>
 
-        <DialogContent>
-          <DialogContentText sx={{ fontSize: "13px" }}>
-            Are you sure you want to delete{" "}
-            <strong>{pendingDeleteName}</strong>? This action cannot be undone.
-          </DialogContentText>
-        </DialogContent>
+  <DialogContent sx={{ pb: 2 }}>
+    <DialogContentText sx={{ fontSize: "12.5px", color: "#cbd5e1", lineHeight: 1.45 }}>
+      Are you sure you want to delete{" "}
+      <strong style={{ color: "#f8fafc" }}>{pendingDeleteName}</strong>? This action cannot be undone.
+    </DialogContentText>
+  </DialogContent>
 
-        <DialogActions sx={{ px: 3, pb: 2 }}>
-          <Button
-            onClick={handleCancelDelete}
-            disabled={Boolean(deletingId)}
-            sx={{ textTransform: "none", fontSize: "13px" }}
-          >
-            Cancel
-          </Button>
+  <DialogActions sx={{ px: 3, pb: 2, gap: 0.5 }}>
+    <Button
+      onClick={handleCancelDelete}
+      disabled={Boolean(deletingId)}
+      sx={{ 
+        textTransform: "none", 
+        fontSize: "12.5px", 
+        color: "#94a3b8",
+        fontWeight: 500,
+        "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" }
+      }}
+    >
+      Cancel
+    </Button>
 
-          <Button
-            onClick={handleConfirmDelete}
-            disabled={Boolean(deletingId)}
-            variant="contained"
-            color="error"
-            sx={{ textTransform: "none", fontSize: "13px", fontWeight: 600 }}
-          >
-            {deletingId ? "Deleting..." : "Delete"}
-          </Button>
-        </DialogActions>
-      </Dialog>
+    <Button
+      onClick={handleConfirmDelete}
+      disabled={Boolean(deletingId)}
+      variant="contained"
+      color="error"
+      sx={{ 
+        textTransform: "none", 
+        fontSize: "12.5px", 
+        fontWeight: 600,
+        borderRadius: "6px",
+        boxShadow: "none",
+        bgcolor: "#dc2626",
+        "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" }
+      }}
+    >
+      {deletingId ? "Deleting..." : "Delete"}
+    </Button>
+  </DialogActions>
+</Dialog>
 
-      <Snackbar
-        open={toast.open}
-        autoHideDuration={3000}
-        onClose={closeToast}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        sx={{
-          zIndex: 2000,
-        }}
-      >
-        <Alert
-          severity={toast.severity}
-          variant="filled"
-          onClose={closeToast}
-          sx={{
-            width: "100%",
-            fontSize: "12px",
-            borderRadius: "4px",
-          }}
-        >
-          {toast.message}
-        </Alert>
-      </Snackbar>
+{/* Elite Low-Contrast Snackbar Toast Interface */}
+<Snackbar
+  open={toast.open}
+  autoHideDuration={3000}
+  onClose={closeToast}
+  anchorOrigin={{
+    vertical: "top",
+    horizontal: "right",
+  }}
+  sx={{
+    zIndex: 2000,
+  }}
+>
+  <Alert
+    severity={toast.severity}
+    variant="outlined" // Switched to outlined mode for high-quality clean appearance
+    onClose={closeToast}
+    sx={{
+      width: "100%",
+      fontSize: "12px",
+      borderRadius: "6px",
+      bgcolor: "#1e293b", // Avoids solid heavy colored screens, syncs perfectly with dashboard themes
+      color: toast.severity === "error" ? "#fca5a5" : "#fef08a",
+      borderColor: toast.severity === "error" ? "rgba(239, 68, 68, 0.3)" : "rgba(234, 179, 8, 0.3)",
+      "& .MuiAlert-icon": {
+        color: toast.severity === "error" ? "#ef4444" : "#eab308",
+      },
+      "& .MuiAlert-action": {
+        color: "#94a3b8"
+      }
+    }}
+  >
+    {toast.message}
+  </Alert>
+</Snackbar>
+
     </>
   );
 }

@@ -66,7 +66,18 @@ export const updateContact = async (contactId: string, payload: ContactUpdateDat
 };
 
 export const deleteContact = async (contactId: string) => {
-  const response = await hubspotApi.delete(`${API_ENDPOINTS.contacts}/${contactId}`);
+  const cleanId = String(contactId).trim();
 
-  return response.data;
+  if (!cleanId) {
+    throw new Error("Contact ID is missing.");
+  }
+
+  const response = await hubspotApi.delete(
+    `${API_ENDPOINTS.contacts}/${encodeURIComponent(cleanId)}`
+  );
+
+  return {
+    status: response.status,
+    data: response.data,
+  };
 };

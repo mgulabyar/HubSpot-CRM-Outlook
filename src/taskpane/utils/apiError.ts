@@ -4,13 +4,21 @@ export const getApiErrorMessage = (
   error: unknown
 ): string => {
   if (axios.isAxiosError(error)) {
-    const apiMessage = error.response?.data?.message;
+    const responseMessage =
+      error.response?.data?.message;
 
-    if (typeof apiMessage === "string") {
-      return apiMessage;
+    if (typeof responseMessage === "string") {
+      return responseMessage;
     }
 
-    if (typeof error.message === "string") {
+    const hubSpotMessage =
+      error.response?.data?.error?.message;
+
+    if (typeof hubSpotMessage === "string") {
+      return hubSpotMessage;
+    }
+
+    if (error.message) {
       return error.message;
     }
   }

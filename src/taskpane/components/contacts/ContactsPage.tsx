@@ -307,6 +307,8 @@ export default function ContactsPage() {
 
       console.log("[ContactsPage] backend delete result:", result);
 
+      
+    
       setContacts((oldContacts) => {
         const newContacts = oldContacts.filter((contact) => String(contact.id) !== cleanId);
 
@@ -463,12 +465,14 @@ export default function ContactsPage() {
         maxWidth="xs"
         fullWidth
       >
-        <DialogTitle sx={{ fontSize: "16px", fontWeight: 700 }}>Delete contact</DialogTitle>
+        <DialogTitle sx={{ fontSize: "16px", fontWeight: 700 }}>
+          Delete contact
+        </DialogTitle>
 
         <DialogContent>
           <DialogContentText sx={{ fontSize: "13px" }}>
-            Are you sure you want to delete <strong>{pendingDeleteName}</strong>? This action cannot
-            be undone.
+            Are you sure you want to delete{" "}
+            <strong>{pendingDeleteName}</strong>? This action cannot be undone.
           </DialogContentText>
         </DialogContent>
 

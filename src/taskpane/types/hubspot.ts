@@ -39,7 +39,25 @@ export interface ContactFormData {
   notes?: string;
 }
 
+export interface ContactUpdateData
+  extends Partial<ContactFormData> {
+  noteId?: string;
+}
+
 export interface ContactCreateResponse {
   contact: HubSpotRecord;
   note: HubSpotRecord | null;
+}
+
+export interface ContactUpdateResponse {
+  contact: HubSpotRecord | null;
+  note: HubSpotRecord | null;
+}
+
+export interface ContactFormValues {
+  name: string;
+  email: string;
+  company: string;
+  subject: string;
+  notes: string;
 }

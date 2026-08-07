@@ -180,7 +180,6 @@ export default function ContactList({
                   />
                 </Box>
 
-                {/* Main Consolidated Data Pod (Perfect Vertical Alignment) */}
                 <Box
                   sx={{
                     bgcolor: "#0f172a",
@@ -191,9 +190,7 @@ export default function ContactList({
                     gap: 1.2,
                   }}
                 >
-                  {/* Email Row */}
                   <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    {/* Key with fixed width ensures the value always starts at the exact same spot */}
                     <Typography
                       variant="body2"
                       sx={{
@@ -219,7 +216,6 @@ export default function ContactList({
                     </Typography>
                   </Box>
 
-                  {/* Company Row */}
                   <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                     <Typography
                       variant="body2"

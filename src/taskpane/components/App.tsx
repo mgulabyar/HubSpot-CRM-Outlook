@@ -9,13 +9,13 @@ export default function App() {
       component="main"
       sx={{
         minHeight: "100vh",
-        bgcolor: "#0f172a", // True global deep dark background canvas
+        bgcolor: "#0f172a",
         display: "flex",
         flexDirection: "column",
-        overflowX: "hidden", // Prevents accidental horizontal scrolling in outlook taskpane
+        overflowX: "hidden", 
       }}
     >
-      {/* Premium Dark Sticky Header */}
+
       <AppHeader />
 
       {/* Main Content Viewport */}

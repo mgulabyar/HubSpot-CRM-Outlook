@@ -13,19 +13,21 @@ export default function AppHeader() {
         position: "sticky",
         top: 0,
         zIndex: 1100,
-        px: 2.5,
-        py: 2.5,
+        px: 2,
+        py: 2,
         bgcolor: "#fff",
         borderBottom: `1px solid ${HUBSPOT_BRAND.border}`,
       }}
     >
       <Stack spacing={0.5}>
         <Typography
-          variant="h6"
+          // variant=""
           sx={{
-            fontWeight: 700,
-            letterSpacing: "-0.5px",
-            color: HUBSPOT_BRAND.textDark,
+            textAlign: "center",
+            fontSize: "20px",
+            fontWeight: 600,
+            color:" #F5714E",
+            letterSpacing: "0.5px",
             lineHeight: 1.1,
           }}
         >
@@ -37,6 +39,7 @@ export default function AppHeader() {
           sx={{
             color: "#64748b",
             fontSize: "12px",
+            textAlign: "center",
           }}
         >
           Outlook Add-in Workspace Engine

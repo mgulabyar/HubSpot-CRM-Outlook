@@ -6,22 +6,27 @@ import ContactsPage from "./contacts/ContactsPage";
 export default function App() {
   return (
     <Box
+      component="main"
       sx={{
         minHeight: "100vh",
-        bgcolor: "#f5f8fa",
+        bgcolor: "#0f172a", // True global deep dark background canvas
         display: "flex",
         flexDirection: "column",
+        overflowX: "hidden", // Prevents accidental horizontal scrolling in outlook taskpane
       }}
     >
+      {/* Premium Dark Sticky Header */}
       <AppHeader />
 
+      {/* Main Content Viewport */}
       <Box
         sx={{
-          p: 1.5,
+          p: 0.5, // Balanced corporate breathing room padding
           flexGrow: 1,
         }}
       >
         <Stack spacing={2.5}>
+          {/* Main Contacts Feature Component Layer */}
           <ContactsPage />
         </Stack>
       </Box>

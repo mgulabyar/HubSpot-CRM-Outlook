@@ -291,7 +291,6 @@ export default function ContactsPage() {
     setPendingDeleteContact(null);
   };
 
-  // Step 2: called only when the user confirms inside the in-app dialog.
   const handleConfirmDelete = async () => {
     if (!pendingDeleteContact) {
       return;
@@ -308,11 +307,7 @@ export default function ContactsPage() {
 
       console.log("[ContactsPage] backend delete result:", result);
 
-      /*
-       * Important:
-       * Backend successful hone ke baad
-       * UI state se card remove hoga.
-       */
+  
       setContacts((oldContacts) => {
         const newContacts = oldContacts.filter((contact) => String(contact.id) !== cleanId);
 

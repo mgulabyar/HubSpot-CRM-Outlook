@@ -25,7 +25,6 @@ export default function App() {
         }}
       >
         <Stack spacing={1.5}>
-          {/* Main Component Layer */}
           <ContactsPage />
         </Stack>
       </Box>

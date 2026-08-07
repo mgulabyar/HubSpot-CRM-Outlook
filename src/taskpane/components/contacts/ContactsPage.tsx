@@ -310,7 +310,7 @@ export default function ContactsPage() {
       /*
        * Important:
        * Backend successful hone ke baad
-       * UI state se card remove hoga.
+       * UI state se  remove hoga.
        */
       setContacts((oldContacts) => {
         const newContacts = oldContacts.filter((contact) => String(contact.id) !== cleanId);

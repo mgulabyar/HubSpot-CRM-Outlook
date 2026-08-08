@@ -267,67 +267,65 @@ export default function DealsSection() {
 
   return (
     <>
-    <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-  {/* Deal Create Form rendering directly at top now */}
-  <DealCreateForm
-    loading={saving}
-    pipelines={pipelines}
-    stages={stages}
-    onPipelineChange={handlePipelineChange}
-    onSubmit={handleCreate}
-  />
+      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+        <DealCreateForm
+          loading={saving}
+          pipelines={pipelines}
+          stages={stages}
+          onPipelineChange={handlePipelineChange}
+          onSubmit={handleCreate}
+        />
 
-  <Divider sx={{ borderColor: "#1e293b" }} />
+        <Divider sx={{ borderColor: "#1e293b" }} />
 
-  {/* Recent Deals Section with Embedded Right-Aligned Count Chip */}
-  <Box>
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between", // Pushes heading to left and chip to right
-        mb: 1.5,
-      }}
-    >
-      <Typography
-        sx={{
-          color: "#f8fafc",
-          fontWeight: 600,
-          fontSize: "13.5px",
-          letterSpacing: "0.2px",
-        }}
-      >
-        Recent Deals
-      </Typography>
+        {/* Recent Deals Section with Embedded Right-Aligned Count Chip */}
+        <Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between", // Pushes heading to left and chip to right
+              mb: 1.5,
+            }}
+          >
+            <Typography
+              sx={{
+                color: "#f8fafc",
+                fontWeight: 600,
+                fontSize: "13.5px",
+                letterSpacing: "0.2px",
+              }}
+            >
+              Recent Deals
+            </Typography>
 
-      {/* Count Chip shifted exactly next to the section heading */}
-      <Chip
-        label={`${deals.length} Deals`}
-        size="small"
-        variant="outlined"
-        sx={{
-          color: "#cbd5e1",
-          borderColor: "#334155",
-          bgcolor: "#1e293b", // Matches workspace dark system accents
-          fontSize: "10.5px",
-          fontWeight: 600,
-          height: 20, // Modern low-profile premium sizing
-          borderRadius: "4px", // Matches clean edge geometry of our cards framework
-          px: 0.5,
-        }}
-      />
-    </Box>
+            {/* Count Chip shifted exactly next to the section heading */}
+            <Chip
+              label={`${deals.length} Deals`}
+              size="small"
+              variant="outlined"
+              sx={{
+                color: "#cbd5e1",
+                borderColor: "#334155",
+                bgcolor: "#1e293b", // Matches workspace dark system accents
+                fontSize: "10.5px",
+                fontWeight: 600,
+                height: 20, // Modern low-profile premium sizing
+                borderRadius: "4px", // Matches clean edge geometry of our cards framework
+                px: 0.5,
+              }}
+            />
+          </Box>
 
-    <DealCards
-      deals={deals}
-      loading={loading}
-      deletingId={deletingId}
-      onEdit={handleOpenEdit}
-      onDelete={handleRequestDelete}
-    />
-  </Box>
-</Stack>
-
+          <DealCards
+            deals={deals}
+            loading={loading}
+            deletingId={deletingId}
+            onEdit={handleOpenEdit}
+            onDelete={handleRequestDelete}
+          />
+        </Box>
+      </Stack>
 
       <DealEditModal
         open={editOpen}
@@ -345,38 +343,54 @@ export default function DealsSection() {
         onClose={deletingId ? undefined : handleCancelDelete}
         maxWidth="xs"
         fullWidth
+        // Safe strongly-typed slot override for deep dark dialog surface grid
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "#1e293b", // Matte slate surface container background
+              backgroundImage: "none", // Critical layout parameter to prevent MUI opacity tint bugs
+              borderRadius: "8px",
+              border: "1px solid #334155",
+            },
+          },
+        }}
       >
         <DialogTitle
           sx={{
-            fontSize: "16px",
-            fontWeight: 700,
+            fontSize: "15px",
+            fontWeight: 600,
+            color: "#f8fafc", // Bright crisp white header text
+            pb: 1,
           }}
         >
           Delete deal
         </DialogTitle>
 
-        <DialogContent>
+        <DialogContent sx={{ pb: 2 }}>
           <DialogContentText
             sx={{
-              fontSize: "13px",
+              fontSize: "12.5px",
+              color: "#cbd5e1", // Muted premium silver text
+              lineHeight: 1.45,
             }}
           >
-            Are you sure you want to delete <strong>{pendingDealName}</strong>?
+            Are you sure you want to delete{" "}
+            <strong style={{ color: "#f8fafc" }}>{pendingDealName}</strong>? This action cannot be
+            undone.
           </DialogContentText>
         </DialogContent>
 
-        <DialogActions
-          sx={{
-            px: 3,
-            pb: 2,
-          }}
-        >
+        <DialogActions sx={{ px: 3, pb: 2, gap: 0.5 }}>
           <Button
             type="button"
             disabled={Boolean(deletingId)}
             onClick={handleCancelDelete}
             sx={{
               textTransform: "none",
+              fontSize: "12.5px",
+              color: "#94a3b8",
+              fontWeight: 500,
+              "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" },
             }}
           >
             Cancel
@@ -392,6 +406,12 @@ export default function DealsSection() {
             }}
             sx={{
               textTransform: "none",
+              fontSize: "12.5px",
+              fontWeight: 600,
+              borderRadius: "6px",
+              boxShadow: "none",
+              bgcolor: "#dc2626", // Solid flat red
+              "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
             }}
           >
             {deletingId ? "Deleting..." : "Delete"}

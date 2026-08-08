@@ -101,27 +101,77 @@ export default function DealEditModal({
   };
 
   return (
-    <Dialog open={open} onClose={loading ? undefined : onClose} maxWidth="xs" fullWidth>
+    <Dialog
+      open={open}
+      onClose={loading ? undefined : onClose}
+      fullWidth
+      maxWidth="sm" // Increased from "xs" to "sm" for extra width control
+      slotProps={{
+        paper: {
+          sx: {
+            bgcolor: "#1e293b", // Deep slate background
+            backgroundImage: "none", // Avoids generic MUI opacity elevation overlays
+            borderRadius: "8px",
+            border: "1px solid #334155",
+            mx: 1.5, // Sidebar layout safety margins
+            width: "calc(100% - 24px)", // Forces full space utilization in taskpane
+          },
+        },
+      }}
+    >
       <DialogTitle
         sx={{
-          color: "#1e2a3c",
-          fontWeight: 700,
-          fontSize: "18px",
+          color: "#f8fafc", // Bright crisp white header text
+          fontWeight: 600,
+          fontSize: "16px",
+          pt: 2,
+          px: 1.5, // Reduced padding for narrow taskpanes
+          pb: 0.5,
         }}
       >
         Edit Deal
       </DialogTitle>
 
-      <DialogContent>
-        <Stack spacing={1.5} sx={{ pt: 1 }}>
+      <DialogContent
+        sx={{
+          px: 1.5, // Tight padding to let text fields expand fully
+          pb: 1.5,
+        }}
+      >
+        <Stack spacing={2.2} sx={{ pt: 1.5 }}>
+          {/* Deal Name Input */}
           <TextField
             size="small"
             fullWidth
             label="Deal Name"
             value={form.dealname}
             onChange={updateField("dealname")}
+            slotProps={{
+              inputLabel: { shrink: true },
+            }}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#94a3b8",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#1e293b", // Matches modal layout background cutoff
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#f8fafc", // White dynamic text values
+                fontSize: "13px",
+                bgcolor: "#0f172a", // Dark input pod interior
+                borderRadius: "6px",
+                "& fieldset": { borderColor: "#334155" },
+                "&:hover fieldset": { borderColor: "#475569" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#f8fafc" },
+              },
+            }}
           />
 
+          {/* Amount Input */}
           <TextField
             size="small"
             fullWidth
@@ -129,8 +179,32 @@ export default function DealEditModal({
             label="Amount"
             value={form.amount}
             onChange={updateField("amount")}
+            slotProps={{
+              inputLabel: { shrink: true },
+            }}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#94a3b8",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#1e293b",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#f8fafc",
+                fontSize: "13px",
+                bgcolor: "#0f172a",
+                borderRadius: "6px",
+                "& fieldset": { borderColor: "#334155" },
+                "&:hover fieldset": { borderColor: "#475569" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#f8fafc" },
+              },
+            }}
           />
 
+          {/* Pipeline Selection Dropdown */}
           <TextField
             select
             size="small"
@@ -138,14 +212,39 @@ export default function DealEditModal({
             label="Pipeline"
             value={form.pipeline}
             onChange={handlePipelineChange}
+            slotProps={{
+              inputLabel: { shrink: true },
+            }}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#94a3b8",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#1e293b",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#f8fafc",
+                fontSize: "13px",
+                bgcolor: "#0f172a",
+                borderRadius: "6px",
+                "& fieldset": { borderColor: "#334155" },
+                "&:hover fieldset": { borderColor: "#475569" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& .MuiSelect-select": { color: "#f8fafc" },
+                "& .MuiSvgIcon-root": { color: "#94a3b8" }, // Dropdown Arrow Fix
+              },
+            }}
           >
             {pipelines.map((pipeline) => (
-              <MenuItem key={pipeline.id} value={pipeline.id}>
+              <MenuItem key={pipeline.id} value={pipeline.id} sx={{ fontSize: "13px" }}>
                 {pipeline.label}
               </MenuItem>
             ))}
           </TextField>
 
+          {/* Deal Stage Selection Dropdown */}
           <TextField
             select
             size="small"
@@ -153,14 +252,39 @@ export default function DealEditModal({
             label="Deal Stage"
             value={form.dealstage}
             onChange={updateField("dealstage")}
+            slotProps={{
+              inputLabel: { shrink: true },
+            }}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#94a3b8",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#1e293b",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#f8fafc",
+                fontSize: "13px",
+                bgcolor: "#0f172a",
+                borderRadius: "6px",
+                "& fieldset": { borderColor: "#334155" },
+                "&:hover fieldset": { borderColor: "#475569" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& .MuiSelect-select": { color: "#f8fafc" },
+                "& .MuiSvgIcon-root": { color: "#94a3b8" },
+              },
+            }}
           >
             {stages.map((stage) => (
-              <MenuItem key={stage.id} value={stage.id}>
+              <MenuItem key={stage.id} value={stage.id} sx={{ fontSize: "13px" }}>
                 {stage.label}
               </MenuItem>
             ))}
           </TextField>
 
+          {/* Close Date Input */}
           <TextField
             size="small"
             fullWidth
@@ -169,12 +293,32 @@ export default function DealEditModal({
             value={form.closedate}
             onChange={updateField("closedate")}
             slotProps={{
-              inputLabel: {
-                shrink: true,
+              inputLabel: { shrink: true },
+            }}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#94a3b8",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#1e293b",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#f8fafc",
+                fontSize: "13px",
+                bgcolor: "#0f172a",
+                borderRadius: "6px",
+                "& fieldset": { borderColor: "#334155" },
+                "&:hover fieldset": { borderColor: "#475569" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#f8fafc" },
+                "& input::-webkit-calendar-picker-indicator": { filter: "invert(1)" }, // Dark Calendar UI Vector Fix
               },
             }}
           />
 
+          {/* Description Input */}
           <TextField
             size="small"
             fullWidth
@@ -183,18 +327,50 @@ export default function DealEditModal({
             label="Description"
             value={form.description}
             onChange={updateField("description")}
+            slotProps={{
+              inputLabel: { shrink: true },
+            }}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#94a3b8",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#1e293b",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#f8fafc",
+                fontSize: "13px",
+                bgcolor: "#0f172a",
+                borderRadius: "6px",
+                "& fieldset": { borderColor: "#334155" },
+                "&:hover fieldset": { borderColor: "#475569" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& textarea": { color: "#f8fafc" },
+              },
+            }}
           />
         </Stack>
       </DialogContent>
 
-      <DialogActions sx={{ px: 3, pb: 2 }}>
+      {/* Highly Professional Balanced Horizontal Action Buttons */}
+      <DialogActions sx={{ px: 1.5, pb: 2, gap: 1 }}>
         <Button
           type="button"
           onClick={onClose}
           disabled={loading}
           sx={{
+            flex: 1, // Balanced horizontal width split matrix
             textTransform: "none",
-            color: "#2d3e50",
+            fontSize: "13px",
+            fontWeight: 500,
+            color: "#94a3b8",
+            borderRadius: "6px",
+            py: 0.8,
+            "&:hover": {
+              bgcolor: "rgba(148, 163, 184, 0.08)",
+            },
           }}
         >
           Cancel
@@ -205,15 +381,25 @@ export default function DealEditModal({
           variant="contained"
           disabled={loading}
           onClick={() => {
-            void handleSave();
+            void handleSave(); // Original function parameters call preserved
           }}
           sx={{
+            flex: 1, // Balanced horizontal width split matrix
             textTransform: "none",
-            bgcolor: "#F5714E",
+            bgcolor: "#F5714E", // Your standard brand color orange
+            color: "#fff",
+            fontSize: "13px",
+            fontWeight: 600,
+            borderRadius: "6px",
+            py: 0.8,
             boxShadow: "none",
             "&:hover": {
-              bgcolor: "#e65f3d",
+              bgcolor: "#e05e3b",
               boxShadow: "none",
+            },
+            "&.Mui-disabled": {
+              bgcolor: "rgba(245, 113, 78, 0.3)",
+              color: "rgba(248, 250, 252, 0.4)",
             },
           }}
         >

@@ -123,7 +123,7 @@ export default function DealCreateForm({
           sx={{
             borderRadius: "6px",
             fontSize: "12px",
-            color: "#fef08a", 
+            color: "#fef08a",
             borderColor: "rgba(234, 179, 8, 0.3)",
             bgcolor: "rgba(234, 179, 8, 0.06)",
             "& .MuiAlert-icon": {
@@ -154,19 +154,18 @@ export default function DealCreateForm({
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc", 
+            color: "#f8fafc",
             fontSize: "13px",
             bgcolor: "#0f172a",
             borderRadius: "6px",
             "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" }, 
+            "&:hover fieldset": { borderColor: "#475569" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
             "& input": { color: "#f8fafc" },
           },
         }}
       />
 
-      {/* Amount Input */}
       <TextField
         size="small"
         fullWidth
@@ -199,7 +198,6 @@ export default function DealCreateForm({
         }}
       />
 
-      {/* Pipeline Select Dropdown */}
       <TextField
         select
         size="small"
@@ -229,7 +227,7 @@ export default function DealCreateForm({
             "&:hover fieldset": { borderColor: "#475569" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
             "& .MuiSelect-select": { color: "#f8fafc" },
-            "& .MuiSvgIcon-root": { color: "#94a3b8" }, // Dropdown Arrow Color Fix
+            "& .MuiSvgIcon-root": { color: "#94a3b8" },
           },
         }}
       >
@@ -243,7 +241,6 @@ export default function DealCreateForm({
         ))}
       </TextField>
 
-      {/* Deal Stage Select Dropdown */}
       <TextField
         select
         size="small"
@@ -287,7 +284,6 @@ export default function DealCreateForm({
         ))}
       </TextField>
 
-      {/* Close Date Input */}
       <TextField
         size="small"
         fullWidth
@@ -321,7 +317,6 @@ export default function DealCreateForm({
         }}
       />
 
-      {/* Description Input */}
       <TextField
         size="small"
         fullWidth
@@ -355,7 +350,6 @@ export default function DealCreateForm({
         }}
       />
 
-      {/* Save Button (Original Alignment & Logic Preserved) */}
       <Button
         type="button"
         variant="contained"
@@ -371,14 +365,13 @@ export default function DealCreateForm({
           void handleSubmit();
         }}
         sx={{
-          alignSelf: "flex-start", // Kept original alignment code intact
+          width: "100%", 
           textTransform: "none",
           borderRadius: "6px",
-          bgcolor: "#F5714E", // Your unified premium orange color
+          bgcolor: "#F5714E",
           fontSize: "13px",
           fontWeight: 600,
-          px: 2,
-          py: 0.6,
+          py: 0.9, 
           boxShadow: "none",
           "&:hover": {
             bgcolor: "#e05e3b",

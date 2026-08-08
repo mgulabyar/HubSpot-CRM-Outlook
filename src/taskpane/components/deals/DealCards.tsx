@@ -13,9 +13,7 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/Delete";
 
-import type {
-  DealRecord,
-} from "../../types/DealModels";
+import type { DealRecord } from "../../types/DealModels";
 
 type Props = {
   deals: DealRecord[];
@@ -39,13 +37,7 @@ function formatDate(value?: string | null) {
   return date.toLocaleDateString();
 }
 
-function Row({
-  label,
-  value,
-}: {
-  label: string;
-  value?: string | null;
-}) {
+function Row({ label, value }: { label: string; value?: string | null }) {
   return (
     <Box
       sx={{
@@ -78,13 +70,7 @@ function Row({
   );
 }
 
-export default function DealCards({
-  deals,
-  loading,
-  deletingId,
-  onEdit,
-  onDelete,
-}: Props) {
+export default function DealCards({ deals, loading, deletingId, onEdit, onDelete }: Props) {
   if (loading) {
     return (
       <Typography
@@ -116,8 +102,7 @@ export default function DealCards({
       {deals.map((deal) => {
         const dealId = String(deal.id);
         const properties = deal.properties;
-        const isDeleting =
-          deletingId === dealId;
+        const isDeleting = deletingId === dealId;
 
         return (
           <Card
@@ -130,8 +115,7 @@ export default function DealCards({
               borderRadius: "0px 8px 8px 0px",
               bgcolor: "#1e293b",
               opacity: isDeleting ? 0.55 : 1,
-              boxShadow:
-                "0 4px 12px rgba(0, 0, 0, 0.15)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
               transition: "all 200ms ease",
               "&:hover": {
                 bgcolor: "#243146",
@@ -165,8 +149,7 @@ export default function DealCards({
                         wordBreak: "break-word",
                       }}
                     >
-                      {properties.dealname ||
-                        "Unnamed Deal"}
+                      {properties.dealname || "Unnamed Deal"}
                     </Typography>
 
                     <Typography
@@ -206,35 +189,17 @@ export default function DealCards({
                 >
                   <Row
                     label="Amount"
-                    value={
-                      properties.amount
-                        ? `$${properties.amount}`
-                        : undefined
-                    }
+                    value={properties.amount ? `$${properties.amount}` : undefined}
                   />
 
-                  <Row
-                    label="Pipeline"
-                    value={properties.pipeline}
-                  />
+                  <Row label="Pipeline" value={properties.pipeline} />
 
-                  <Row
-                    label="Stage"
-                    value={properties.dealstage}
-                  />
+                  <Row label="Stage" value={properties.dealstage} />
 
-                  <Row
-                    label="Close Date"
-                    value={formatDate(
-                      properties.closedate
-                    )}
-                  />
+                  <Row label="Close Date" value={formatDate(properties.closedate)} />
 
                   {properties.description && (
-                    <Row
-                      label="Description"
-                      value={properties.description}
-                    />
+                    <Row label="Description" value={properties.description} />
                   )}
                 </Box>
 
@@ -258,8 +223,7 @@ export default function DealCards({
                         fontSize: "10px",
                       }}
                     >
-                      Created:{" "}
-                      {formatDate(deal.createdAt)}
+                      Created: {formatDate(deal.createdAt)}
                     </Typography>
 
                     <Typography
@@ -268,8 +232,7 @@ export default function DealCards({
                         fontSize: "10px",
                       }}
                     >
-                      Updated:{" "}
-                      {formatDate(deal.updatedAt)}
+                      Updated: {formatDate(deal.updatedAt)}
                     </Typography>
                   </Box>
 
@@ -292,16 +255,11 @@ export default function DealCards({
                           },
                         }}
                       >
-                        <EditOutlinedIcon
-                          sx={{ fontSize: "15px" }}
-                        />
+                        <EditOutlinedIcon sx={{ fontSize: "15px" }} />
                       </IconButton>
                     </Tooltip>
 
-                    <Tooltip
-                      title="Delete deal"
-                      arrow
-                    >
+                    <Tooltip title="Delete deal" arrow>
                       <IconButton
                         type="button"
                         size="small"
@@ -319,9 +277,7 @@ export default function DealCards({
                           },
                         }}
                       >
-                        <DeleteOutlineIcon
-                          sx={{ fontSize: "15px" }}
-                        />
+                        <DeleteOutlineIcon sx={{ fontSize: "15px" }} />
                       </IconButton>
                     </Tooltip>
                   </Box>

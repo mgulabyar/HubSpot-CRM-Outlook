@@ -30,7 +30,7 @@ function cleanDealPayload(payload: DealFormValues) {
       result[String(key)] = String(value).trim();
     }
   });
-// working one
+// working
   if (result.closedate && /^\d{4}-\d{2}-\d{2}$/.test(result.closedate)) {
     result.closedate = `${result.closedate}T00:00:00.000Z`;
   }

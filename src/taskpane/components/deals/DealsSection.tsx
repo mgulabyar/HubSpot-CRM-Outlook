@@ -370,7 +370,7 @@ export default function DealsSection() {
           <DialogContentText
             sx={{
               fontSize: "12.5px",
-              color: "#cbd5e1", // Muted premium silver text
+              color: "#cbd5e1", 
               lineHeight: 1.45,
             }}
           >

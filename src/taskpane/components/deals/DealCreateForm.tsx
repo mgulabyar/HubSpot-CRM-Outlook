@@ -365,13 +365,13 @@ export default function DealCreateForm({
           void handleSubmit();
         }}
         sx={{
-          width: "100%", 
+          width: "100%",
           textTransform: "none",
           borderRadius: "6px",
           bgcolor: "#F5714E",
           fontSize: "13px",
           fontWeight: 600,
-          py: 0.9, 
+          py: 0.9,
           boxShadow: "none",
           "&:hover": {
             bgcolor: "#e05e3b",

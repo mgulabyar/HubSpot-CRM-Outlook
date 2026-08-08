@@ -195,7 +195,7 @@ export default function DealCards({ deals, loading, deletingId, onEdit, onDelete
                   <Row label="Pipeline" value={properties.pipeline} />
 
                   <Row label="Stage" value={properties.dealstage} />
-
+{/*  */}
                   <Row label="Close Date" value={formatDate(properties.closedate)} />
 
                   {properties.description && (

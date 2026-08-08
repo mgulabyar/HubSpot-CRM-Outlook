@@ -348,7 +348,7 @@ export default function DealsSection() {
           paper: {
             sx: {
               bgcolor: "#1e293b", // Matte slate surface container background
-              backgroundImage: "none", // Critical layout parameter to prevent MUI opacity tint bugs
+              backgroundImage: "none", 
               borderRadius: "8px",
               border: "1px solid #334155",
             },
@@ -359,7 +359,7 @@ export default function DealsSection() {
           sx={{
             fontSize: "15px",
             fontWeight: 600,
-            color: "#f8fafc", // Bright crisp white header text
+            color: "#f8fafc", 
             pb: 1,
           }}
         >

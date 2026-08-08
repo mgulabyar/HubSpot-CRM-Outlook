@@ -10,12 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import type {
-  DealFormValues,
-  DealPipeline,
-  DealRecord,
-  DealStage,
-} from "../../types/DealModels";
+import type { DealFormValues, DealPipeline, DealRecord, DealStage } from "../../types/DealModels";
 
 type Props = {
   open: boolean;
@@ -23,13 +18,9 @@ type Props = {
   pipelines: DealPipeline[];
   stages: DealStage[];
   loading: boolean;
-  onPipelineChange: (
-    pipelineId: string
-  ) => Promise<void>;
+  onPipelineChange: (pipelineId: string) => Promise<void>;
   onClose: () => void;
-  onSave: (
-    values: DealFormValues
-  ) => Promise<boolean>;
+  onSave: (values: DealFormValues) => Promise<boolean>;
 };
 
 const emptyForm: DealFormValues = {
@@ -41,9 +32,7 @@ const emptyForm: DealFormValues = {
   description: "",
 };
 
-function formatDateForInput(
-  value?: string | null
-) {
+function formatDateForInput(value?: string | null) {
   if (!value) {
     return "";
   }
@@ -61,8 +50,7 @@ export default function DealEditModal({
   onClose,
   onSave,
 }: Props) {
-  const [form, setForm] =
-    useState<DealFormValues>(emptyForm);
+  const [form, setForm] = useState<DealFormValues>(emptyForm);
 
   useEffect(() => {
     if (!deal) {
@@ -75,21 +63,14 @@ export default function DealEditModal({
       amount: deal.properties.amount || "",
       pipeline: deal.properties.pipeline || "",
       dealstage: deal.properties.dealstage || "",
-      closedate: formatDateForInput(
-        deal.properties.closedate
-      ),
-      description:
-        deal.properties.description || "",
+      closedate: formatDateForInput(deal.properties.closedate),
+      description: deal.properties.description || "",
     });
   }, [deal]);
 
   const updateField =
     (field: keyof DealFormValues) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-      >
-    ) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((previous) => ({
         ...previous,
         [field]: event.target.value,
@@ -97,9 +78,7 @@ export default function DealEditModal({
     };
 
   const handlePipelineChange = async (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement
-    >
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const pipelineId = event.target.value;
 
@@ -122,12 +101,7 @@ export default function DealEditModal({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={loading ? undefined : onClose}
-      maxWidth="xs"
-      fullWidth
-    >
+    <Dialog open={open} onClose={loading ? undefined : onClose} maxWidth="xs" fullWidth>
       <DialogTitle
         sx={{
           color: "#1e2a3c",
@@ -166,10 +140,7 @@ export default function DealEditModal({
             onChange={handlePipelineChange}
           >
             {pipelines.map((pipeline) => (
-              <MenuItem
-                key={pipeline.id}
-                value={pipeline.id}
-              >
+              <MenuItem key={pipeline.id} value={pipeline.id}>
                 {pipeline.label}
               </MenuItem>
             ))}
@@ -184,10 +155,7 @@ export default function DealEditModal({
             onChange={updateField("dealstage")}
           >
             {stages.map((stage) => (
-              <MenuItem
-                key={stage.id}
-                value={stage.id}
-              >
+              <MenuItem key={stage.id} value={stage.id}>
                 {stage.label}
               </MenuItem>
             ))}

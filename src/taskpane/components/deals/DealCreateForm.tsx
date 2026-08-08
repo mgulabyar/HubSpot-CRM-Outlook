@@ -158,9 +158,9 @@ export default function DealCreateForm({
             fontSize: "13px",
             bgcolor: "#0f172a",
             borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" }, // Default Border
-            "&:hover fieldset": { borderColor: "#475569" }, // Hover Border
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" }, // Focus Border
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" }, 
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
             "& input": { color: "#f8fafc" },
           },
         }}

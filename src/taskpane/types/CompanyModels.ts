@@ -1,9 +1,6 @@
 export interface CompanyRecord {
   id: string;
-  properties: Record<
-    string,
-    string | null | undefined
-  >;
+  properties: Record<string, string | null | undefined>;
   createdAt?: string;
   updatedAt?: string;
   archived?: boolean;

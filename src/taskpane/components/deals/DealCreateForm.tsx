@@ -114,29 +114,61 @@ export default function DealCreateForm({
   };
 
   return (
-    <Stack spacing={1.3}>
+    <Stack spacing={2.2}>
+      {/* Premium Dark Mode Alert */}
       {error && (
         <Alert
           severity="warning"
+          variant="outlined"
           onClose={() => setError("")}
           sx={{
-            borderRadius: "4px",
+            borderRadius: "6px",
             fontSize: "12px",
+            color: "#fef08a", // Soft premium yellow text
+            borderColor: "rgba(234, 179, 8, 0.3)",
+            bgcolor: "rgba(234, 179, 8, 0.06)",
+            "& .MuiAlert-icon": {
+              color: "#eab308",
+            },
           }}
         >
           {error}
         </Alert>
       )}
 
+      {/* Deal Name Input */}
       <TextField
         size="small"
         fullWidth
         label="Deal Name"
         value={form.dealname}
         onChange={updateField("dealname")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc", // Input Text Value Color (Crisp White)
+            fontSize: "13px",
+            bgcolor: "#0f172a", // Dark Pod Inner Style
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" }, // Default Border
+            "&:hover fieldset": { borderColor: "#475569" }, // Hover Border
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" }, // Focus Border
+            "& input": { color: "#f8fafc" },
+          },
+        }}
       />
 
+      {/* Amount Input */}
       <TextField
         size="small"
         fullWidth
@@ -144,9 +176,32 @@ export default function DealCreateForm({
         label="Amount"
         value={form.amount}
         onChange={updateField("amount")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#f8fafc" },
+          },
+        }}
       />
 
+      {/* Pipeline Select Dropdown */}
       <TextField
         select
         size="small"
@@ -155,17 +210,42 @@ export default function DealCreateForm({
         value={form.pipeline}
         onChange={handlePipelineChange}
         disabled={pipelines.length === 0}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& .MuiSelect-select": { color: "#f8fafc" },
+            "& .MuiSvgIcon-root": { color: "#94a3b8" }, // Dropdown Arrow Color Fix
+          },
+        }}
       >
-        <MenuItem value="">Select pipeline</MenuItem>
-
+        <MenuItem value="" sx={{ fontSize: "13px" }}>
+          Select pipeline
+        </MenuItem>
         {pipelines.map((pipeline) => (
-          <MenuItem key={pipeline.id} value={pipeline.id}>
+          <MenuItem key={pipeline.id} value={pipeline.id} sx={{ fontSize: "13px" }}>
             {pipeline.label}
           </MenuItem>
         ))}
       </TextField>
 
+      {/* Deal Stage Select Dropdown */}
       <TextField
         select
         size="small"
@@ -174,17 +254,42 @@ export default function DealCreateForm({
         value={form.dealstage}
         onChange={updateField("dealstage")}
         disabled={stages.length === 0}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& .MuiSelect-select": { color: "#f8fafc" },
+            "& .MuiSvgIcon-root": { color: "#94a3b8" },
+          },
+        }}
       >
-        <MenuItem value="">Select stage</MenuItem>
-
+        <MenuItem value="" sx={{ fontSize: "13px" }}>
+          Select stage
+        </MenuItem>
         {stages.map((stage) => (
-          <MenuItem key={stage.id} value={stage.id}>
+          <MenuItem key={stage.id} value={stage.id} sx={{ fontSize: "13px" }}>
             {stage.label}
           </MenuItem>
         ))}
       </TextField>
 
+      {/* Close Date Input */}
       <TextField
         size="small"
         fullWidth
@@ -193,13 +298,32 @@ export default function DealCreateForm({
         value={form.closedate}
         onChange={updateField("closedate")}
         slotProps={{
-          inputLabel: {
-            shrink: true,
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#f8fafc" },
+            "& input::-webkit-calendar-picker-indicator": { filter: "invert(1)" }, // Dark Native Calendar Icon Fix
           },
         }}
-        sx={{ bgcolor: "#fff" }}
       />
 
+      {/* Description Input */}
       <TextField
         size="small"
         fullWidth
@@ -208,9 +332,32 @@ export default function DealCreateForm({
         label="Description"
         value={form.description}
         onChange={updateField("description")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& textarea": { color: "#f8fafc" },
+          },
+        }}
       />
 
+      {/* Save Button (Original Alignment & Logic Preserved) */}
       <Button
         type="button"
         variant="contained"
@@ -226,16 +373,22 @@ export default function DealCreateForm({
           void handleSubmit();
         }}
         sx={{
-          alignSelf: "flex-start",
+          alignSelf: "flex-start", // Kept original alignment code intact
           textTransform: "none",
-          borderRadius: "4px",
-          bgcolor: "#F5714E",
+          borderRadius: "6px",
+          bgcolor: "#F5714E", // Your unified premium orange color
           fontSize: "13px",
           fontWeight: 600,
+          px: 2,
+          py: 0.6,
           boxShadow: "none",
           "&:hover": {
-            bgcolor: "#e65f3d",
+            bgcolor: "#e05e3b",
             boxShadow: "none",
+          },
+          "&.Mui-disabled": {
+            bgcolor: "rgba(245, 113, 78, 0.3)",
+            color: "rgba(248, 250, 252, 0.4)",
           },
         }}
       >

@@ -349,12 +349,13 @@ export default function ContactsPage() {
   return (
     <>
       <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-        <Box>
+        <Box sx={{ mb: 1.5, display: "flex", flexDirection: "column", gap: 0.5 }}>
           <Typography
             variant="subtitle1"
             sx={{
               color: "#f8fafc",
               fontWeight: 600,
+              textAlign: "center",
               fontSize: "16px",
               letterSpacing: "0.3px",
             }}
@@ -368,6 +369,7 @@ export default function ContactsPage() {
               color: "#94a3b8",
               display: "block",
               mt: 0.5,
+              textAlign: "center",
               fontSize: "12px",
             }}
           >
@@ -380,6 +382,8 @@ export default function ContactsPage() {
           spacing={1}
           sx={{
             display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             gap: 1,
           }}
         >
@@ -399,33 +403,6 @@ export default function ContactsPage() {
             }}
           />
 
-          
-        </Stack>
-
-        <Divider sx={{ borderColor: "#1e293b" }} />
-
-        <ContactForm
-          loading={savingContact}
-          onSubmit={handleCreateContact}
-          onFindContact={handleFindContact}
-        />
-
-        <Divider sx={{ borderColor: "#1e293b" }} />
-
-        <Box>
-          <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:1.5}}>
-          <Typography
-            variant="subtitle2"
-            sx={{
-              color: "#f8fafc",
-              fontWeight: 600,
-              mb: 1.5,
-              fontSize: "13.5px",
-              letterSpacing: "0.2px",
-            }}
-          >
-            Recent Contacts
-          </Typography>
           <Chip
             label={`${contacts.length} Contacts`}
             size="small"
@@ -441,7 +418,32 @@ export default function ContactsPage() {
               borderRadius: "50px",
             }}
           />
-</Box>
+        </Stack>
+
+        <Divider sx={{ borderColor: "#1e293b" }} />
+
+        <ContactForm
+          loading={savingContact}
+          onSubmit={handleCreateContact}
+          onFindContact={handleFindContact}
+        />
+
+        <Divider sx={{ borderColor: "#1e293b" }} />
+
+        <Box>
+          <Typography
+            variant="subtitle2"
+            sx={{
+              color: "#f8fafc",
+              fontWeight: 600,
+              mb: 1.5,
+              fontSize: "13.5px",
+              letterSpacing: "0.2px",
+            }}
+          >
+            Recent Contacts
+          </Typography>
+
           <ContactList
             contacts={contacts}
             notesByContact={notesByContact}

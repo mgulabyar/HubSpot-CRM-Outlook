@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Stack } from "@mui/material";
 import AppHeader from "./layout/AppHeader";
-import ContactsPage from "./contacts/ContactsPage";
+import CrmWorkspace from "./CrmWorkspace";
 
 export default function App() {
   return (
@@ -24,7 +24,7 @@ export default function App() {
         }}
       >
         <Stack spacing={1.5}>
-          <ContactsPage />
+          <CrmWorkspace />
         </Stack>
       </Box>
     </Box>

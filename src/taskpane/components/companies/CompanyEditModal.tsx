@@ -9,19 +9,14 @@ import {
   TextField,
 } from "@mui/material";
 
-import type {
-  CompanyFormValues,
-  CompanyRecord,
-} from "../../types/CompanyModels";
+import type { CompanyFormValues, CompanyRecord } from "../../types/CompanyModels";
 
 type Props = {
   open: boolean;
   company: CompanyRecord | null;
   loading: boolean;
   onClose: () => void;
-  onSave: (
-    values: CompanyFormValues
-  ) => Promise<boolean>;
+  onSave: (values: CompanyFormValues) => Promise<boolean>;
 };
 
 const emptyForm: CompanyFormValues = {
@@ -35,15 +30,8 @@ const emptyForm: CompanyFormValues = {
   numberofemployees: "",
 };
 
-export default function CompanyEditModal({
-  open,
-  company,
-  loading,
-  onClose,
-  onSave,
-}: Props) {
-  const [form, setForm] =
-    useState<CompanyFormValues>(emptyForm);
+export default function CompanyEditModal({ open, company, loading, onClose, onSave }: Props) {
+  const [form, setForm] = useState<CompanyFormValues>(emptyForm);
 
   useEffect(() => {
     if (!company) {
@@ -58,20 +46,14 @@ export default function CompanyEditModal({
       city: company.properties.city || "",
       state: company.properties.state || "",
       country: company.properties.country || "",
-      industry:
-        company.properties.industry || "",
-      numberofemployees:
-        company.properties.numberofemployees || "",
+      industry: company.properties.industry || "",
+      numberofemployees: company.properties.numberofemployees || "",
     });
   }, [company]);
 
   const updateField =
     (field: keyof CompanyFormValues) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-      >
-    ) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((previous) => ({
         ...previous,
         [field]: event.target.value,
@@ -88,12 +70,7 @@ export default function CompanyEditModal({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={loading ? undefined : onClose}
-      maxWidth="xs"
-      fullWidth
-    >
+    <Dialog open={open} onClose={loading ? undefined : onClose} maxWidth="xs" fullWidth>
       <DialogTitle
         sx={{
           color: "#1e2a3c",
@@ -144,9 +121,7 @@ export default function CompanyEditModal({
             type="number"
             label="Number of Employees"
             value={form.numberofemployees}
-            onChange={updateField(
-              "numberofemployees"
-            )}
+            onChange={updateField("numberofemployees")}
           />
 
           <TextField

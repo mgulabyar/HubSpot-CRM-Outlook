@@ -100,9 +100,7 @@ function renderTabContent(value: CrmTabValue) {
       return <CompaniesSection />;
 
     case "deals":
-      return (
-        <DealsSection/>
-      );
+      return <DealsSection />;
 
     case "tasks":
       return (

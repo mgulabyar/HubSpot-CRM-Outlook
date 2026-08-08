@@ -1,29 +1,16 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Card,
-  Stack,
-  Tab,
-  Tabs,
-  Typography,
-} from "@mui/material";
+import { Box, Card, Stack, Tab, Tabs, Typography } from "@mui/material";
 
 import ContactsPage from "./contacts/ContactsPage";
 import CompaniesSection from "./companies/CompaniesSection";
 
-type CrmTabValue =
-  | "contacts"
-  | "companies"
-  | "deals"
-  | "tasks"
-  | "associations";
+type CrmTabValue = "contacts" | "companies" | "deals" | "tasks" | "associations";
 
 type CrmTab = {
   value: CrmTabValue;
   label: string;
 };
 
-// Sare icons yahan se remove kar diye hain
 const crmTabs: CrmTab[] = [
   {
     value: "contacts",
@@ -47,13 +34,7 @@ const crmTabs: CrmTab[] = [
   },
 ];
 
-function ComingSoonSection({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
+function ComingSoonSection({ title, description }: { title: string; description: string }) {
   return (
     <Box
       sx={{
@@ -147,13 +128,9 @@ function renderTabContent(value: CrmTabValue) {
 }
 
 export default function CrmWorkspace() {
-  const [activeTab, setActiveTab] =
-    useState<CrmTabValue>("contacts");
+  const [activeTab, setActiveTab] = useState<CrmTabValue>("contacts");
 
-  const handleTabChange = (
-    _event: React.SyntheticEvent,
-    value: CrmTabValue
-  ) => {
+  const handleTabChange = (_event: React.SyntheticEvent, value: CrmTabValue) => {
     setActiveTab(value);
   };
 
@@ -173,8 +150,7 @@ export default function CrmWorkspace() {
           bgcolor: "#111827",
           border: "1px solid #263449",
           borderRadius: "10px",
-          boxShadow:
-            "0 8px 24px rgba(0, 0, 0, 0.18)",
+          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.18)",
         }}
       >
         <Box
@@ -245,19 +221,16 @@ export default function CrmWorkspace() {
                   fontSize: "11.5px",
                   fontWeight: 600,
                   borderRadius: "5px 5px 0 0",
-                  transition:
-                    "color 160ms ease, background-color 160ms ease",
+                  transition: "color 160ms ease, background-color 160ms ease",
 
                   "&:hover": {
                     color: "#f8fafc",
-                    bgcolor:
-                      "rgba(245, 113, 78, 0.08)",
+                    bgcolor: "rgba(245, 113, 78, 0.08)",
                   },
 
                   "&.Mui-selected": {
                     color: "#F5714E",
-                    bgcolor:
-                      "rgba(245, 113, 78, 0.08)",
+                    bgcolor: "rgba(245, 113, 78, 0.08)",
                   },
                 }}
               />

@@ -1,22 +1,12 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Box,
-  Button,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Alert, Box, Button, Stack, TextField } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 
-import type {
-  CompanyFormValues,
-} from "../../types/CompanyModels";
+import type { CompanyFormValues } from "../../types/CompanyModels";
 
 type Props = {
   loading: boolean;
-  onSubmit: (
-    values: CompanyFormValues
-  ) => Promise<boolean>;
+  onSubmit: (values: CompanyFormValues) => Promise<boolean>;
 };
 
 const defaultValues: CompanyFormValues = {
@@ -30,22 +20,14 @@ const defaultValues: CompanyFormValues = {
   numberofemployees: "",
 };
 
-export default function CompanyCreateForm({
-  loading,
-  onSubmit,
-}: Props) {
-  const [form, setForm] =
-    useState<CompanyFormValues>(defaultValues);
+export default function CompanyCreateForm({ loading, onSubmit }: Props) {
+  const [form, setForm] = useState<CompanyFormValues>(defaultValues);
 
   const [error, setError] = useState("");
 
   const updateField =
     (field: keyof CompanyFormValues) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-      >
-    ) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((previous) => ({
         ...previous,
         [field]: event.target.value,
@@ -68,8 +50,7 @@ export default function CompanyCreateForm({
       state: form.state.trim(),
       country: form.country.trim(),
       industry: form.industry.trim(),
-      numberofemployees:
-        form.numberofemployees.trim(),
+      numberofemployees: form.numberofemployees.trim(),
     });
 
     if (successful) {
@@ -135,9 +116,7 @@ export default function CompanyCreateForm({
         type="number"
         label="Number of Employees"
         value={form.numberofemployees}
-        onChange={updateField(
-          "numberofemployees"
-        )}
+        onChange={updateField("numberofemployees")}
         sx={{ bgcolor: "#fff" }}
       />
 

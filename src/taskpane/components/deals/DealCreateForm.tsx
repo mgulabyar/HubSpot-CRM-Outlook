@@ -135,7 +135,6 @@ export default function DealCreateForm({
         </Alert>
       )}
 
-      {/* Deal Name Input */}
       <TextField
         size="small"
         fullWidth
@@ -155,9 +154,9 @@ export default function DealCreateForm({
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc", // Input Text Value Color (Crisp White)
+            color: "#f8fafc", 
             fontSize: "13px",
-            bgcolor: "#0f172a", // Dark Pod Inner Style
+            bgcolor: "#0f172a",
             borderRadius: "6px",
             "& fieldset": { borderColor: "#334155" }, // Default Border
             "&:hover fieldset": { borderColor: "#475569" }, // Hover Border

@@ -147,10 +147,7 @@ export default function CrmWorkspace() {
           width: "100%",
           minWidth: 0,
           overflow: "hidden",
-          // bgcolor: "#111827",
-          // border: "1px solid #263449",
           borderRadius: "5px",
-          // boxShadow: "0 8px 24px rgba(0, 0, 0, 0.18)",
         }}
       >
         <Box

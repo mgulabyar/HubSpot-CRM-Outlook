@@ -267,101 +267,67 @@ export default function DealsSection() {
 
   return (
     <>
-      <Stack spacing={2}>
-        <Box>
-          <Typography
-            sx={{
-              color: "#f8fafc",
-              fontWeight: 700,
-              fontSize: "16px",
-            }}
-          >
-            Deals
-          </Typography>
+    <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+  {/* Deal Create Form rendering directly at top now */}
+  <DealCreateForm
+    loading={saving}
+    pipelines={pipelines}
+    stages={stages}
+    onPipelineChange={handlePipelineChange}
+    onSubmit={handleCreate}
+  />
 
-          <Typography
-            sx={{
-              color: "#94a3b8",
-              fontSize: "11px",
-              mt: 0.4,
-            }}
-          >
-            Manage HubSpot deals, pipelines and stages.
-          </Typography>
-        </Box>
+  <Divider sx={{ borderColor: "#1e293b" }} />
 
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{
-            flexWrap: "wrap",
-            gap: 1,
-          }}
-        >
-          <Chip
-            label="CRM Connected"
-            size="small"
-            sx={{
-              color: "#F5714E",
-              bgcolor: "rgba(245, 113, 78, 0.08)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
+  {/* Recent Deals Section with Embedded Right-Aligned Count Chip */}
+  <Box>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between", // Pushes heading to left and chip to right
+        mb: 1.5,
+      }}
+    >
+      <Typography
+        sx={{
+          color: "#f8fafc",
+          fontWeight: 600,
+          fontSize: "13.5px",
+          letterSpacing: "0.2px",
+        }}
+      >
+        Recent Deals
+      </Typography>
 
-          <Chip
-            label={`${deals.length} Deals`}
-            size="small"
-            sx={{
-              color: "#cbd5e1",
-              bgcolor: "rgba(203, 213, 225, 0.08)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
-        </Stack>
+      {/* Count Chip shifted exactly next to the section heading */}
+      <Chip
+        label={`${deals.length} Deals`}
+        size="small"
+        variant="outlined"
+        sx={{
+          color: "#cbd5e1",
+          borderColor: "#334155",
+          bgcolor: "#1e293b", // Matches workspace dark system accents
+          fontSize: "10.5px",
+          fontWeight: 600,
+          height: 20, // Modern low-profile premium sizing
+          borderRadius: "4px", // Matches clean edge geometry of our cards framework
+          px: 0.5,
+        }}
+      />
+    </Box>
 
-        <Divider
-          sx={{
-            borderColor: "#334155",
-          }}
-        />
+    <DealCards
+      deals={deals}
+      loading={loading}
+      deletingId={deletingId}
+      onEdit={handleOpenEdit}
+      onDelete={handleRequestDelete}
+    />
+  </Box>
+</Stack>
 
-        <DealCreateForm
-          loading={saving}
-          pipelines={pipelines}
-          stages={stages}
-          onPipelineChange={handlePipelineChange}
-          onSubmit={handleCreate}
-        />
-
-        <Divider
-          sx={{
-            borderColor: "#334155",
-          }}
-        />
-
-        <Box>
-          <Typography
-            sx={{
-              color: "#f8fafc",
-              fontWeight: 700,
-              fontSize: "14px",
-              mb: 1.2,
-            }}
-          >
-            Recent Deals
-          </Typography>
-
-          <DealCards
-            deals={deals}
-            loading={loading}
-            deletingId={deletingId}
-            onEdit={handleOpenEdit}
-            onDelete={handleRequestDelete}
-          />
-        </Box>
-      </Stack>
 
       <DealEditModal
         open={editOpen}

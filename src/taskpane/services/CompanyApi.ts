@@ -16,21 +16,15 @@ const companyApi = axios.create({
   },
 });
 
-function cleanCompanyPayload(
-  payload: CompanyFormValues
-) {
+function cleanCompanyPayload(payload: CompanyFormValues) {
   const result: Record<string, string> = {};
 
-  const keys = Object.keys(payload) as Array<
-    keyof CompanyFormValues
-  >;
+  const keys = Object.keys(payload) as Array<keyof CompanyFormValues>;
 
   keys.forEach((key) => {
     const value = payload[key];
 
-    const cleanValue = String(
-      value ?? ""
-    ).trim();
+    const cleanValue = String(value ?? "").trim();
 
     if (cleanValue) {
       result[String(key)] = cleanValue;
@@ -40,9 +34,7 @@ function cleanCompanyPayload(
   return result;
 }
 
-function getCompanyErrorMessage(
-  error: unknown
-): string {
+function getCompanyErrorMessage(error: unknown): string {
   if (!axios.isAxiosError(error)) {
     if (error instanceof Error) {
       return error.message;
@@ -53,42 +45,26 @@ function getCompanyErrorMessage(
 
   const responseData = error.response?.data;
 
-  console.error(
-    "[CompanyApi] status:",
-    error.response?.status
-  );
+  console.error("[CompanyApi] status:", error.response?.status);
 
-  console.error(
-    "[CompanyApi] response:",
-    responseData
-  );
+  console.error("[CompanyApi] response:", responseData);
 
-  if (
-    typeof responseData?.message === "string" &&
-    responseData.message.trim()
-  ) {
+  if (typeof responseData?.message === "string" && responseData.message.trim()) {
     return responseData.message;
   }
 
-  if (
-    typeof responseData?.raw?.message === "string"
-  ) {
+  if (typeof responseData?.raw?.message === "string") {
     return responseData.raw.message;
   }
 
-  if (
-    typeof responseData?.error?.message === "string"
-  ) {
+  if (typeof responseData?.error?.message === "string") {
     return responseData.error.message;
   }
 
   if (Array.isArray(responseData?.errors)) {
     const firstError = responseData.errors[0];
 
-    if (
-      firstError &&
-      typeof firstError.message === "string"
-    ) {
+    if (firstError && typeof firstError.message === "string") {
       return firstError.message;
     }
   }
@@ -103,35 +79,25 @@ function getCompanyErrorMessage(
 function throwCompanyError(error: unknown): never {
   const message = getCompanyErrorMessage(error);
 
-  console.error(
-    "[CompanyApi] final error:",
-    message
-  );
+  console.error("[CompanyApi] final error:", message);
 
   throw new Error(message);
 }
 
-export const fetchCompanies = async (
-  limit = 20
-): Promise<CompanyListResponse> => {
+export const fetchCompanies = async (limit = 20): Promise<CompanyListResponse> => {
   try {
-    console.log(
-      "[CompanyApi] fetching companies..."
+    console.log("[CompanyApi] fetching companies...");
+
+    const response = await companyApi.get<CompanyApiResponse<CompanyListResponse>>(
+      "/hubspot/companies",
+      {
+        params: {
+          limit,
+        },
+      }
     );
 
-    const response = await companyApi.get<
-      CompanyApiResponse<CompanyListResponse>
-    >("/hubspot/companies", {
-      params: {
-        limit,
-      },
-    });
-
-    console.log(
-      "[CompanyApi] companies response:",
-      response.status,
-      response.data
-    );
+    console.log("[CompanyApi] companies response:", response.status, response.data);
 
     return response.data.data;
   } catch (error) {
@@ -139,24 +105,16 @@ export const fetchCompanies = async (
   }
 };
 
-export const fetchCompany = async (
-  companyId: string
-): Promise<CompanyRecord> => {
+export const fetchCompany = async (companyId: string): Promise<CompanyRecord> => {
   try {
     const cleanId = String(companyId).trim();
 
     if (!cleanId) {
-      throw new Error(
-        "Company ID is missing."
-      );
+      throw new Error("Company ID is missing.");
     }
 
-    const response = await companyApi.get<
-      CompanyApiResponse<CompanyRecord>
-    >(
-      `/hubspot/companies/${encodeURIComponent(
-        cleanId
-      )}`
+    const response = await companyApi.get<CompanyApiResponse<CompanyRecord>>(
+      `/hubspot/companies/${encodeURIComponent(cleanId)}`
     );
 
     return response.data.data;
@@ -165,36 +123,22 @@ export const fetchCompany = async (
   }
 };
 
-export const createNewCompany = async (
-  payload: CompanyFormValues
-): Promise<CompanyRecord> => {
+export const createNewCompany = async (payload: CompanyFormValues): Promise<CompanyRecord> => {
   try {
-    const cleanPayload =
-      cleanCompanyPayload(payload);
+    const cleanPayload = cleanCompanyPayload(payload);
 
     if (!cleanPayload.name) {
-      throw new Error(
-        "Company name is required."
-      );
+      throw new Error("Company name is required.");
     }
 
-    console.log(
-      "[CompanyApi] creating company:",
-      cleanPayload
-    );
+    console.log("[CompanyApi] creating company:", cleanPayload);
 
-    const response = await companyApi.post<
-      CompanyApiResponse<CompanyRecord>
-    >(
+    const response = await companyApi.post<CompanyApiResponse<CompanyRecord>>(
       "/hubspot/companies",
       cleanPayload
     );
 
-    console.log(
-      "[CompanyApi] company created:",
-      response.status,
-      response.data
-    );
+    console.log("[CompanyApi] company created:", response.status, response.data);
 
     return response.data.data;
   } catch (error) {
@@ -210,40 +154,23 @@ export const updateExistingCompany = async (
     const cleanId = String(companyId).trim();
 
     if (!cleanId) {
-      throw new Error(
-        "Company ID is missing."
-      );
+      throw new Error("Company ID is missing.");
     }
 
-    const cleanPayload =
-      cleanCompanyPayload(payload);
+    const cleanPayload = cleanCompanyPayload(payload);
 
     if (Object.keys(cleanPayload).length === 0) {
-      throw new Error(
-        "At least one company field is required."
-      );
+      throw new Error("At least one company field is required.");
     }
 
-    console.log(
-      "[CompanyApi] updating company:",
-      cleanId,
+    console.log("[CompanyApi] updating company:", cleanId, cleanPayload);
+
+    const response = await companyApi.patch<CompanyApiResponse<CompanyRecord>>(
+      `/hubspot/companies/${encodeURIComponent(cleanId)}`,
       cleanPayload
     );
 
-    const response = await companyApi.patch<
-      CompanyApiResponse<CompanyRecord>
-    >(
-      `/hubspot/companies/${encodeURIComponent(
-        cleanId
-      )}`,
-      cleanPayload
-    );
-
-    console.log(
-      "[CompanyApi] company updated:",
-      response.status,
-      response.data
-    );
+    console.log("[CompanyApi] company updated:", response.status, response.data);
 
     return response.data.data;
   } catch (error) {
@@ -251,34 +178,19 @@ export const updateExistingCompany = async (
   }
 };
 
-export const removeCompany = async (
-  companyId: string
-) => {
+export const removeCompany = async (companyId: string) => {
   try {
     const cleanId = String(companyId).trim();
 
     if (!cleanId) {
-      throw new Error(
-        "Company ID is missing."
-      );
+      throw new Error("Company ID is missing.");
     }
 
-    console.log(
-      "[CompanyApi] deleting company:",
-      cleanId
-    );
+    console.log("[CompanyApi] deleting company:", cleanId);
 
-    const response = await companyApi.delete(
-      `/hubspot/companies/${encodeURIComponent(
-        cleanId
-      )}`
-    );
+    const response = await companyApi.delete(`/hubspot/companies/${encodeURIComponent(cleanId)}`);
 
-    console.log(
-      "[CompanyApi] company deleted:",
-      response.status,
-      response.data
-    );
+    console.log("[CompanyApi] company deleted:", response.status, response.data);
 
     return {
       status: response.status,

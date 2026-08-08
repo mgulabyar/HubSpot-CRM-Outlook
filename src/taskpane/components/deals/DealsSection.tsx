@@ -278,13 +278,12 @@ export default function DealsSection() {
 
         <Divider sx={{ borderColor: "#1e293b" }} />
 
-        {/* Recent Deals Section with Embedded Right-Aligned Count Chip */}
         <Box>
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between", // Pushes heading to left and chip to right
+              justifyContent: "space-between",
               mb: 1.5,
             }}
           >
@@ -299,7 +298,6 @@ export default function DealsSection() {
               Recent Deals
             </Typography>
 
-            {/* Count Chip shifted exactly next to the section heading */}
             <Chip
               label={`${deals.length} Deals`}
               size="small"
@@ -307,11 +305,11 @@ export default function DealsSection() {
               sx={{
                 color: "#cbd5e1",
                 borderColor: "#334155",
-                bgcolor: "#1e293b", // Matches workspace dark system accents
+                bgcolor: "#1e293b",
                 fontSize: "10.5px",
                 fontWeight: 600,
-                height: 20, // Modern low-profile premium sizing
-                borderRadius: "4px", // Matches clean edge geometry of our cards framework
+                height: 24,
+                borderRadius: "4px",
                 px: 0.5,
               }}
             />

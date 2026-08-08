@@ -3,6 +3,7 @@ import { Box, Card, Stack, Tab, Tabs, Typography } from "@mui/material";
 
 import ContactsPage from "./contacts/ContactsPage";
 import CompaniesSection from "./companies/CompaniesSection";
+import DealsSection from "./deals/DealsSection";
 
 type CrmTabValue = "contacts" | "companies" | "deals" | "tasks" | "associations";
 
@@ -100,10 +101,7 @@ function renderTabContent(value: CrmTabValue) {
 
     case "deals":
       return (
-        <ComingSoonSection
-          title="Deals"
-          description="Manage deals, amounts, pipelines and stages from this section."
-        />
+        <DealsSection/>
       );
 
     case "tasks":

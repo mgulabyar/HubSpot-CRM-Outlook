@@ -115,7 +115,6 @@ export default function DealCreateForm({
 
   return (
     <Stack spacing={2.2}>
-      {/* Premium Dark Mode Alert */}
       {error && (
         <Alert
           severity="warning"
@@ -124,7 +123,7 @@ export default function DealCreateForm({
           sx={{
             borderRadius: "6px",
             fontSize: "12px",
-            color: "#fef08a", // Soft premium yellow text
+            color: "#fef08a", 
             borderColor: "rgba(234, 179, 8, 0.3)",
             bgcolor: "rgba(234, 179, 8, 0.06)",
             "& .MuiAlert-icon": {

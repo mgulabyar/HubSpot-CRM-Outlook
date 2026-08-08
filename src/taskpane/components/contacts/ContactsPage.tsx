@@ -349,7 +349,7 @@ export default function ContactsPage() {
   return (
     <>
       <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Box>
           <Typography
             variant="subtitle1"
             sx={{
@@ -380,8 +380,6 @@ export default function ContactsPage() {
           spacing={1}
           sx={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
             gap: 1,
           }}
         >
@@ -395,27 +393,13 @@ export default function ContactsPage() {
               border: "none",
               fontSize: "10.5px",
               fontWeight: 600,
-              height: 32,
-              width: 110,
+              height: 25,
+              width: 100,
               borderRadius: "50px",
             }}
           />
 
-          <Chip
-            label={`${contacts.length} Contacts`}
-            size="small"
-            variant="outlined"
-            sx={{
-              color: "#cbd5e1",
-              borderColor: "#334155",
-              bgcolor: "#1e293b",
-              fontSize: "10.5px",
-              fontWeight: 600,
-              height: 32,
-              width: 110,
-              borderRadius: "50px",
-            }}
-          />
+          
         </Stack>
 
         <Divider sx={{ borderColor: "#1e293b" }} />
@@ -429,6 +413,7 @@ export default function ContactsPage() {
         <Divider sx={{ borderColor: "#1e293b" }} />
 
         <Box>
+          <Box sx={{display:"flex", alignItems:"center", justifyContent:"space-between", mb:1.5}}>
           <Typography
             variant="subtitle2"
             sx={{
@@ -441,7 +426,22 @@ export default function ContactsPage() {
           >
             Recent Contacts
           </Typography>
-
+          <Chip
+            label={`${contacts.length} Contacts`}
+            size="small"
+            variant="outlined"
+            sx={{
+              color: "#cbd5e1",
+              borderColor: "#334155",
+              bgcolor: "#1e293b",
+              fontSize: "10.5px",
+              fontWeight: 600,
+              height: 25,
+              width: 100,
+              borderRadius: "50px",
+            }}
+          />
+</Box>
           <ContactList
             contacts={contacts}
             notesByContact={notesByContact}

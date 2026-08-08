@@ -410,7 +410,7 @@ export default function DealsSection() {
               fontWeight: 600,
               borderRadius: "6px",
               boxShadow: "none",
-              bgcolor: "#dc2626", // Solid flat red
+              bgcolor: "#dc2626",
               "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
             }}
           >

@@ -13,9 +13,7 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/Delete";
 
-import type {
-  CompanyRecord,
-} from "../../types/CompanyModels";
+import type { CompanyRecord } from "../../types/CompanyModels";
 
 type Props = {
   companies: CompanyRecord[];
@@ -39,13 +37,7 @@ function formatDate(value?: string) {
   return date.toLocaleString();
 }
 
-function InfoRow({
-  label,
-  value,
-}: {
-  label: string;
-  value?: string | null;
-}) {
+function InfoRow({ label, value }: { label: string; value?: string | null }) {
   return (
     <Box
       sx={{
@@ -78,13 +70,7 @@ function InfoRow({
   );
 }
 
-export default function CompanyCards({
-  companies,
-  loading,
-  deletingId,
-  onEdit,
-  onDelete,
-}: Props) {
+export default function CompanyCards({ companies, loading, deletingId, onEdit, onDelete }: Props) {
   if (loading) {
     return (
       <Typography
@@ -116,8 +102,7 @@ export default function CompanyCards({
       {companies.map((company) => {
         const companyId = String(company.id);
         const properties = company.properties;
-        const isDeleting =
-          deletingId === companyId;
+        const isDeleting = deletingId === companyId;
 
         return (
           <Card
@@ -130,8 +115,7 @@ export default function CompanyCards({
               borderRadius: "0px 8px 8px 0px",
               bgcolor: "#1e293b",
               opacity: isDeleting ? 0.55 : 1,
-              boxShadow:
-                "0 4px 12px rgba(0, 0, 0, 0.15)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
               transition: "all 200ms ease",
               "&:hover": {
                 bgcolor: "#243146",
@@ -165,8 +149,7 @@ export default function CompanyCards({
                         wordBreak: "break-word",
                       }}
                     >
-                      {properties.name ||
-                        "Unnamed Company"}
+                      {properties.name || "Unnamed Company"}
                     </Typography>
 
                     <Typography
@@ -205,47 +188,22 @@ export default function CompanyCards({
                     gap: 1.1,
                   }}
                 >
-                  <InfoRow
-                    label="Domain"
-                    value={properties.domain}
-                  />
+                  <InfoRow label="Domain" value={properties.domain} />
 
-                  <InfoRow
-                    label="Phone"
-                    value={properties.phone}
-                  />
+                  <InfoRow label="Phone" value={properties.phone} />
 
-                  <InfoRow
-                    label="Industry"
-                    value={properties.industry}
-                  />
+                  <InfoRow label="Industry" value={properties.industry} />
 
-                  <InfoRow
-                    label="Employees"
-                    value={
-                      properties.numberofemployees
-                    }
-                  />
+                  <InfoRow label="Employees" value={properties.numberofemployees} />
 
-                  <InfoRow
-                    label="City"
-                    value={properties.city}
-                  />
+                  <InfoRow label="City" value={properties.city} />
 
-                  <InfoRow
-                    label="State"
-                    value={properties.state}
-                  />
+                  <InfoRow label="State" value={properties.state} />
 
-                  <InfoRow
-                    label="Country"
-                    value={properties.country}
-                  />
+                  <InfoRow label="Country" value={properties.country} />
                 </Box>
 
-                <Divider
-                  sx={{ borderColor: "#334155" }}
-                />
+                <Divider sx={{ borderColor: "#334155" }} />
 
                 <Box
                   sx={{
@@ -261,8 +219,7 @@ export default function CompanyCards({
                         fontSize: "10px",
                       }}
                     >
-                      Created:{" "}
-                      {formatDate(company.createdAt)}
+                      Created: {formatDate(company.createdAt)}
                     </Typography>
 
                     <Typography
@@ -271,16 +228,12 @@ export default function CompanyCards({
                         fontSize: "10px",
                       }}
                     >
-                      Updated:{" "}
-                      {formatDate(company.updatedAt)}
+                      Updated: {formatDate(company.updatedAt)}
                     </Typography>
                   </Box>
 
                   <Box sx={{ display: "flex" }}>
-                    <Tooltip
-                      title="Edit company"
-                      arrow
-                    >
+                    <Tooltip title="Edit company" arrow>
                       <IconButton
                         type="button"
                         size="small"
@@ -298,16 +251,11 @@ export default function CompanyCards({
                           },
                         }}
                       >
-                        <EditOutlinedIcon
-                          sx={{ fontSize: "15px" }}
-                        />
+                        <EditOutlinedIcon sx={{ fontSize: "15px" }} />
                       </IconButton>
                     </Tooltip>
 
-                    <Tooltip
-                      title="Delete company"
-                      arrow
-                    >
+                    <Tooltip title="Delete company" arrow>
                       <IconButton
                         type="button"
                         size="small"
@@ -325,9 +273,7 @@ export default function CompanyCards({
                           },
                         }}
                       >
-                        <DeleteOutlineIcon
-                          sx={{ fontSize: "15px" }}
-                        />
+                        <DeleteOutlineIcon sx={{ fontSize: "15px" }} />
                       </IconButton>
                     </Tooltip>
                   </Box>

@@ -19,7 +19,7 @@ export default function App() {
 
       <Box
         sx={{
-          p: 1,
+          p: 0.5,
           flexGrow: 1,
         }}
       >

@@ -147,10 +147,10 @@ export default function CrmWorkspace() {
           width: "100%",
           minWidth: 0,
           overflow: "hidden",
-          bgcolor: "#111827",
-          border: "1px solid #263449",
-          borderRadius: "10px",
-          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.18)",
+          // bgcolor: "#111827",
+          // border: "1px solid #263449",
+          borderRadius: "5px",
+          // boxShadow: "0 8px 24px rgba(0, 0, 0, 0.18)",
         }}
       >
         <Box
@@ -212,7 +212,7 @@ export default function CrmWorkspace() {
                 label={tab.label}
                 disableRipple
                 sx={{
-                  minHeight: "42px",
+                  minHeight: "32px",
                   minWidth: "auto",
                   px: 1.2,
                   py: 0.7,

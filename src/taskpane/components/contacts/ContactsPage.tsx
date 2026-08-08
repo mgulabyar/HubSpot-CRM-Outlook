@@ -348,80 +348,7 @@ export default function ContactsPage() {
 
   return (
     <>
-      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-        <Box sx={{ mb: 1.5, display: "flex", flexDirection: "column", gap: 0.5 }}>
-          <Typography
-            variant="subtitle1"
-            sx={{
-              color: "#f8fafc",
-              fontWeight: 600,
-              textAlign: "center",
-              fontSize: "16px",
-              letterSpacing: "0.3px",
-            }}
-          >
-            Contacts
-          </Typography>
-
-          <Typography
-            variant="caption"
-            sx={{
-              color: "#94a3b8",
-              display: "block",
-              mt: 0.5,
-              textAlign: "center",
-              fontSize: "12px",
-            }}
-          >
-            Manage HubSpot contacts from Outlook.
-          </Typography>
-        </Box>
-
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 1,
-          }}
-        >
-          <Chip
-            label="CRM Connected"
-            size="small"
-            variant="outlined"
-            sx={{
-              color: "#f8fafc",
-              bgcolor: "#F5714E",
-              border: "none",
-              fontSize: "10.5px",
-              fontWeight: 600,
-              height: 25,
-              width: 100,
-              borderRadius: "50px",
-            }}
-          />
-
-          <Chip
-            label={`${contacts.length} Contacts`}
-            size="small"
-            variant="outlined"
-            sx={{
-              color: "#cbd5e1",
-              borderColor: "#334155",
-              bgcolor: "#1e293b",
-              fontSize: "10.5px",
-              fontWeight: 600,
-              height: 25,
-              width: 100,
-              borderRadius: "50px",
-            }}
-          />
-        </Stack>
-
-        <Divider sx={{ borderColor: "#1e293b" }} />
-
+      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", minHeight: "100vh" }}>
         <ContactForm
           loading={savingContact}
           onSubmit={handleCreateContact}
@@ -431,18 +358,42 @@ export default function ContactsPage() {
         <Divider sx={{ borderColor: "#1e293b" }} />
 
         <Box>
-          <Typography
-            variant="subtitle2"
+          <Box
             sx={{
-              color: "#f8fafc",
-              fontWeight: 600,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
               mb: 1.5,
-              fontSize: "13.5px",
-              letterSpacing: "0.2px",
             }}
           >
-            Recent Contacts
-          </Typography>
+            <Typography
+              variant="subtitle2"
+              sx={{
+                color: "#f8fafc",
+                fontWeight: 600,
+                fontSize: "13.5px",
+                letterSpacing: "0.2px",
+              }}
+            >
+              Recent Contacts
+            </Typography>
+
+            <Chip
+              label={`${contacts.length} Contacts`}
+              size="small"
+              variant="outlined"
+              sx={{
+                color: "#cbd5e1",
+                borderColor: "#334155",
+                bgcolor: "#1e293b",
+                fontSize: "10.5px",
+                fontWeight: 600,
+                height: 20,
+                borderRadius: "4px",
+                px: 0.5,
+              }}
+            />
+          </Box>
 
           <ContactList
             contacts={contacts}

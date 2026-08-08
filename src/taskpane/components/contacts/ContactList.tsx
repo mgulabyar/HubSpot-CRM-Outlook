@@ -169,7 +169,7 @@ export default function ContactList({
                     label="Contact"
                     size="small"
                     sx={{
-                      height: 22,
+                      height: 24,
                       fontSize: "9px",
                       fontWeight: 700,
                       textTransform: "uppercase",

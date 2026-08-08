@@ -234,85 +234,50 @@ export default function CompaniesSection() {
 
   return (
     <>
-      <Stack spacing={2}>
-        <Box>
-          <Typography
-            sx={{
-              color: "#f8fafc",
-              fontWeight: 700,
-              fontSize: "16px",
-            }}
-          >
-            Companies
-          </Typography>
-
-          <Typography
-            sx={{
-              color: "#94a3b8",
-              fontSize: "11px",
-              mt: 0.4,
-            }}
-          >
-            Manage HubSpot companies from Outlook.
-          </Typography>
-        </Box>
-
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{
-            flexWrap: "wrap",
-            gap: 1,
-          }}
-        >
-          <Chip
-            label="CRM Connected"
-            size="small"
-            sx={{
-              color: "#F5714E",
-              bgcolor: "rgba(245, 113, 78, 0.08)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
-
-          <Chip
-            label={`${companies.length} Companies`}
-            size="small"
-            sx={{
-              color: "#cbd5e1",
-              bgcolor: "rgba(203, 213, 225, 0.08)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
-        </Stack>
-
-        <Divider
-          sx={{
-            borderColor: "#334155",
-          }}
-        />
-
+      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+        {/* Company Create Form rendering directly at top now */}
         <CompanyCreateForm loading={saving} onSubmit={handleCreate} />
 
-        <Divider
-          sx={{
-            borderColor: "#334155",
-          }}
-        />
+        <Divider sx={{ borderColor: "#1e293b" }} />
 
+        {/* Recent Companies Section with Embedded Right-Aligned Count Chip */}
         <Box>
-          <Typography
+          <Box
             sx={{
-              color: "#f8fafc",
-              fontWeight: 700,
-              fontSize: "14px",
-              mb: 1.2,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between", // Pushes heading to left and chip to right
+              mb: 1.5,
             }}
           >
-            Recent Companies
-          </Typography>
+            <Typography
+              sx={{
+                color: "#f8fafc",
+                fontWeight: 600,
+                fontSize: "13.5px",
+                letterSpacing: "0.2px",
+              }}
+            >
+              Recent Companies
+            </Typography>
+
+            {/* Count Chip shifted exactly next to the section heading */}
+            <Chip
+              label={`${companies.length} Companies`}
+              size="small"
+              variant="outlined"
+              sx={{
+                color: "#cbd5e1",
+                borderColor: "#334155",
+                bgcolor: "#1e293b",
+                fontSize: "10.5px",
+                fontWeight: 600,
+                height: 20, // Low-profile premium sizing
+                borderRadius: "4px", // Matches our structural card edges
+                px: 0.5,
+              }}
+            />
+          </Box>
 
           <CompanyCards
             companies={companies}

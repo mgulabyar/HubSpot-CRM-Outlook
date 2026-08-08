@@ -62,12 +62,9 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
 
   return (
     <Stack
-      spacing={1.5}
+      spacing={2.2}
       sx={{
-        p: 1.5,
-        bgcolor: "#1e293b",
-        borderRadius: "8px",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+        p: 1,
       }}
     >
       {validationError && (
@@ -270,7 +267,7 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
             borderRadius: "6px",
             bgcolor: "#F5714E",
             color: "#fff",
-            fontSize: "13px",
+            fontSize: "12px",
             fontWeight: 600,
             py: 0.9,
             boxShadow: "none",
@@ -299,7 +296,7 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
             borderRadius: "6px",
             bgcolor: "#334155",
             color: "#f8fafc",
-            fontSize: "13px",
+            fontSize: "12px",
             fontWeight: 600,
             py: 0.9,
             boxShadow: "none",

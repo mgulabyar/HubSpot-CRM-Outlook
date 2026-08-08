@@ -303,7 +303,7 @@ export default function CompaniesSection() {
           paper: {
             sx: {
               bgcolor: "#1e293b",
-              backgroundImage: "none", 
+              backgroundImage: "none",
               borderRadius: "8px",
               border: "1px solid #334155",
             },
@@ -314,7 +314,7 @@ export default function CompaniesSection() {
           sx={{
             fontSize: "15px",
             fontWeight: 600,
-            color: "#f8fafc", 
+            color: "#f8fafc",
             pb: 1,
           }}
         >
@@ -365,7 +365,7 @@ export default function CompaniesSection() {
               fontWeight: 600,
               borderRadius: "6px",
               boxShadow: "none",
-              bgcolor: "#dc2626", 
+              bgcolor: "#dc2626",
               "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
             }}
           >

@@ -235,18 +235,16 @@ export default function CompaniesSection() {
   return (
     <>
       <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-        {/* Company Create Form rendering directly at top now */}
         <CompanyCreateForm loading={saving} onSubmit={handleCreate} />
 
         <Divider sx={{ borderColor: "#1e293b" }} />
 
-        {/* Recent Companies Section with Embedded Right-Aligned Count Chip */}
         <Box>
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between", // Pushes heading to left and chip to right
+              justifyContent: "space-between",
               mb: 1.5,
             }}
           >
@@ -261,7 +259,6 @@ export default function CompaniesSection() {
               Recent Companies
             </Typography>
 
-            {/* Count Chip shifted exactly next to the section heading */}
             <Chip
               label={`${companies.length} Companies`}
               size="small"
@@ -272,8 +269,8 @@ export default function CompaniesSection() {
                 bgcolor: "#1e293b",
                 fontSize: "10.5px",
                 fontWeight: 600,
-                height: 20, // Low-profile premium sizing
-                borderRadius: "4px", // Matches our structural card edges
+                height: 24,
+                borderRadius: "4px",
                 px: 0.5,
               }}
             />
@@ -302,38 +299,53 @@ export default function CompaniesSection() {
         onClose={deletingId ? undefined : handleCancelDelete}
         maxWidth="xs"
         fullWidth
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "#1e293b",
+              backgroundImage: "none", 
+              borderRadius: "8px",
+              border: "1px solid #334155",
+            },
+          },
+        }}
       >
         <DialogTitle
           sx={{
-            fontSize: "16px",
-            fontWeight: 700,
+            fontSize: "15px",
+            fontWeight: 600,
+            color: "#f8fafc", 
+            pb: 1,
           }}
         >
           Delete company
         </DialogTitle>
 
-        <DialogContent>
+        <DialogContent sx={{ pb: 2 }}>
           <DialogContentText
             sx={{
-              fontSize: "13px",
+              fontSize: "12.5px",
+              color: "#cbd5e1",
+              lineHeight: 1.45,
             }}
           >
-            Are you sure you want to delete <strong>{companyName}</strong>?
+            Are you sure you want to delete{" "}
+            <strong style={{ color: "#f8fafc" }}>{companyName}</strong>? This action cannot be
+            undone.
           </DialogContentText>
         </DialogContent>
 
-        <DialogActions
-          sx={{
-            px: 3,
-            pb: 2,
-          }}
-        >
+        <DialogActions sx={{ px: 3, pb: 2, gap: 0.5 }}>
           <Button
             type="button"
             disabled={Boolean(deletingId)}
             onClick={handleCancelDelete}
             sx={{
               textTransform: "none",
+              fontSize: "12.5px",
+              color: "#94a3b8",
+              fontWeight: 500,
+              "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" },
             }}
           >
             Cancel
@@ -349,6 +361,12 @@ export default function CompaniesSection() {
             }}
             sx={{
               textTransform: "none",
+              fontSize: "12.5px",
+              fontWeight: 600,
+              borderRadius: "6px",
+              boxShadow: "none",
+              bgcolor: "#dc2626", 
+              "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
             }}
           >
             {deletingId ? "Deleting..." : "Delete"}

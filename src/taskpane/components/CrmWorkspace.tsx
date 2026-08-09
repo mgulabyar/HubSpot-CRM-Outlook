@@ -5,6 +5,7 @@ import ContactsPage from "./contacts/ContactsPage";
 import CompaniesSection from "./companies/CompaniesSection";
 import DealsSection from "./deals/DealsSection";
 import TasksSection from "./tasks/TasksSection";
+import AssociationsSection from "./associations/AssociationsSection";
 
 type CrmTabValue = "contacts" | "companies" | "deals" | "tasks" | "associations";
 
@@ -110,10 +111,7 @@ function renderTabContent(value: CrmTabValue) {
 
     case "associations":
       return (
-        <ComingSoonSection
-          title="Associations"
-          description="Link contacts, companies, deals and tasks together."
-        />
+       <AssociationsSection/>
       );
 
     default:

@@ -259,8 +259,8 @@ export default function TasksSection() {
                   bgcolor: "#1e293b",
                   fontSize: "10.5px",
                   fontWeight: 600,
-                  height: 20, // Modern low-profile premium sizing
-                  borderRadius: "4px", // Matches our structural card edges
+                  height: 24,
+                  borderRadius: "4px", 
                   px: 0.5,
                 }}
               />

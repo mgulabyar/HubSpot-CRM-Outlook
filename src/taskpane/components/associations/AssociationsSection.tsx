@@ -1,7 +1,4 @@
-import React, {
-  useCallback,
-  useState,
-} from "react";
+import React, { useCallback, useState } from "react";
 import {
   Alert,
   Box,
@@ -27,37 +24,24 @@ import {
   fetchAssociations,
 } from "../../services/AssociationApi";
 
-import type {
-  AssociationFormValues,
-  AssociationResult,
-} from "../../types/AssociationModels";
+import type { AssociationFormValues, AssociationResult } from "../../types/AssociationModels";
 
 import { getApiErrorMessage } from "../../utils/apiError";
 
-type ToastSeverity =
-  | "success"
-  | "error"
-  | "info"
-  | "warning";
+type ToastSeverity = "success" | "error" | "info" | "warning";
 
 export default function AssociationsSection() {
-  const [associations, setAssociations] =
-    useState<AssociationResult[]>([]);
+  const [associations, setAssociations] = useState<AssociationResult[]>([]);
 
-  const [currentSearch, setCurrentSearch] =
-    useState<AssociationFormValues | null>(null);
+  const [currentSearch, setCurrentSearch] = useState<AssociationFormValues | null>(null);
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const [saving, setSaving] =
-    useState(false);
+  const [saving, setSaving] = useState(false);
 
-  const [deletingId, setDeletingId] =
-    useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const [pendingDelete, setPendingDelete] =
-    useState<AssociationFormValues | null>(null);
+  const [pendingDelete, setPendingDelete] = useState<AssociationFormValues | null>(null);
 
   const [toast, setToast] = useState<{
     open: boolean;
@@ -69,19 +53,13 @@ export default function AssociationsSection() {
     severity: "success",
   });
 
-  const showToast = useCallback(
-    (
-      message: string,
-      severity: ToastSeverity
-    ) => {
-      setToast({
-        open: true,
-        message,
-        severity,
-      });
-    },
-    []
-  );
+  const showToast = useCallback((message: string, severity: ToastSeverity) => {
+    setToast({
+      open: true,
+      message,
+      severity,
+    });
+  }, []);
 
   const closeToast = () => {
     setToast((previous) => ({
@@ -90,39 +68,24 @@ export default function AssociationsSection() {
     }));
   };
 
-  const loadAssociations = async (
-    values: AssociationFormValues
-  ) => {
+  const loadAssociations = async (values: AssociationFormValues) => {
     try {
       setLoading(true);
 
-      const response =
-        await fetchAssociations(
-          values.fromType,
-          values.fromId,
-          values.toType
-        );
+      const response = await fetchAssociations(values.fromType, values.fromId, values.toType);
 
       setCurrentSearch(values);
       setAssociations(response.results || []);
     } catch (error) {
-      console.error(
-        "[AssociationsSection] load failed:",
-        error
-      );
+      console.error("[AssociationsSection] load failed:", error);
 
-      showToast(
-        getApiErrorMessage(error),
-        "error"
-      );
+      showToast(getApiErrorMessage(error), "error");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleCreate = async (
-    values: AssociationFormValues
-  ): Promise<boolean> => {
+  const handleCreate = async (values: AssociationFormValues): Promise<boolean> => {
     try {
       setSaving(true);
 
@@ -130,22 +93,13 @@ export default function AssociationsSection() {
 
       await loadAssociations(values);
 
-      showToast(
-        "Association created successfully.",
-        "success"
-      );
+      showToast("Association created successfully.", "success");
 
       return true;
     } catch (error) {
-      console.error(
-        "[AssociationsSection] create failed:",
-        error
-      );
+      console.error("[AssociationsSection] create failed:", error);
 
-      showToast(
-        getApiErrorMessage(error),
-        "error"
-      );
+      showToast(getApiErrorMessage(error), "error");
 
       return false;
     } finally {
@@ -153,9 +107,7 @@ export default function AssociationsSection() {
     }
   };
 
-  const handleRequestDelete = async (
-    values: AssociationFormValues
-  ): Promise<void> => {
+  const handleRequestDelete = async (values: AssociationFormValues): Promise<void> => {
     setPendingDelete(values);
   };
 
@@ -183,28 +135,18 @@ export default function AssociationsSection() {
         await loadAssociations(currentSearch);
       }
 
-      showToast(
-        "Association deleted successfully.",
-        "success"
-      );
+      showToast("Association deleted successfully.", "success");
     } catch (error) {
-      console.error(
-        "[AssociationsSection] delete failed:",
-        error
-      );
+      console.error("[AssociationsSection] delete failed:", error);
 
-      showToast(
-        getApiErrorMessage(error),
-        "error"
-      );
+      showToast(getApiErrorMessage(error), "error");
     } finally {
       setDeletingId(null);
       setPendingDelete(null);
     }
   };
 
-  const pendingTargetId =
-    pendingDelete?.toId || "";
+  const pendingTargetId = pendingDelete?.toId || "";
 
   return (
     <>
@@ -244,8 +186,7 @@ export default function AssociationsSection() {
             size="small"
             sx={{
               color: "#F5714E",
-              bgcolor:
-                "rgba(245, 113, 78, 0.08)",
+              bgcolor: "rgba(245, 113, 78, 0.08)",
               fontSize: "11px",
               fontWeight: 600,
             }}
@@ -256,8 +197,7 @@ export default function AssociationsSection() {
             size="small"
             sx={{
               color: "#cbd5e1",
-              bgcolor:
-                "rgba(203, 213, 225, 0.08)",
+              bgcolor: "rgba(203, 213, 225, 0.08)",
               fontSize: "11px",
               fontWeight: 600,
             }}
@@ -270,10 +210,7 @@ export default function AssociationsSection() {
           }}
         />
 
-        <AssociationCreateForm
-          loading={saving}
-          onSubmit={handleCreate}
-        />
+        <AssociationCreateForm loading={saving} onSubmit={handleCreate} />
 
         <Divider
           sx={{
@@ -316,11 +253,7 @@ export default function AssociationsSection() {
 
       <Dialog
         open={Boolean(pendingDelete)}
-        onClose={
-          deletingId
-            ? undefined
-            : handleCancelDelete
-        }
+        onClose={deletingId ? undefined : handleCancelDelete}
         maxWidth="xs"
         fullWidth
       >
@@ -339,8 +272,7 @@ export default function AssociationsSection() {
               fontSize: "13px",
             }}
           >
-            Are you sure you want to remove association
-            with record{" "}
+            Are you sure you want to remove association with record{" "}
             <strong>{pendingTargetId}</strong>?
           </DialogContentText>
         </DialogContent>

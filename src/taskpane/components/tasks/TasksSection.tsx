@@ -364,7 +364,7 @@ export default function TasksSection() {
             color="error"
             disabled={Boolean(deletingId)}
             onClick={() => {
-              void handleConfirmDelete(); // Original function parameters call preserved
+              void handleConfirmDelete();
             }}
             sx={{
               textTransform: "none",
@@ -372,7 +372,7 @@ export default function TasksSection() {
               fontWeight: 600,
               borderRadius: "6px",
               boxShadow: "none",
-              bgcolor: "#dc2626", // Solid flat red
+              bgcolor: "#dc2626",
               "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
             }}
           >

@@ -18,9 +18,7 @@ const taskApi = axios.create({
   },
 });
 
-function cleanTaskPayload(
-  payload: TaskFormValues
-) {
+function cleanTaskPayload(payload: TaskFormValues) {
   const result: Record<string, string> = {};
 
   const allowedFields = [
@@ -36,57 +34,37 @@ function cleanTaskPayload(
   ];
 
   allowedFields.forEach((field) => {
-    const value =
-      payload[
-        field as keyof TaskFormValues
-      ];
+    const value = payload[field as keyof TaskFormValues];
 
-    if (
-      value !== undefined &&
-      value !== null &&
-      String(value).trim() !== ""
-    ) {
+    if (value !== undefined && value !== null && String(value).trim() !== "") {
       result[field] = String(value).trim();
     }
   });
 
   if (result.hubspot_owner_id) {
-    result.hubspot_owner_id =
-      result.hubspot_owner_id
-        .replace(/\s+/g, "")
-        .trim();
+    result.hubspot_owner_id = result.hubspot_owner_id.replace(/\s+/g, "").trim();
   }
 
   if (result.associatedObjectId) {
-    result.associatedObjectId =
-      result.associatedObjectId
-        .replace(/\s+/g, "")
-        .trim();
+    result.associatedObjectId = result.associatedObjectId.replace(/\s+/g, "").trim();
   }
 
   if (
     result.hs_timestamp &&
     !result.hs_timestamp.endsWith("Z") &&
-    !/[+-]\d{2}:\d{2}$/.test(
-      result.hs_timestamp
-    )
+    !/[+-]\d{2}:\d{2}$/.test(result.hs_timestamp)
   ) {
-    const parsedDate = new Date(
-      result.hs_timestamp
-    );
+    const parsedDate = new Date(result.hs_timestamp);
 
     if (!Number.isNaN(parsedDate.getTime())) {
-      result.hs_timestamp =
-        parsedDate.toISOString();
+      result.hs_timestamp = parsedDate.toISOString();
     }
   }
 
   return result;
 }
 
-function getTaskErrorMessage(
-  error: unknown
-): string {
+function getTaskErrorMessage(error: unknown): string {
   if (!axios.isAxiosError(error)) {
     if (error instanceof Error) {
       return error.message;
@@ -97,42 +75,26 @@ function getTaskErrorMessage(
 
   const responseData = error.response?.data;
 
-  console.error(
-    "[TaskApi] status:",
-    error.response?.status
-  );
+  console.error("[TaskApi] status:", error.response?.status);
 
-  console.error(
-    "[TaskApi] response:",
-    responseData
-  );
+  console.error("[TaskApi] response:", responseData);
 
-  if (
-    typeof responseData?.message === "string" &&
-    responseData.message.trim()
-  ) {
+  if (typeof responseData?.message === "string" && responseData.message.trim()) {
     return responseData.message;
   }
 
-  if (
-    typeof responseData?.raw?.message === "string"
-  ) {
+  if (typeof responseData?.raw?.message === "string") {
     return responseData.raw.message;
   }
 
-  if (
-    typeof responseData?.error?.message === "string"
-  ) {
+  if (typeof responseData?.error?.message === "string") {
     return responseData.error.message;
   }
 
   if (Array.isArray(responseData?.errors)) {
     const firstError = responseData.errors[0];
 
-    if (
-      firstError &&
-      typeof firstError.message === "string"
-    ) {
+    if (firstError && typeof firstError.message === "string") {
       return firstError.message;
     }
   }
@@ -147,21 +109,14 @@ function getTaskErrorMessage(
 function throwTaskError(error: unknown): never {
   const message = getTaskErrorMessage(error);
 
-  console.error(
-    "[TaskApi] final error:",
-    message
-  );
+  console.error("[TaskApi] final error:", message);
 
   throw new Error(message);
 }
 
-export const fetchTasks = async (
-  limit = 20
-): Promise<TaskListResponse> => {
+export const fetchTasks = async (limit = 20): Promise<TaskListResponse> => {
   try {
-    const response = await taskApi.get<
-      TaskApiResponse<TaskListResponse>
-    >("/hubspot/tasks", {
+    const response = await taskApi.get<TaskApiResponse<TaskListResponse>>("/hubspot/tasks", {
       params: {
         limit,
       },
@@ -173,19 +128,11 @@ export const fetchTasks = async (
   }
 };
 
-export const fetchTaskOwners = async (): Promise<
-  OwnerRecord[]
-> => {
+export const fetchTaskOwners = async (): Promise<OwnerRecord[]> => {
   try {
-    const response = await taskApi.get<
-      TaskApiResponse<OwnerListResponse>
-    >("/hubspot/owners");
+    const response = await taskApi.get<TaskApiResponse<OwnerListResponse>>("/hubspot/owners");
 
-    console.log(
-      "[TaskApi] owners response:",
-      response.status,
-      response.data
-    );
+    console.log("[TaskApi] owners response:", response.status, response.data);
 
     return response.data.data.results || [];
   } catch (error) {
@@ -193,9 +140,7 @@ export const fetchTaskOwners = async (): Promise<
   }
 };
 
-export const fetchTask = async (
-  taskId: string
-): Promise<TaskRecord> => {
+export const fetchTask = async (taskId: string): Promise<TaskRecord> => {
   try {
     const cleanId = String(taskId).trim();
 
@@ -203,9 +148,7 @@ export const fetchTask = async (
       throw new Error("Task ID is missing.");
     }
 
-    const response = await taskApi.get<
-      TaskApiResponse<TaskRecord>
-    >(
+    const response = await taskApi.get<TaskApiResponse<TaskRecord>>(
       `/hubspot/tasks/${encodeURIComponent(cleanId)}`
     );
 
@@ -215,55 +158,38 @@ export const fetchTask = async (
   }
 };
 
-export const createNewTask = async (
-  payload: TaskFormValues
-): Promise<TaskRecord> => {
+export const createNewTask = async (payload: TaskFormValues): Promise<TaskRecord> => {
   try {
-    const cleanPayload =
-      cleanTaskPayload(payload);
+    const cleanPayload = cleanTaskPayload(payload);
 
     if (!cleanPayload.hs_task_subject) {
-      throw new Error(
-        "Task subject is required."
-      );
+      throw new Error("Task subject is required.");
     }
 
     if (!cleanPayload.hs_timestamp) {
-      cleanPayload.hs_timestamp =
-        new Date().toISOString();
+      cleanPayload.hs_timestamp = new Date().toISOString();
     }
 
     if (!cleanPayload.hs_task_status) {
-      cleanPayload.hs_task_status =
-        "NOT_STARTED";
+      cleanPayload.hs_task_status = "NOT_STARTED";
     }
 
     if (!cleanPayload.hs_task_priority) {
-      cleanPayload.hs_task_priority =
-        "MEDIUM";
+      cleanPayload.hs_task_priority = "MEDIUM";
     }
 
     if (!cleanPayload.hs_task_type) {
       cleanPayload.hs_task_type = "TODO";
     }
 
-    console.log(
-      "[TaskApi] create payload:",
-      cleanPayload
-    );
+    console.log("[TaskApi] create payload:", cleanPayload);
 
-    const response = await taskApi.post<
-      TaskApiResponse<TaskRecord>
-    >(
+    const response = await taskApi.post<TaskApiResponse<TaskRecord>>(
       "/hubspot/tasks",
       cleanPayload
     );
 
-    console.log(
-      "[TaskApi] create response:",
-      response.status,
-      response.data
-    );
+    console.log("[TaskApi] create response:", response.status, response.data);
 
     return response.data.data;
   } catch (error) {
@@ -282,23 +208,16 @@ export const updateExistingTask = async (
       throw new Error("Task ID is missing.");
     }
 
-    const cleanPayload =
-      cleanTaskPayload(payload);
+    const cleanPayload = cleanTaskPayload(payload);
 
     delete cleanPayload.associatedObjectType;
     delete cleanPayload.associatedObjectId;
 
-    if (
-      Object.keys(cleanPayload).length === 0
-    ) {
-      throw new Error(
-        "At least one task field is required."
-      );
+    if (Object.keys(cleanPayload).length === 0) {
+      throw new Error("At least one task field is required.");
     }
 
-    const response = await taskApi.patch<
-      TaskApiResponse<TaskRecord>
-    >(
+    const response = await taskApi.patch<TaskApiResponse<TaskRecord>>(
       `/hubspot/tasks/${encodeURIComponent(cleanId)}`,
       cleanPayload
     );
@@ -309,9 +228,7 @@ export const updateExistingTask = async (
   }
 };
 
-export const removeTask = async (
-  taskId: string
-) => {
+export const removeTask = async (taskId: string) => {
   try {
     const cleanId = String(taskId).trim();
 
@@ -319,9 +236,7 @@ export const removeTask = async (
       throw new Error("Task ID is missing.");
     }
 
-    const response = await taskApi.delete(
-      `/hubspot/tasks/${encodeURIComponent(cleanId)}`
-    );
+    const response = await taskApi.delete(`/hubspot/tasks/${encodeURIComponent(cleanId)}`);
 
     return {
       status: response.status,

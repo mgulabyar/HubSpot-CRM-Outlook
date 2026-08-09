@@ -104,14 +104,21 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
   };
 
   return (
-    <Stack spacing={1.3}>
+    <Stack spacing={2.2}>
       {error && (
         <Alert
           severity="warning"
+          variant="outlined"
           onClose={() => setError("")}
           sx={{
-            borderRadius: "4px",
+            borderRadius: "6px",
             fontSize: "12px",
+            color: "#fef08a",
+            borderColor: "rgba(234, 179, 8, 0.3)",
+            bgcolor: "rgba(234, 179, 8, 0.06)",
+            "& .MuiAlert-icon": {
+              color: "#eab308",
+            },
           }}
         >
           {error}
@@ -124,7 +131,29 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         label="Task Subject"
         value={form.hs_task_subject}
         onChange={updateField("hs_task_subject")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#f8fafc" },
+          },
+        }}
       />
 
       <TextField
@@ -135,7 +164,29 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         label="Task Description"
         value={form.hs_task_body}
         onChange={updateField("hs_task_body")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& textarea": { color: "#f8fafc" },
+          },
+        }}
       />
 
       <TextField
@@ -146,18 +197,36 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         value={form.hs_timestamp}
         onChange={updateField("hs_timestamp")}
         slotProps={{
-          inputLabel: {
-            shrink: true,
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#f8fafc" },
+            "& input::-webkit-calendar-picker-indicator": { filter: "invert(1)" },
           },
         }}
-        sx={{ bgcolor: "#fff" }}
       />
 
       <Box
         sx={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: 1,
+          gap: 1.5,
         }}
       >
         <TextField
@@ -166,16 +235,35 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           label="Status"
           value={form.hs_task_status}
           onChange={updateField("hs_task_status")}
-          sx={{ bgcolor: "#fff" }}
+          slotProps={{
+            inputLabel: { shrink: true },
+          }}
+          sx={{
+            "& .MuiInputLabel-root": {
+              color: "#94a3b8",
+              fontSize: "13px",
+              fontWeight: 500,
+              bgcolor: "#1e293b",
+              px: 0.6,
+            },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+            "& .MuiOutlinedInput-root": {
+              color: "#f8fafc",
+              fontSize: "13px",
+              bgcolor: "#0f172a",
+              borderRadius: "6px",
+              "& fieldset": { borderColor: "#334155" },
+              "&:hover fieldset": { borderColor: "#475569" },
+              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+              "& .MuiSelect-select": { color: "#f8fafc" },
+              "& .MuiSvgIcon-root": { color: "#94a3b8" },
+            },
+          }}
         >
           <MenuItem value="NOT_STARTED">Not Started</MenuItem>
-
           <MenuItem value="IN_PROGRESS">In Progress</MenuItem>
-
           <MenuItem value="COMPLETED">Completed</MenuItem>
-
           <MenuItem value="WAITING">Waiting</MenuItem>
-
           <MenuItem value="DEFERRED">Deferred</MenuItem>
         </TextField>
 
@@ -185,7 +273,30 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           label="Priority"
           value={form.hs_task_priority}
           onChange={updateField("hs_task_priority")}
-          sx={{ bgcolor: "#fff" }}
+          slotProps={{
+            inputLabel: { shrink: true },
+          }}
+          sx={{
+            "& .MuiInputLabel-root": {
+              color: "#94a3b8",
+              fontSize: "13px",
+              fontWeight: 500,
+              bgcolor: "#1e293b",
+              px: 0.6,
+            },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+            "& .MuiOutlinedInput-root": {
+              color: "#f8fafc",
+              fontSize: "13px",
+              bgcolor: "#0f172a",
+              borderRadius: "6px",
+              "& fieldset": { borderColor: "#334155" },
+              "&:hover fieldset": { borderColor: "#475569" },
+              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+              "& .MuiSelect-select": { color: "#f8fafc" },
+              "& .MuiSvgIcon-root": { color: "#94a3b8" },
+            },
+          }}
         >
           <MenuItem value="LOW">Low</MenuItem>
           <MenuItem value="MEDIUM">Medium</MenuItem>
@@ -200,7 +311,30 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         label="Task Type"
         value={form.hs_task_type}
         onChange={updateField("hs_task_type")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& .MuiSelect-select": { color: "#f8fafc" },
+            "& .MuiSvgIcon-root": { color: "#94a3b8" },
+          },
+        }}
       >
         <MenuItem value="TODO">To-do</MenuItem>
         <MenuItem value="CALL">Call</MenuItem>
@@ -215,10 +349,32 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         label="HubSpot Owner"
         value={form.hubspot_owner_id}
         onChange={updateField("hubspot_owner_id")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& .MuiSelect-select": { color: "#f8fafc" },
+            "& .MuiSvgIcon-root": { color: "#94a3b8" },
+          },
+        }}
       >
         <MenuItem value="">Unassigned</MenuItem>
-
         {owners.map((owner) => {
           const ownerName =
             [owner.firstName, owner.lastName].filter(Boolean).join(" ") || owner.email || owner.id;
@@ -238,14 +394,34 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         label="Associated Object Type"
         value={form.associatedObjectType}
         onChange={updateField("associatedObjectType")}
-        sx={{ bgcolor: "#fff" }}
+        slotProps={{
+          inputLabel: { shrink: true },
+        }}
+        sx={{
+          "& .MuiInputLabel-root": {
+            color: "#94a3b8",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#1e293b",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#f8fafc",
+            fontSize: "13px",
+            bgcolor: "#0f172a",
+            borderRadius: "6px",
+            "& fieldset": { borderColor: "#334155" },
+            "&:hover fieldset": { borderColor: "#475569" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& .MuiSelect-select": { color: "#f8fafc" },
+            "& .MuiSvgIcon-root": { color: "#94a3b8" },
+          },
+        }}
       >
         <MenuItem value="">No association</MenuItem>
-
         <MenuItem value="contacts">Contact</MenuItem>
-
         <MenuItem value="companies">Company</MenuItem>
-
         <MenuItem value="deals">Deal</MenuItem>
       </TextField>
 
@@ -257,7 +433,30 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           value={form.associatedObjectId}
           onChange={updateField("associatedObjectId")}
           helperText="Only numeric record ID is allowed"
-          sx={{ bgcolor: "#fff" }}
+          slotProps={{
+            inputLabel: { shrink: true },
+          }}
+          sx={{
+            "& .MuiInputLabel-root": {
+              color: "#94a3b8",
+              fontSize: "13px",
+              fontWeight: 500,
+              bgcolor: "#1e293b",
+              px: 0.6,
+            },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+            "& .MuiFormHelperText-root": { color: "#64748b", fontSize: "10.5px", mt: 0.5 },
+            "& .MuiOutlinedInput-root": {
+              color: "#f8fafc",
+              fontSize: "13px",
+              bgcolor: "#0f172a",
+              borderRadius: "6px",
+              "& fieldset": { borderColor: "#334155" },
+              "&:hover fieldset": { borderColor: "#475569" },
+              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+              "& input": { color: "#f8fafc" },
+            },
+          }}
         />
       )}
 
@@ -265,27 +464,27 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         type="button"
         variant="contained"
         disabled={loading}
-        startIcon={
-          <SaveIcon
-            sx={{
-              fontSize: "16px !important",
-            }}
-          />
-        }
+        startIcon={<SaveIcon sx={{ fontSize: "15px !important" }} />}
         onClick={() => {
           void handleSubmit();
         }}
         sx={{
-          alignSelf: "flex-start",
+          width: "100%",
           textTransform: "none",
-          borderRadius: "4px",
+          borderRadius: "6px",
           bgcolor: "#F5714E",
+          color: "#fff",
           fontSize: "13px",
           fontWeight: 600,
+          py: 0.9,
           boxShadow: "none",
           "&:hover": {
-            bgcolor: "#e65f3d",
+            bgcolor: "#e05e3b",
             boxShadow: "none",
+          },
+          "&.Mui-disabled": {
+            bgcolor: "rgba(245, 113, 78, 0.3)",
+            color: "rgba(248, 250, 252, 0.4)",
           },
         }}
       >

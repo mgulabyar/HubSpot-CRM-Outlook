@@ -383,7 +383,7 @@ export default function DealCreateForm({
           },
         }}
       >
-        {loading ? "Saving..." : "Save"}
+        {loading ? "Saving..." : "Save Deal"}
       </Button>
     </Stack>
   );

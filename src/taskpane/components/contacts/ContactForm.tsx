@@ -281,7 +281,7 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
             },
           }}
         >
-          {loading ? "Saving..." : "Create"}
+          {loading ? "Saving..." : "Save Contact"}
         </Button>
 
         <Button

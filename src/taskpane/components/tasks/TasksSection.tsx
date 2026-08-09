@@ -265,7 +265,6 @@ export default function TasksSection() {
                 }}
               />
 
-              {/* Owners Count Chip */}
               <Chip
                 label={`${owners.length} Owners`}
                 size="small"
@@ -276,7 +275,7 @@ export default function TasksSection() {
                   bgcolor: "#1e293b",
                   fontSize: "10.5px",
                   fontWeight: 600,
-                  height: 20,
+                  height: 26,
                   borderRadius: "4px",
                   px: 0.5,
                 }}

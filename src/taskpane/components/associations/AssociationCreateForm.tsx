@@ -1,24 +1,12 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Box,
-  Button,
-  MenuItem,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Alert, Box, Button, MenuItem, Stack, TextField } from "@mui/material";
 import LinkIcon from "@mui/icons-material/Link";
 
-import type {
-  AssociationFormValues,
-  AssociationObjectType,
-} from "../../types/AssociationModels";
+import type { AssociationFormValues, AssociationObjectType } from "../../types/AssociationModels";
 
 type Props = {
   loading: boolean;
-  onSubmit: (
-    values: AssociationFormValues
-  ) => Promise<boolean>;
+  onSubmit: (values: AssociationFormValues) => Promise<boolean>;
 };
 
 const initialValues: AssociationFormValues = {
@@ -32,34 +20,17 @@ function cleanId(value: string) {
   return value.replace(/\s+/g, "").trim();
 }
 
-export default function AssociationCreateForm({
-  loading,
-  onSubmit,
-}: Props) {
-  const [form, setForm] =
-    useState<AssociationFormValues>(initialValues);
+export default function AssociationCreateForm({ loading, onSubmit }: Props) {
+  const [form, setForm] = useState<AssociationFormValues>(initialValues);
 
   const [error, setError] = useState("");
 
   const updateField =
-    (
-      field:
-        | "fromType"
-        | "fromId"
-        | "toType"
-        | "toId"
-    ) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-      >
-    ) => {
+    (field: "fromType" | "fromId" | "toType" | "toId") =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       let value = event.target.value;
 
-      if (
-        field === "fromId" ||
-        field === "toId"
-      ) {
+      if (field === "fromId" || field === "toId") {
         value = cleanId(value);
       }
 
@@ -76,31 +47,19 @@ export default function AssociationCreateForm({
     const toId = cleanId(form.toId);
 
     if (!fromId || !toId) {
-      setError(
-        "Both source and target record IDs are required."
-      );
+      setError("Both source and target record IDs are required.");
 
       return;
     }
 
-    if (
-      !/^[0-9]+$/.test(fromId) ||
-      !/^[0-9]+$/.test(toId)
-    ) {
-      setError(
-        "Record IDs must contain numbers only."
-      );
+    if (!/^[0-9]+$/.test(fromId) || !/^[0-9]+$/.test(toId)) {
+      setError("Record IDs must contain numbers only.");
 
       return;
     }
 
-    if (
-      form.fromType === form.toType &&
-      fromId === toId
-    ) {
-      setError(
-        "A record cannot be associated with itself."
-      );
+    if (form.fromType === form.toType && fromId === toId) {
+      setError("A record cannot be associated with itself.");
 
       return;
     }
@@ -152,21 +111,13 @@ export default function AssociationCreateForm({
           onChange={updateField("fromType")}
           sx={{ bgcolor: "#fff" }}
         >
-          <MenuItem value="contacts">
-            Contact
-          </MenuItem>
+          <MenuItem value="contacts">Contact</MenuItem>
 
-          <MenuItem value="companies">
-            Company
-          </MenuItem>
+          <MenuItem value="companies">Company</MenuItem>
 
-          <MenuItem value="deals">
-            Deal
-          </MenuItem>
+          <MenuItem value="deals">Deal</MenuItem>
 
-          <MenuItem value="tasks">
-            Task
-          </MenuItem>
+          <MenuItem value="tasks">Task</MenuItem>
         </TextField>
 
         <TextField
@@ -193,21 +144,13 @@ export default function AssociationCreateForm({
           onChange={updateField("toType")}
           sx={{ bgcolor: "#fff" }}
         >
-          <MenuItem value="contacts">
-            Contact
-          </MenuItem>
+          <MenuItem value="contacts">Contact</MenuItem>
 
-          <MenuItem value="companies">
-            Company
-          </MenuItem>
+          <MenuItem value="companies">Company</MenuItem>
 
-          <MenuItem value="deals">
-            Deal
-          </MenuItem>
+          <MenuItem value="deals">Deal</MenuItem>
 
-          <MenuItem value="tasks">
-            Task
-          </MenuItem>
+          <MenuItem value="tasks">Task</MenuItem>
         </TextField>
 
         <TextField
@@ -247,9 +190,7 @@ export default function AssociationCreateForm({
           },
         }}
       >
-        {loading
-          ? "Associating..."
-          : "Create Association"}
+        {loading ? "Associating..." : "Create Association"}
       </Button>
     </Stack>
   );

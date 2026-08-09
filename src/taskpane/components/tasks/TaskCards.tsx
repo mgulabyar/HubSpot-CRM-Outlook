@@ -13,9 +13,7 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/Delete";
 
-import type {
-  TaskRecord,
-} from "../../types/TaskModels";
+import type { TaskRecord } from "../../types/TaskModels";
 
 type Props = {
   tasks: TaskRecord[];
@@ -39,13 +37,7 @@ function formatDate(value?: string | null) {
   return date.toLocaleString();
 }
 
-function Row({
-  label,
-  value,
-}: {
-  label: string;
-  value?: string | null;
-}) {
+function Row({ label, value }: { label: string; value?: string | null }) {
   return (
     <Box
       sx={{
@@ -79,13 +71,7 @@ function Row({
   );
 }
 
-export default function TaskCards({
-  tasks,
-  loading,
-  deletingId,
-  onEdit,
-  onDelete,
-}: Props) {
+export default function TaskCards({ tasks, loading, deletingId, onEdit, onDelete }: Props) {
   if (loading) {
     return (
       <Typography
@@ -117,8 +103,7 @@ export default function TaskCards({
       {tasks.map((task) => {
         const taskId = String(task.id);
         const properties = task.properties;
-        const isDeleting =
-          deletingId === taskId;
+        const isDeleting = deletingId === taskId;
 
         return (
           <Card
@@ -131,8 +116,7 @@ export default function TaskCards({
               borderRadius: "0px 8px 8px 0px",
               bgcolor: "#1e293b",
               opacity: isDeleting ? 0.55 : 1,
-              boxShadow:
-                "0 4px 12px rgba(0, 0, 0, 0.15)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
               transition: "all 200ms ease",
               "&:hover": {
                 bgcolor: "#243146",
@@ -166,8 +150,7 @@ export default function TaskCards({
                         wordBreak: "break-word",
                       }}
                     >
-                      {properties.hs_task_subject ||
-                        "Untitled Task"}
+                      {properties.hs_task_subject || "Untitled Task"}
                     </Typography>
 
                     <Typography
@@ -205,46 +188,18 @@ export default function TaskCards({
                     gap: 1.1,
                   }}
                 >
-                  <Row
-                    label="Status"
-                    value={
-                      properties.hs_task_status
-                    }
-                  />
+                  <Row label="Status" value={properties.hs_task_status} />
 
-                  <Row
-                    label="Priority"
-                    value={
-                      properties.hs_task_priority
-                    }
-                  />
+                  <Row label="Priority" value={properties.hs_task_priority} />
 
-                  <Row
-                    label="Type"
-                    value={properties.hs_task_type}
-                  />
+                  <Row label="Type" value={properties.hs_task_type} />
 
-                  <Row
-                    label="Due"
-                    value={formatDate(
-                      properties.hs_timestamp
-                    )}
-                  />
+                  <Row label="Due" value={formatDate(properties.hs_timestamp)} />
 
-                  <Row
-                    label="Owner"
-                    value={
-                      properties.hubspot_owner_id
-                    }
-                  />
+                  <Row label="Owner" value={properties.hubspot_owner_id} />
 
                   {properties.hs_task_body && (
-                    <Row
-                      label="Description"
-                      value={
-                        properties.hs_task_body
-                      }
-                    />
+                    <Row label="Description" value={properties.hs_task_body} />
                   )}
                 </Box>
 
@@ -268,8 +223,7 @@ export default function TaskCards({
                         fontSize: "10px",
                       }}
                     >
-                      Created:{" "}
-                      {formatDate(task.createdAt)}
+                      Created: {formatDate(task.createdAt)}
                     </Typography>
 
                     <Typography
@@ -278,8 +232,7 @@ export default function TaskCards({
                         fontSize: "10px",
                       }}
                     >
-                      Updated:{" "}
-                      {formatDate(task.updatedAt)}
+                      Updated: {formatDate(task.updatedAt)}
                     </Typography>
                   </Box>
 
@@ -302,16 +255,11 @@ export default function TaskCards({
                           },
                         }}
                       >
-                        <EditOutlinedIcon
-                          sx={{ fontSize: "15px" }}
-                        />
+                        <EditOutlinedIcon sx={{ fontSize: "15px" }} />
                       </IconButton>
                     </Tooltip>
 
-                    <Tooltip
-                      title="Delete task"
-                      arrow
-                    >
+                    <Tooltip title="Delete task" arrow>
                       <IconButton
                         type="button"
                         size="small"
@@ -329,9 +277,7 @@ export default function TaskCards({
                           },
                         }}
                       >
-                        <DeleteOutlineIcon
-                          sx={{ fontSize: "15px" }}
-                        />
+                        <DeleteOutlineIcon sx={{ fontSize: "15px" }} />
                       </IconButton>
                     </Tooltip>
                   </Box>

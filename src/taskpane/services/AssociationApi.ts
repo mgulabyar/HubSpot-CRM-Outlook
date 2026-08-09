@@ -19,9 +19,7 @@ function cleanId(value: string) {
   return value.replace(/\s+/g, "").trim();
 }
 
-function getAssociationErrorMessage(
-  error: unknown
-): string {
+function getAssociationErrorMessage(error: unknown): string {
   if (!axios.isAxiosError(error)) {
     if (error instanceof Error) {
       return error.message;
@@ -32,31 +30,19 @@ function getAssociationErrorMessage(
 
   const responseData = error.response?.data;
 
-  console.error(
-    "[AssociationApi] status:",
-    error.response?.status
-  );
+  console.error("[AssociationApi] status:", error.response?.status);
 
-  console.error(
-    "[AssociationApi] response:",
-    responseData
-  );
+  console.error("[AssociationApi] response:", responseData);
 
-  if (
-    typeof responseData?.message === "string"
-  ) {
+  if (typeof responseData?.message === "string") {
     return responseData.message;
   }
 
-  if (
-    typeof responseData?.raw?.message === "string"
-  ) {
+  if (typeof responseData?.raw?.message === "string") {
     return responseData.raw.message;
   }
 
-  if (
-    typeof responseData?.error?.message === "string"
-  ) {
+  if (typeof responseData?.error?.message === "string") {
     return responseData.error.message;
   }
 
@@ -67,16 +53,10 @@ function getAssociationErrorMessage(
   return error.message || "Association request failed.";
 }
 
-function throwAssociationError(
-  error: unknown
-): never {
-  const message =
-    getAssociationErrorMessage(error);
+function throwAssociationError(error: unknown): never {
+  const message = getAssociationErrorMessage(error);
 
-  console.error(
-    "[AssociationApi] final error:",
-    message
-  );
+  console.error("[AssociationApi] final error:", message);
 
   throw new Error(message);
 }
@@ -89,12 +69,8 @@ export const fetchAssociations = async (
   try {
     const cleanFromId = cleanId(fromId);
 
-    const response = await associationApi.get<
-      AssociationApiResponse<AssociationListResponse>
-    >(
-      `/hubspot/associations/${fromType}/${encodeURIComponent(
-        cleanFromId
-      )}/${toType}`
+    const response = await associationApi.get<AssociationApiResponse<AssociationListResponse>>(
+      `/hubspot/associations/${fromType}/${encodeURIComponent(cleanFromId)}/${toType}`
     );
 
     return response.data.data;
@@ -103,9 +79,7 @@ export const fetchAssociations = async (
   }
 };
 
-export const createAssociation = async (
-  payload: AssociationFormValues
-) => {
+export const createAssociation = async (payload: AssociationFormValues) => {
   try {
     const cleanPayload = {
       fromType: payload.fromType,
@@ -114,19 +88,11 @@ export const createAssociation = async (
       toId: cleanId(payload.toId),
     };
 
-    if (
-      !cleanPayload.fromId ||
-      !cleanPayload.toId
-    ) {
-      throw new Error(
-        "Both record IDs are required."
-      );
+    if (!cleanPayload.fromId || !cleanPayload.toId) {
+      throw new Error("Both record IDs are required.");
     }
 
-    const response = await associationApi.post(
-      "/hubspot/associations",
-      cleanPayload
-    );
+    const response = await associationApi.post("/hubspot/associations", cleanPayload);
 
     return response.data;
   } catch (error) {
@@ -134,9 +100,7 @@ export const createAssociation = async (
   }
 };
 
-export const deleteAssociation = async (
-  payload: AssociationFormValues
-) => {
+export const deleteAssociation = async (payload: AssociationFormValues) => {
   try {
     const cleanPayload = {
       fromType: payload.fromType,
@@ -145,12 +109,9 @@ export const deleteAssociation = async (
       toId: cleanId(payload.toId),
     };
 
-    const response = await associationApi.delete(
-      "/hubspot/associations",
-      {
-        data: cleanPayload,
-      }
-    );
+    const response = await associationApi.delete("/hubspot/associations", {
+      data: cleanPayload,
+    });
 
     return response.data;
   } catch (error) {

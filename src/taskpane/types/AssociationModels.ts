@@ -1,8 +1,4 @@
-export type AssociationObjectType =
-  | "contacts"
-  | "companies"
-  | "deals"
-  | "tasks";
+export type AssociationObjectType = "contacts" | "companies" | "deals" | "tasks";
 
 export interface AssociationFormValues {
   fromType: AssociationObjectType;

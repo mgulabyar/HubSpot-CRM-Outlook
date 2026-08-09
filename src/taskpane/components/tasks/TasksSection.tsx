@@ -1,8 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import {
   Alert,
@@ -32,44 +28,28 @@ import {
   updateExistingTask,
 } from "../../services/TaskApi";
 
-import type {
-  OwnerRecord,
-  TaskFormValues,
-  TaskRecord,
-} from "../../types/TaskModels";
+import type { OwnerRecord, TaskFormValues, TaskRecord } from "../../types/TaskModels";
 
 import { getApiErrorMessage } from "../../utils/apiError";
 
-type ToastSeverity =
-  | "success"
-  | "error"
-  | "info"
-  | "warning";
+type ToastSeverity = "success" | "error" | "info" | "warning";
 
 export default function TasksSection() {
-  const [tasks, setTasks] =
-    useState<TaskRecord[]>([]);
+  const [tasks, setTasks] = useState<TaskRecord[]>([]);
 
-  const [owners, setOwners] =
-    useState<OwnerRecord[]>([]);
+  const [owners, setOwners] = useState<OwnerRecord[]>([]);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] = useState(true);
 
-  const [saving, setSaving] =
-    useState(false);
+  const [saving, setSaving] = useState(false);
 
-  const [deletingId, setDeletingId] =
-    useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const [editingTask, setEditingTask] =
-    useState<TaskRecord | null>(null);
+  const [editingTask, setEditingTask] = useState<TaskRecord | null>(null);
 
-  const [editOpen, setEditOpen] =
-    useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
-  const [pendingDelete, setPendingDelete] =
-    useState<TaskRecord | null>(null);
+  const [pendingDelete, setPendingDelete] = useState<TaskRecord | null>(null);
 
   const [toast, setToast] = useState<{
     open: boolean;
@@ -81,19 +61,13 @@ export default function TasksSection() {
     severity: "success",
   });
 
-  const showToast = useCallback(
-    (
-      message: string,
-      severity: ToastSeverity
-    ) => {
-      setToast({
-        open: true,
-        message,
-        severity,
-      });
-    },
-    []
-  );
+  const showToast = useCallback((message: string, severity: ToastSeverity) => {
+    setToast({
+      open: true,
+      message,
+      severity,
+    });
+  }, []);
 
   const closeToast = () => {
     setToast((previous) => ({
@@ -102,67 +76,44 @@ export default function TasksSection() {
     }));
   };
 
-  const loadTaskData = useCallback(
-    async () => {
-      try {
-        setLoading(true);
+  const loadTaskData = useCallback(async () => {
+    try {
+      setLoading(true);
 
-        const [
-          tasksResponse,
-          ownersResponse,
-        ] = await Promise.all([
-          fetchTasks(20),
-          fetchTaskOwners(),
-        ]);
+      const [tasksResponse, ownersResponse] = await Promise.all([
+        fetchTasks(20),
+        fetchTaskOwners(),
+      ]);
 
-        setTasks(tasksResponse.results || []);
-        setOwners(ownersResponse || []);
-      } catch (error) {
-        console.error(
-          "[TasksSection] load failed:",
-          error
-        );
+      setTasks(tasksResponse.results || []);
+      setOwners(ownersResponse || []);
+    } catch (error) {
+      console.error("[TasksSection] load failed:", error);
 
-        showToast(
-          getApiErrorMessage(error),
-          "error"
-        );
-      } finally {
-        setLoading(false);
-      }
-    },
-    [showToast]
-  );
+      showToast(getApiErrorMessage(error), "error");
+    } finally {
+      setLoading(false);
+    }
+  }, [showToast]);
 
   useEffect(() => {
     void loadTaskData();
   }, [loadTaskData]);
 
-  const handleCreate = async (
-    values: TaskFormValues
-  ): Promise<boolean> => {
+  const handleCreate = async (values: TaskFormValues): Promise<boolean> => {
     try {
       setSaving(true);
 
       await createNewTask(values);
       await loadTaskData();
 
-      showToast(
-        "Task created successfully.",
-        "success"
-      );
+      showToast("Task created successfully.", "success");
 
       return true;
     } catch (error) {
-      console.error(
-        "[TasksSection] create failed:",
-        error
-      );
+      console.error("[TasksSection] create failed:", error);
 
-      showToast(
-        getApiErrorMessage(error),
-        "error"
-      );
+      showToast(getApiErrorMessage(error), "error");
 
       return false;
     } finally {
@@ -170,19 +121,11 @@ export default function TasksSection() {
     }
   };
 
-  const handleOpenEdit = (
-    taskId: string
-  ) => {
-    const selectedTask = tasks.find(
-      (task) =>
-        String(task.id) === String(taskId)
-    );
+  const handleOpenEdit = (taskId: string) => {
+    const selectedTask = tasks.find((task) => String(task.id) === String(taskId));
 
     if (!selectedTask) {
-      showToast(
-        "Task not found.",
-        "error"
-      );
+      showToast("Task not found.", "error");
 
       return;
     }
@@ -200,14 +143,9 @@ export default function TasksSection() {
     setEditingTask(null);
   };
 
-  const handleUpdate = async (
-    values: TaskFormValues
-  ): Promise<boolean> => {
+  const handleUpdate = async (values: TaskFormValues): Promise<boolean> => {
     if (!editingTask) {
-      showToast(
-        "No task selected.",
-        "error"
-      );
+      showToast("No task selected.", "error");
 
       return false;
     }
@@ -215,32 +153,20 @@ export default function TasksSection() {
     try {
       setSaving(true);
 
-      await updateExistingTask(
-        String(editingTask.id),
-        values
-      );
+      await updateExistingTask(String(editingTask.id), values);
 
       await loadTaskData();
 
       setEditOpen(false);
       setEditingTask(null);
 
-      showToast(
-        "Task updated successfully.",
-        "success"
-      );
+      showToast("Task updated successfully.", "success");
 
       return true;
     } catch (error) {
-      console.error(
-        "[TasksSection] update failed:",
-        error
-      );
+      console.error("[TasksSection] update failed:", error);
 
-      showToast(
-        getApiErrorMessage(error),
-        "error"
-      );
+      showToast(getApiErrorMessage(error), "error");
 
       return false;
     } finally {
@@ -248,19 +174,11 @@ export default function TasksSection() {
     }
   };
 
-  const handleRequestDelete = async (
-    taskId: string
-  ): Promise<void> => {
-    const selectedTask = tasks.find(
-      (task) =>
-        String(task.id) === String(taskId)
-    );
+  const handleRequestDelete = async (taskId: string): Promise<void> => {
+    const selectedTask = tasks.find((task) => String(task.id) === String(taskId));
 
     if (!selectedTask) {
-      showToast(
-        "Task not found.",
-        "error"
-      );
+      showToast("Task not found.", "error");
 
       return;
     }
@@ -281,45 +199,27 @@ export default function TasksSection() {
       return;
     }
 
-    const cleanId = String(
-      pendingDelete.id
-    ).trim();
+    const cleanId = String(pendingDelete.id).trim();
 
     try {
       setDeletingId(cleanId);
 
       await removeTask(cleanId);
 
-      setTasks((previousTasks) =>
-        previousTasks.filter(
-          (task) =>
-            String(task.id) !== cleanId
-        )
-      );
+      setTasks((previousTasks) => previousTasks.filter((task) => String(task.id) !== cleanId));
 
-      showToast(
-        "Task deleted successfully.",
-        "success"
-      );
+      showToast("Task deleted successfully.", "success");
     } catch (error) {
-      console.error(
-        "[TasksSection] delete failed:",
-        error
-      );
+      console.error("[TasksSection] delete failed:", error);
 
-      showToast(
-        getApiErrorMessage(error),
-        "error"
-      );
+      showToast(getApiErrorMessage(error), "error");
     } finally {
       setDeletingId(null);
       setPendingDelete(null);
     }
   };
 
-  const taskName =
-    pendingDelete?.properties?.hs_task_subject ||
-    "this task";
+  const taskName = pendingDelete?.properties?.hs_task_subject || "this task";
 
   return (
     <>
@@ -359,8 +259,7 @@ export default function TasksSection() {
             size="small"
             sx={{
               color: "#F5714E",
-              bgcolor:
-                "rgba(245, 113, 78, 0.08)",
+              bgcolor: "rgba(245, 113, 78, 0.08)",
               fontSize: "11px",
               fontWeight: 600,
             }}
@@ -371,8 +270,7 @@ export default function TasksSection() {
             size="small"
             sx={{
               color: "#cbd5e1",
-              bgcolor:
-                "rgba(203, 213, 225, 0.08)",
+              bgcolor: "rgba(203, 213, 225, 0.08)",
               fontSize: "11px",
               fontWeight: 600,
             }}
@@ -383,8 +281,7 @@ export default function TasksSection() {
             size="small"
             sx={{
               color: "#cbd5e1",
-              bgcolor:
-                "rgba(203, 213, 225, 0.08)",
+              bgcolor: "rgba(203, 213, 225, 0.08)",
               fontSize: "11px",
               fontWeight: 600,
             }}
@@ -397,11 +294,7 @@ export default function TasksSection() {
           }}
         />
 
-        <TaskCreateForm
-          loading={saving}
-          owners={owners}
-          onSubmit={handleCreate}
-        />
+        <TaskCreateForm loading={saving} owners={owners} onSubmit={handleCreate} />
 
         <Divider
           sx={{
@@ -442,11 +335,7 @@ export default function TasksSection() {
 
       <Dialog
         open={Boolean(pendingDelete)}
-        onClose={
-          deletingId
-            ? undefined
-            : handleCancelDelete
-        }
+        onClose={deletingId ? undefined : handleCancelDelete}
         maxWidth="xs"
         fullWidth
       >
@@ -465,8 +354,7 @@ export default function TasksSection() {
               fontSize: "13px",
             }}
           >
-            Are you sure you want to delete{" "}
-            <strong>{taskName}</strong>?
+            Are you sure you want to delete <strong>{taskName}</strong>?
           </DialogContentText>
         </DialogContent>
 

@@ -4,6 +4,7 @@ import { Box, Card, Stack, Tab, Tabs, Typography } from "@mui/material";
 import ContactsPage from "./contacts/ContactsPage";
 import CompaniesSection from "./companies/CompaniesSection";
 import DealsSection from "./deals/DealsSection";
+import TasksSection from "./tasks/TasksSection";
 
 type CrmTabValue = "contacts" | "companies" | "deals" | "tasks" | "associations";
 
@@ -104,10 +105,7 @@ function renderTabContent(value: CrmTabValue) {
 
     case "tasks":
       return (
-        <ComingSoonSection
-          title="Tasks"
-          description="Create, assign, complete and manage CRM tasks here."
-        />
+        <TasksSection/>
       );
 
     case "associations":

@@ -310,8 +310,8 @@ export default function TasksSection() {
         slotProps={{
           paper: {
             sx: {
-              bgcolor: "#1e293b", // Matte slate surface container background
-              backgroundImage: "none", // Critical layout parameter to prevent MUI opacity tint bugs
+              bgcolor: "#1e293b",
+              backgroundImage: "none", 
               borderRadius: "8px",
               border: "1px solid #334155",
             },
@@ -322,7 +322,7 @@ export default function TasksSection() {
           sx={{
             fontSize: "15px",
             fontWeight: 600,
-            color: "#f8fafc", // Bright crisp white header text
+            color: "#f8fafc",
             pb: 1,
           }}
         >
@@ -333,7 +333,7 @@ export default function TasksSection() {
           <DialogContentText
             sx={{
               fontSize: "12.5px",
-              color: "#cbd5e1", // Muted premium silver text
+              color: "#cbd5e1", 
               lineHeight: 1.45,
             }}
           >

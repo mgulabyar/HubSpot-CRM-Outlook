@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./components/App";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 
-/* global document, Office, module, require,  */
+/* global document,odule, require,  */
 
 const title = "Contoso Task Pane Add-in";
 

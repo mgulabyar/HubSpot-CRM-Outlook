@@ -78,7 +78,7 @@ export default function AssociationCards({
                 sx={{
                   alignItems: "center",
                   justifyContent: "space-between",
-                  width: "100%", // Ensures crisp stretching in narrow taskpanes
+                  width: "100%", 
                 }}
               >
                 <Stack spacing={0.4}>

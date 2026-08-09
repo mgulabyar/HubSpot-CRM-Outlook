@@ -224,18 +224,16 @@ export default function TasksSection() {
   return (
     <>
       <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-        {/* Task Create Form rendering directly at top now */}
         <TaskCreateForm loading={saving} owners={owners} onSubmit={handleCreate} />
 
         <Divider sx={{ borderColor: "#1e293b" }} />
 
-        {/* Recent Tasks Section with Embedded Right-Aligned Metric Chips */}
         <Box>
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between", // Pushes heading to left and chips to right
+              justifyContent: "space-between", 
               mb: 1.5,
             }}
           >
@@ -250,9 +248,7 @@ export default function TasksSection() {
               Recent Tasks
             </Typography>
 
-            {/* Horizontally aligned metrics group container */}
             <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
-              {/* Tasks Count Chip */}
               <Chip
                 label={`${tasks.length} Tasks`}
                 size="small"

@@ -1,21 +1,10 @@
-export type TaskStatus =
-  | "NOT_STARTED"
-  | "IN_PROGRESS"
-  | "COMPLETED"
-  | "WAITING"
-  | "DEFERRED";
+export type TaskStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | "WAITING" | "DEFERRED";
 
-export type TaskPriority =
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH";
+export type TaskPriority = "LOW" | "MEDIUM" | "HIGH";
 
 export interface TaskRecord {
   id: string;
-  properties: Record<
-    string,
-    string | null | undefined
-  >;
+  properties: Record<string, string | null | undefined>;
   createdAt?: string;
   updatedAt?: string;
   archived?: boolean;

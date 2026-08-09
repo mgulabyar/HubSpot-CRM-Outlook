@@ -167,7 +167,7 @@ export default function DealCards({ deals, loading, deletingId, onEdit, onDelete
                     label="Deal"
                     size="small"
                     sx={{
-                      height: 22,
+                      height: 26,
                       color: "#f8fafc",
                       bgcolor: "#F5714E",
                       fontSize: "9px",

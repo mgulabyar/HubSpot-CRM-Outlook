@@ -1,38 +1,21 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Box,
-  Button,
-  MenuItem,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Alert, Box, Button, MenuItem, Stack, TextField } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 
-import type {
-  OwnerRecord,
-  TaskFormValues,
-} from "../../types/TaskModels";
+import type { OwnerRecord, TaskFormValues } from "../../types/TaskModels";
 
 type Props = {
   loading: boolean;
   owners: OwnerRecord[];
-  onSubmit: (
-    values: TaskFormValues
-  ) => Promise<boolean>;
+  onSubmit: (values: TaskFormValues) => Promise<boolean>;
 };
 
 function getDefaultDateTime() {
   const date = new Date();
 
-  const offset =
-    date.getTimezoneOffset() * 60000;
+  const offset = date.getTimezoneOffset() * 60000;
 
-  return new Date(
-    date.getTime() - offset
-  )
-    .toISOString()
-    .slice(0, 16);
+  return new Date(date.getTime() - offset).toISOString().slice(0, 16);
 }
 
 function cleanNumericId(value: string) {
@@ -51,29 +34,17 @@ const initialValues: TaskFormValues = {
   associatedObjectId: "",
 };
 
-export default function TaskCreateForm({
-  loading,
-  owners,
-  onSubmit,
-}: Props) {
-  const [form, setForm] =
-    useState<TaskFormValues>(initialValues);
+export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
+  const [form, setForm] = useState<TaskFormValues>(initialValues);
 
   const [error, setError] = useState("");
 
   const updateField =
     (field: keyof TaskFormValues) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement
-      >
-    ) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       let value = event.target.value;
 
-      if (
-        field === "hubspot_owner_id" ||
-        field === "associatedObjectId"
-      ) {
+      if (field === "hubspot_owner_id" || field === "associatedObjectId") {
         value = cleanNumericId(value);
       }
 
@@ -86,63 +57,39 @@ export default function TaskCreateForm({
     };
 
   const handleSubmit = async () => {
-    const ownerId = cleanNumericId(
-      form.hubspot_owner_id
-    );
+    const ownerId = cleanNumericId(form.hubspot_owner_id);
 
-    const associatedId = cleanNumericId(
-      form.associatedObjectId
-    );
+    const associatedId = cleanNumericId(form.associatedObjectId);
 
     if (!form.hs_task_subject.trim()) {
       setError("Task subject is required.");
       return;
     }
 
-    if (
-      ownerId &&
-      !/^[0-9]+$/.test(ownerId)
-    ) {
-      setError(
-        "Please select a valid HubSpot owner."
-      );
+    if (ownerId && !/^[0-9]+$/.test(ownerId)) {
+      setError("Please select a valid HubSpot owner.");
       return;
     }
 
-    if (
-      form.associatedObjectType &&
-      !associatedId
-    ) {
-      setError(
-        "Associated record ID is required."
-      );
+    if (form.associatedObjectType && !associatedId) {
+      setError("Associated record ID is required.");
       return;
     }
 
-    if (
-      associatedId &&
-      !/^[0-9]+$/.test(associatedId)
-    ) {
-      setError(
-        "Associated record ID must contain numbers only."
-      );
+    if (associatedId && !/^[0-9]+$/.test(associatedId)) {
+      setError("Associated record ID must contain numbers only.");
       return;
     }
 
     const payload: TaskFormValues = {
       ...form,
-      hs_task_subject:
-        form.hs_task_subject.trim(),
-      hs_task_body:
-        form.hs_task_body.trim(),
+      hs_task_subject: form.hs_task_subject.trim(),
+      hs_task_body: form.hs_task_body.trim(),
       hubspot_owner_id: ownerId,
       associatedObjectId: associatedId,
     };
 
-    console.log(
-      "[TaskCreateForm] submitting:",
-      payload
-    );
+    console.log("[TaskCreateForm] submitting:", payload);
 
     const successful = await onSubmit(payload);
 
@@ -176,9 +123,7 @@ export default function TaskCreateForm({
         fullWidth
         label="Task Subject"
         value={form.hs_task_subject}
-        onChange={updateField(
-          "hs_task_subject"
-        )}
+        onChange={updateField("hs_task_subject")}
         sx={{ bgcolor: "#fff" }}
       />
 
@@ -220,30 +165,18 @@ export default function TaskCreateForm({
           size="small"
           label="Status"
           value={form.hs_task_status}
-          onChange={updateField(
-            "hs_task_status"
-          )}
+          onChange={updateField("hs_task_status")}
           sx={{ bgcolor: "#fff" }}
         >
-          <MenuItem value="NOT_STARTED">
-            Not Started
-          </MenuItem>
+          <MenuItem value="NOT_STARTED">Not Started</MenuItem>
 
-          <MenuItem value="IN_PROGRESS">
-            In Progress
-          </MenuItem>
+          <MenuItem value="IN_PROGRESS">In Progress</MenuItem>
 
-          <MenuItem value="COMPLETED">
-            Completed
-          </MenuItem>
+          <MenuItem value="COMPLETED">Completed</MenuItem>
 
-          <MenuItem value="WAITING">
-            Waiting
-          </MenuItem>
+          <MenuItem value="WAITING">Waiting</MenuItem>
 
-          <MenuItem value="DEFERRED">
-            Deferred
-          </MenuItem>
+          <MenuItem value="DEFERRED">Deferred</MenuItem>
         </TextField>
 
         <TextField
@@ -251,15 +184,11 @@ export default function TaskCreateForm({
           size="small"
           label="Priority"
           value={form.hs_task_priority}
-          onChange={updateField(
-            "hs_task_priority"
-          )}
+          onChange={updateField("hs_task_priority")}
           sx={{ bgcolor: "#fff" }}
         >
           <MenuItem value="LOW">Low</MenuItem>
-          <MenuItem value="MEDIUM">
-            Medium
-          </MenuItem>
+          <MenuItem value="MEDIUM">Medium</MenuItem>
           <MenuItem value="HIGH">High</MenuItem>
         </TextField>
       </Box>
@@ -276,9 +205,7 @@ export default function TaskCreateForm({
         <MenuItem value="TODO">To-do</MenuItem>
         <MenuItem value="CALL">Call</MenuItem>
         <MenuItem value="EMAIL">Email</MenuItem>
-        <MenuItem value="MEETING">
-          Meeting
-        </MenuItem>
+        <MenuItem value="MEETING">Meeting</MenuItem>
       </TextField>
 
       <TextField
@@ -287,31 +214,17 @@ export default function TaskCreateForm({
         fullWidth
         label="HubSpot Owner"
         value={form.hubspot_owner_id}
-        onChange={updateField(
-          "hubspot_owner_id"
-        )}
+        onChange={updateField("hubspot_owner_id")}
         sx={{ bgcolor: "#fff" }}
       >
-        <MenuItem value="">
-          Unassigned
-        </MenuItem>
+        <MenuItem value="">Unassigned</MenuItem>
 
         {owners.map((owner) => {
           const ownerName =
-            [
-              owner.firstName,
-              owner.lastName,
-            ]
-              .filter(Boolean)
-              .join(" ") ||
-            owner.email ||
-            owner.id;
+            [owner.firstName, owner.lastName].filter(Boolean).join(" ") || owner.email || owner.id;
 
           return (
-            <MenuItem
-              key={owner.id}
-              value={owner.id}
-            >
+            <MenuItem key={owner.id} value={owner.id}>
               {ownerName} — {owner.id}
             </MenuItem>
           );
@@ -324,26 +237,16 @@ export default function TaskCreateForm({
         fullWidth
         label="Associated Object Type"
         value={form.associatedObjectType}
-        onChange={updateField(
-          "associatedObjectType"
-        )}
+        onChange={updateField("associatedObjectType")}
         sx={{ bgcolor: "#fff" }}
       >
-        <MenuItem value="">
-          No association
-        </MenuItem>
+        <MenuItem value="">No association</MenuItem>
 
-        <MenuItem value="contacts">
-          Contact
-        </MenuItem>
+        <MenuItem value="contacts">Contact</MenuItem>
 
-        <MenuItem value="companies">
-          Company
-        </MenuItem>
+        <MenuItem value="companies">Company</MenuItem>
 
-        <MenuItem value="deals">
-          Deal
-        </MenuItem>
+        <MenuItem value="deals">Deal</MenuItem>
       </TextField>
 
       {form.associatedObjectType && (
@@ -352,9 +255,7 @@ export default function TaskCreateForm({
           fullWidth
           label="Associated Record ID"
           value={form.associatedObjectId}
-          onChange={updateField(
-            "associatedObjectId"
-          )}
+          onChange={updateField("associatedObjectId")}
           helperText="Only numeric record ID is allowed"
           sx={{ bgcolor: "#fff" }}
         />

@@ -192,7 +192,6 @@ export default function AssociationsSection() {
       />
     </Box>
 
-    {/* Conditional Content Pod Rendering */}
     {currentSearch ? (
       <AssociationCards
         associations={associations}
@@ -208,7 +207,7 @@ export default function AssociationsSection() {
           fontSize: "11.5px",
           lineHeight: 1.4,
           p: 1.5,
-          bgcolor: "#1e293b", // Premium subtle placeholder box
+          bgcolor: "#1e293b",
           borderRadius: "6px",
           border: "1px dashed #334155",
           textAlign: "center"

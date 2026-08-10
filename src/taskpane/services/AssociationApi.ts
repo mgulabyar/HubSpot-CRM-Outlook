@@ -1,8 +1,5 @@
 import axios from "axios";
-import {
-  API_BASE_URL,
-  API_ENDPOINTS,
-} from "../config/api";
+import { API_BASE_URL, API_ENDPOINTS } from "../config/api";
 
 import type {
   AssociationApiResponse,
@@ -24,9 +21,7 @@ function cleanId(value: string) {
     .trim();
 }
 
-function getErrorMessage(
-  error: unknown
-): string {
+function getErrorMessage(error: unknown): string {
   if (!axios.isAxiosError(error)) {
     if (error instanceof Error) {
       return error.message;
@@ -37,32 +32,19 @@ function getErrorMessage(
 
   const data = error.response?.data;
 
-  console.error(
-    "[AssociationApi] status:",
-    error.response?.status
-  );
+  console.error("[AssociationApi] status:", error.response?.status);
 
-  console.error(
-    "[AssociationApi] data:",
-    data
-  );
+  console.error("[AssociationApi] data:", data);
 
-  if (
-    typeof data?.message === "string" &&
-    data.message.trim()
-  ) {
+  if (typeof data?.message === "string" && data.message.trim()) {
     return data.message;
   }
 
-  if (
-    typeof data?.raw?.message === "string"
-  ) {
+  if (typeof data?.raw?.message === "string") {
     return data.raw.message;
   }
 
-  if (
-    typeof data?.error?.message === "string"
-  ) {
+  if (typeof data?.error?.message === "string") {
     return data.error.message;
   }
 
@@ -84,10 +66,7 @@ function getErrorMessage(
 function throwError(error: unknown): never {
   const message = getErrorMessage(error);
 
-  console.error(
-    "[AssociationApi] final error:",
-    message
-  );
+  console.error("[AssociationApi] final error:", message);
 
   throw new Error(message);
 }
@@ -101,15 +80,11 @@ export const fetchAssociations = async (
     const cleanFromId = cleanId(fromId);
 
     if (!cleanFromId) {
-      throw new Error(
-        "Source record ID is required."
-      );
+      throw new Error("Source record ID is required.");
     }
 
     if (!/^[0-9]+$/.test(cleanFromId)) {
-      throw new Error(
-        "Source record ID must contain numbers only."
-      );
+      throw new Error("Source record ID must contain numbers only.");
     }
 
     const endpoint =
@@ -118,14 +93,10 @@ export const fetchAssociations = async (
       `${encodeURIComponent(cleanFromId)}/` +
       `${encodeURIComponent(toType)}`;
 
-    console.log(
-      "[AssociationApi] GET:",
-      `${API_BASE_URL}${endpoint}`
-    );
+    console.log("[AssociationApi] GET:", `${API_BASE_URL}${endpoint}`);
 
-    const response = await associationApi.get<
-      AssociationApiResponse<AssociationListResponse>
-    >(endpoint);
+    const response =
+      await associationApi.get<AssociationApiResponse<AssociationListResponse>>(endpoint);
 
     return response.data.data;
   } catch (error) {
@@ -133,9 +104,7 @@ export const fetchAssociations = async (
   }
 };
 
-export const createAssociation = async (
-  payload: AssociationFormValues
-) => {
+export const createAssociation = async (payload: AssociationFormValues) => {
   try {
     const cleanPayload = {
       fromType: payload.fromType,
@@ -145,58 +114,33 @@ export const createAssociation = async (
     };
 
     if (!cleanPayload.fromId) {
-      throw new Error(
-        "Source record ID is required."
-      );
+      throw new Error("Source record ID is required.");
     }
 
     if (!cleanPayload.toId) {
-      throw new Error(
-        "Target record ID is required."
-      );
+      throw new Error("Target record ID is required.");
+    }
+
+    if (!/^[0-9]+$/.test(cleanPayload.fromId)) {
+      throw new Error("Source record ID must contain numbers only.");
+    }
+
+    if (!/^[0-9]+$/.test(cleanPayload.toId)) {
+      throw new Error("Target record ID must contain numbers only.");
     }
 
     if (
-      !/^[0-9]+$/.test(cleanPayload.fromId)
-    ) {
-      throw new Error(
-        "Source record ID must contain numbers only."
-      );
-    }
-
-    if (
-      !/^[0-9]+$/.test(cleanPayload.toId)
-    ) {
-      throw new Error(
-        "Target record ID must contain numbers only."
-      );
-    }
-
-    if (
-      cleanPayload.fromType ===
-        cleanPayload.toType &&
+      cleanPayload.fromType === cleanPayload.toType &&
       cleanPayload.fromId === cleanPayload.toId
     ) {
-      throw new Error(
-        "A record cannot be associated with itself."
-      );
+      throw new Error("A record cannot be associated with itself.");
     }
 
-    console.log(
-      "[AssociationApi] POST payload:",
-      cleanPayload
-    );
+    console.log("[AssociationApi] POST payload:", cleanPayload);
 
-    const response = await associationApi.post(
-      API_ENDPOINTS.associations,
-      cleanPayload
-    );
+    const response = await associationApi.post(API_ENDPOINTS.associations, cleanPayload);
 
-    console.log(
-      "[AssociationApi] POST response:",
-      response.status,
-      response.data
-    );
+    console.log("[AssociationApi] POST response:", response.status, response.data);
 
     return response.data;
   } catch (error) {
@@ -204,9 +148,7 @@ export const createAssociation = async (
   }
 };
 
-export const deleteAssociation = async (
-  payload: AssociationFormValues
-) => {
+export const deleteAssociation = async (payload: AssociationFormValues) => {
   try {
     const cleanPayload = {
       fromType: payload.fromType,
@@ -215,12 +157,9 @@ export const deleteAssociation = async (
       toId: cleanId(payload.toId),
     };
 
-    const response = await associationApi.delete(
-      API_ENDPOINTS.associations,
-      {
-        data: cleanPayload,
-      }
-    );
+    const response = await associationApi.delete(API_ENDPOINTS.associations, {
+      data: cleanPayload,
+    });
 
     return response.data;
   } catch (error) {

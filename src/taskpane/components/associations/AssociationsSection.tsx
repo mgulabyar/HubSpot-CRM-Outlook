@@ -150,106 +150,78 @@ export default function AssociationsSection() {
 
   return (
     <>
-      <Stack spacing={2}>
-        <Box>
-          <Typography
-            sx={{
-              color: "#f8fafc",
-              fontWeight: 700,
-              fontSize: "16px",
-            }}
-          >
-            Associations
-          </Typography>
+     <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+  {/* Association Create Form rendering directly at top now */}
+  <AssociationCreateForm loading={saving} onSubmit={handleCreate} />
 
-          <Typography
-            sx={{
-              color: "#94a3b8",
-              fontSize: "11px",
-              mt: 0.4,
-            }}
-          >
-            Link contacts, companies, deals and tasks.
-          </Typography>
-        </Box>
+  <Divider sx={{ borderColor: "#1e293b" }} />
 
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{
-            flexWrap: "wrap",
-            gap: 1,
-          }}
-        >
-          <Chip
-            label="CRM Connected"
-            size="small"
-            sx={{
-              color: "#F5714E",
-              bgcolor: "rgba(245, 113, 78, 0.08)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
+  {/* Existing Associations Section with Embedded Right-Aligned Counter Chip */}
+  <Box>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between", // Pushes heading to left and chip to right
+        mb: 1.5,
+      }}
+    >
+      <Typography
+        sx={{
+          color: "#f8fafc",
+          fontWeight: 600,
+          fontSize: "13.5px",
+          letterSpacing: "0.2px",
+        }}
+      >
+        Existing Associations
+      </Typography>
 
-          <Chip
-            label={`${associations.length} Links`}
-            size="small"
-            sx={{
-              color: "#cbd5e1",
-              bgcolor: "rgba(203, 213, 225, 0.08)",
-              fontSize: "11px",
-              fontWeight: 600,
-            }}
-          />
-        </Stack>
+      {/* Count Chip shifted exactly next to the section heading */}
+      <Chip
+        label={`${associations.length} Links`}
+        size="small"
+        variant="outlined"
+        sx={{
+          color: "#cbd5e1",
+          borderColor: "#334155",
+          bgcolor: "#1e293b", // Matches workspace dark system accents
+          fontSize: "10.5px",
+          fontWeight: 600,
+          height: 20, // Modern low-profile premium sizing
+          borderRadius: "4px", // Matches clean edge geometry of our cards framework
+          px: 0.5,
+        }}
+      />
+    </Box>
 
-        <Divider
-          sx={{
-            borderColor: "#334155",
-          }}
-        />
-
-        <AssociationCreateForm loading={saving} onSubmit={handleCreate} />
-
-        <Divider
-          sx={{
-            borderColor: "#334155",
-          }}
-        />
-
-        <Box>
-          <Typography
-            sx={{
-              color: "#f8fafc",
-              fontWeight: 700,
-              fontSize: "14px",
-              mb: 1.2,
-            }}
-          >
-            Existing Associations
-          </Typography>
-
-          {currentSearch ? (
-            <AssociationCards
-              associations={associations}
-              source={currentSearch}
-              loading={loading}
-              deletingId={deletingId}
-              onDelete={handleRequestDelete}
-            />
-          ) : (
-            <Typography
-              sx={{
-                color: "#94a3b8",
-                fontSize: "12px",
-              }}
-            >
-              Create an association to view linked records.
-            </Typography>
-          )}
-        </Box>
-      </Stack>
+    {/* Conditional Content Pod Rendering */}
+    {currentSearch ? (
+      <AssociationCards
+        associations={associations}
+        source={currentSearch}
+        loading={loading}
+        deletingId={deletingId}
+        onDelete={handleRequestDelete}
+      />
+    ) : (
+      <Typography
+        sx={{
+          color: "#94a3b8",
+          fontSize: "11.5px",
+          lineHeight: 1.4,
+          p: 1.5,
+          bgcolor: "#1e293b", // Premium subtle placeholder box
+          borderRadius: "6px",
+          border: "1px dashed #334155",
+          textAlign: "center"
+        }}
+      >
+        Create an association to view linked records.
+      </Typography>
+    )}
+  </Box>
+</Stack>
 
       <Dialog
         open={Boolean(pendingDelete)}

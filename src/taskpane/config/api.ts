@@ -1,5 +1,4 @@
-export const API_BASE_URL =
-  "http://localhost:5000/api";
+export const API_BASE_URL = "http://localhost:5000/api";
 
 export const API_ENDPOINTS = {
   health: "/health",
@@ -8,8 +7,6 @@ export const API_ENDPOINTS = {
   deals: "/hubspot/deals",
   tasks: "/hubspot/tasks",
   owners: "/hubspot/owners",
-  dealPipelines:
-    "/hubspot/pipelines/deals",
-  associations:
-    "/hubspot/associations",
+  dealPipelines: "/hubspot/pipelines/deals",
+  associations: "/hubspot/associations",
 } as const;

@@ -6,6 +6,10 @@ export const API_ENDPOINTS = {
   contacts: "/hubspot/contacts",
   companies: "/hubspot/companies",
   deals: "/hubspot/deals",
+  tasks: "/hubspot/tasks",
   owners: "/hubspot/owners",
-  dealPipelines: "/hubspot/pipelines/deals",
+  dealPipelines:
+    "/hubspot/pipelines/deals",
+  associations:
+    "/hubspot/associations",
 } as const;

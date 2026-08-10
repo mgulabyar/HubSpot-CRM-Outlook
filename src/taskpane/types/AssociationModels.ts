@@ -1,4 +1,8 @@
-export type AssociationObjectType = "contacts" | "companies" | "deals" | "tasks";
+export type AssociationObjectType =
+  | "contacts"
+  | "companies"
+  | "deals"
+  | "tasks";
 
 export interface AssociationFormValues {
   fromType: AssociationObjectType;
@@ -13,7 +17,7 @@ export interface AssociationResult {
   associationTypes?: Array<{
     category?: string;
     typeId?: number;
-    label?: string;
+    label?: string | null;
   }>;
 }
 
@@ -26,5 +30,7 @@ export interface AssociationApiResponse<T> {
   data: T;
   message?: string;
   statusCode?: number;
+  category?: string | null;
+  errors?: unknown;
   raw?: unknown;
 }

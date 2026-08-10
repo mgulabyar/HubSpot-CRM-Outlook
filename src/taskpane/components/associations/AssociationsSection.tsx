@@ -219,65 +219,86 @@ export default function AssociationsSection() {
   </Box>
 </Stack>
 
-      <Dialog
-        open={Boolean(pendingDelete)}
-        onClose={deletingId ? undefined : handleCancelDelete}
-        maxWidth="xs"
-        fullWidth
-      >
-        <DialogTitle
-          sx={{
-            fontSize: "16px",
-            fontWeight: 700,
-          }}
-        >
-          Delete association
-        </DialogTitle>
+     <Dialog
+  open={Boolean(pendingDelete)}
+  onClose={deletingId ? undefined : handleCancelDelete}
+  maxWidth="xs"
+  fullWidth
+  // Safe strongly-typed slot override for deep dark dialog surface grid
+  slotProps={{
+    paper: {
+      sx: {
+        bgcolor: "#1e293b", // Matte slate surface container background
+        backgroundImage: "none", // Critical layout parameter to prevent MUI opacity tint bugs
+        borderRadius: "8px",
+        border: "1px solid #334155",
+      }
+    }
+  }}
+>
+  <DialogTitle 
+    sx={{ 
+      fontSize: "15px", 
+      fontWeight: 600, 
+      color: "#f8fafc", // Bright crisp white header text
+      pb: 1 
+    }}
+  >
+    Delete association
+  </DialogTitle>
 
-        <DialogContent>
-          <DialogContentText
-            sx={{
-              fontSize: "13px",
-            }}
-          >
-            Are you sure you want to remove association with record{" "}
-            <strong>{pendingTargetId}</strong>?
-          </DialogContentText>
-        </DialogContent>
+  <DialogContent sx={{ pb: 2 }}>
+    <DialogContentText 
+      sx={{ 
+        fontSize: "12.5px", 
+        color: "#cbd5e1", // Muted premium silver text
+        lineHeight: 1.45 
+      }}
+    >
+      Are you sure you want to remove association with record{" "}
+      <strong style={{ color: "#f8fafc" }}>{pendingTargetId}</strong>? This action cannot be undone.
+    </DialogContentText>
+  </DialogContent>
 
-        <DialogActions
-          sx={{
-            px: 3,
-            pb: 2,
-          }}
-        >
-          <Button
-            type="button"
-            disabled={Boolean(deletingId)}
-            onClick={handleCancelDelete}
-            sx={{
-              textTransform: "none",
-            }}
-          >
-            Cancel
-          </Button>
+  <DialogActions sx={{ px: 3, pb: 2, gap: 0.5 }}>
+    <Button
+      type="button"
+      disabled={Boolean(deletingId)}
+      onClick={handleCancelDelete}
+      sx={{ 
+        textTransform: "none", 
+        fontSize: "12.5px", 
+        color: "#94a3b8",
+        fontWeight: 500,
+        "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" }
+      }}
+    >
+      Cancel
+    </Button>
 
-          <Button
-            type="button"
-            variant="contained"
-            color="error"
-            disabled={Boolean(deletingId)}
-            onClick={() => {
-              void handleConfirmDelete();
-            }}
-            sx={{
-              textTransform: "none",
-            }}
-          >
-            {deletingId ? "Deleting..." : "Delete"}
-          </Button>
-        </DialogActions>
-      </Dialog>
+    <Button
+      type="button"
+      variant="contained"
+      color="error"
+      disabled={Boolean(deletingId)}
+      onClick={() => {
+        void handleConfirmDelete(); // Original function execution preserved safely
+      }}
+      sx={{ 
+        textTransform: "none", 
+        fontSize: "12.5px", 
+        fontWeight: 600,
+        borderRadius: "6px",
+        boxShadow: "none",
+        bgcolor: "#dc2626", // Solid flat corporate red
+        "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" }
+      }}
+    >
+      {deletingId ? "Deleting..." : "Delete"}
+    </Button>
+  </DialogActions>
+</Dialog>
+
 
       <Snackbar
         open={toast.open}

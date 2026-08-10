@@ -182,11 +182,11 @@ export default function AssociationsSection() {
         sx={{
           color: "#cbd5e1",
           borderColor: "#334155",
-          bgcolor: "#1e293b", // Matches workspace dark system accents
+          bgcolor: "#1e293b", 
           fontSize: "10.5px",
           fontWeight: 600,
-          height: 20, // Modern low-profile premium sizing
-          borderRadius: "4px", // Matches clean edge geometry of our cards framework
+          height: 24, 
+          borderRadius: "4px",
           px: 0.5,
         }}
       />

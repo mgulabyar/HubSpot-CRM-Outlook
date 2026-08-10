@@ -151,18 +151,16 @@ export default function AssociationsSection() {
   return (
     <>
      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
-  {/* Association Create Form rendering directly at top now */}
-  <AssociationCreateForm loading={saving} onSubmit={handleCreate} />
+ <AssociationCreateForm loading={saving} onSubmit={handleCreate} />
 
   <Divider sx={{ borderColor: "#1e293b" }} />
 
-  {/* Existing Associations Section with Embedded Right-Aligned Counter Chip */}
   <Box>
     <Box
       sx={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between", // Pushes heading to left and chip to right
+        justifyContent: "space-between", 
         mb: 1.5,
       }}
     >
@@ -177,7 +175,6 @@ export default function AssociationsSection() {
         Existing Associations
       </Typography>
 
-      {/* Count Chip shifted exactly next to the section heading */}
       <Chip
         label={`${associations.length} Links`}
         size="small"

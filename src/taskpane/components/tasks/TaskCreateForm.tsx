@@ -113,11 +113,11 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           sx={{
             borderRadius: "6px",
             fontSize: "12px",
-            color: "#fef08a",
-            borderColor: "rgba(234, 179, 8, 0.3)",
-            bgcolor: "rgba(234, 179, 8, 0.06)",
+            color: "#92400e",
+            borderColor: "rgba(217, 119, 6, 0.35)",
+            bgcolor: "rgba(251, 191, 36, 0.1)",
             "& .MuiAlert-icon": {
-              color: "#eab308",
+              color: "#d97706",
             },
           }}
         >

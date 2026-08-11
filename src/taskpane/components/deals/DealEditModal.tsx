@@ -149,28 +149,29 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+             "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b", // Matches modal layout background cutoff
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc", // White dynamic text values
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a", // Dark input pod interior
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& input": { color: "#f8fafc" },
+                "& input": { color: "#1e293b" },
               },
             }}
           />
 
-          {/* Amount Input */}
           <TextField
             size="small"
             fullWidth
@@ -182,28 +183,29 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+             "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& input": { color: "#f8fafc" },
+                "& input": { color: "#1e293b" },
               },
             }}
           />
 
-          {/* Pipeline Selection Dropdown */}
           <TextField
             select
             size="small"

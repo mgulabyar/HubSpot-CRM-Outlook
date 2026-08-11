@@ -99,13 +99,13 @@ function CompanyCard({
       sx={{
         border: "1px solid #e2e8f0",
         borderLeft: "3px solid #F5714E",
-        borderRadius: "10px",
+        borderRadius: "8px",
         bgcolor: "#ffffff",
         opacity: isDeleting ? 0.55 : 1,
         boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
         transition: "all 200ms ease",
         "&:hover": {
-          bgcolor: "#f8fafc",
+          bgcolor: "#fff",
         },
       }}
     >
@@ -130,9 +130,9 @@ function CompanyCard({
           <Typography
             sx={{
               color: "#1e293b",
-              fontFamily: "Arial, sans-serif",
-              fontWeight: 600,
-              fontSize: "14.5px",
+              fontFamily: "Arial",
+              fontWeight: 500,
+              fontSize: "14px",
               lineHeight: 1.2,
               whiteSpace: "nowrap",
               overflow: "hidden",
@@ -174,7 +174,7 @@ function CompanyCard({
           <Stack spacing={1.2} sx={{ pt: 1.2 }}>
             <Box
               sx={{
-                bgcolor: "#f8fafc",
+                bgcolor: "#fff",
                 border: "1px solid #e2e8f0",
                 p: 1.2,
                 borderRadius: "6px",
@@ -206,7 +206,7 @@ function CompanyCard({
                 <Typography
                   sx={{
                     color: "#64748b",
-                    fontFamily: "Arial, sans-serif",
+                    fontFamily: "Arial",
                     fontSize: "10px",
                   }}
                 >
@@ -216,7 +216,7 @@ function CompanyCard({
                 <Typography
                   sx={{
                     color: "#64748b",
-                    fontFamily: "Arial, sans-serif",
+                    fontFamily: "Arial",
                     fontSize: "10px",
                   }}
                 >
@@ -289,7 +289,7 @@ export default function CompanyCards({ companies, loading, deletingId, onEdit, o
       <Typography
         sx={{
           color: "#64748b",
-          fontFamily: "Arial, sans-serif",
+          fontFamily: "Arial",
           fontSize: "12px",
         }}
       >
@@ -303,7 +303,7 @@ export default function CompanyCards({ companies, loading, deletingId, onEdit, o
       <Typography
         sx={{
           color: "#64748b",
-          fontFamily: "Arial, sans-serif",
+          fontFamily: "Arial",
           fontSize: "12px",
         }}
       >

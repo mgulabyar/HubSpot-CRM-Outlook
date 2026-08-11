@@ -1,7 +1,4 @@
-export type HubSpotProperties = Record<
-  string,
-  string | null
->;
+export type HubSpotProperties = Record<string, string | null>;
 
 export interface HubSpotRecord {
   id: string;
@@ -39,8 +36,7 @@ export interface ContactFormData {
   notes?: string;
 }
 
-export interface ContactUpdateData
-  extends Partial<ContactFormData> {
+export interface ContactUpdateData extends Partial<ContactFormData> {
   noteId?: string;
 }
 

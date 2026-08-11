@@ -290,9 +290,9 @@ export default function DealsSection() {
             <Typography
               sx={{
                 color: "#1e293b",
-                fontFamily: "Arial, sans-serif",
-                fontWeight: 600,
-                fontSize: "13.5px",
+                fontFamily: "Arial",
+                fontWeight: 500,
+                fontSize: "13px",
                 letterSpacing: "0.2px",
               }}
             >

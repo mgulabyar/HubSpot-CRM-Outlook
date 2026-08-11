@@ -97,10 +97,10 @@ export default function ContactEditDialog({
   slotProps={{
     paper: {
       sx: {
-        bgcolor: "#ffffff", // Pure white layout surface container
+        bgcolor: "#ffffff", 
         backgroundImage: "none", 
         borderRadius: "8px",
-        border: "1px solid #e2e8f0", // Clean soft corporate border separation
+        border: "1px solid #e2e8f0",
         mx: 1.5, 
         width: "calc(100% - 24px)", 
       }
@@ -109,7 +109,7 @@ export default function ContactEditDialog({
 >
   <DialogTitle
     sx={{
-      color: "#1e293b", // Deep slate text value heading
+      color: "#1e293b",
       fontWeight: 500,
       fontSize: "14.5px",
       pt: 2,
@@ -127,7 +127,6 @@ export default function ContactEditDialog({
     }}
   >
     <Stack spacing={2.2} sx={{ pt: 1.5 }}>
-      {/* Full Name Input */}
       <TextField
         fullWidth
         size="small"
@@ -139,10 +138,10 @@ export default function ContactEditDialog({
         }}
         sx={{
           "& .MuiInputLabel-root": { 
-            color: "#64748b", // Matte light gray keys
+            color: "#64748b", 
             fontSize: "13px",
             fontWeight: 500,
-            bgcolor: "#ffffff", // Blends with paper background seamlessly
+            bgcolor: "#ffffff",
             px: 0.6
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
@@ -152,7 +151,7 @@ export default function ContactEditDialog({
             bgcolor: "#fff", 
             borderRadius: "6px",
             transition: "background-color 150ms ease",
-            "& fieldset": { borderColor: "#cbd5e1" }, // Soft border guidelines
+            "& fieldset": { borderColor: "#cbd5e1" },
             "&:hover fieldset": { borderColor: "#94a3b8" },
             "&.Mui-focused": { bgcolor: "#ffffff" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
@@ -160,8 +159,6 @@ export default function ContactEditDialog({
           },
         }}
       />
-
-      {/* Email Address Input */}
       <TextField
         fullWidth
         size="small"
@@ -195,8 +192,6 @@ export default function ContactEditDialog({
           },
         }}
       />
-
-      {/* Company Name Input */}
       <TextField
         fullWidth
         size="small"
@@ -230,7 +225,6 @@ export default function ContactEditDialog({
         }}
       />
 
-      {/* Subject Line Input */}
       <TextField
         fullWidth
         size="small"

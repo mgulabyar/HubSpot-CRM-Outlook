@@ -222,7 +222,6 @@ export default function CrmWorkspace() {
 
                   "&.Mui-selected": {
                     color: "#F5714E",
-                    // bgcolor: "rgba(245, 113, 78, 0.08)",
                   },
                 }}
               />

@@ -45,7 +45,7 @@ function ComingSoonSection({ title, description }: { title: string; description:
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        px: 2,
+        px: 1.5,
       }}
     >
       <Stack
@@ -171,7 +171,7 @@ export default function CrmWorkspace() {
             scrollButtons={false}
             aria-label="CRM sections"
             sx={{
-              minHeight: "42px",
+              minHeight: "38px",
               width: "100%",
 
               "& .MuiTabs-flexContainer": {

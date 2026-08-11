@@ -481,7 +481,7 @@ export default function ContactsPage() {
 
       <Snackbar
         open={toast.open}
-        autoHideDuration={3000}
+        autoHideDuration={2500}
         onClose={closeToast}
         anchorOrigin={{
           vertical: "top",

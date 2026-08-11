@@ -512,7 +512,7 @@ function ContactCard({
       sx={{
         border: "1px solid #e2e8f0",
         borderLeft: "3px solid #F5714E",
-        borderRadius: "10px",
+        borderRadius: "8px",
         bgcolor: "#ffffff",
         opacity: isDeleting ? 0.55 : 1,
         boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
@@ -590,7 +590,7 @@ function ContactCard({
                 bgcolor: "#fff",
                 border: "1px solid #e2e8f0",
                 p: 1.2,
-                borderRadius: "4px",
+                borderRadius: "5px",
                 display: "flex",
                 flexDirection: "column",
                 gap: 1.2,

@@ -171,7 +171,7 @@ export default function CrmWorkspace() {
             scrollButtons={false}
             aria-label="CRM sections"
             sx={{
-              minHeight: "38px",
+              minHeight: "18px",
               width: "100%",
 
               "& .MuiTabs-flexContainer": {
@@ -211,7 +211,7 @@ export default function CrmWorkspace() {
                   fontFamily: "Arial",
                   textTransform: "none",
                   fontSize: "11.5px",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   borderRadius: "5px 5px 0 0",
                   transition: "color 160ms ease, background-color 160ms ease",
 
@@ -222,7 +222,7 @@ export default function CrmWorkspace() {
 
                   "&.Mui-selected": {
                     color: "#F5714E",
-                    bgcolor: "rgba(245, 113, 78, 0.08)",
+                    // bgcolor: "rgba(245, 113, 78, 0.08)",
                   },
                 }}
               />

@@ -1,32 +1,39 @@
 import React from "react";
 import { Box, Stack } from "@mui/material";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "./theme";
 import AppHeader from "./layout/AppHeader";
 import CrmWorkspace from "./CrmWorkspace";
 
 export default function App() {
   return (
-    <Box
-      component="main"
-      sx={{
-        minHeight: "100vh",
-        bgcolor: "#0f172a",
-        display: "flex",
-        flexDirection: "column",
-        overflowX: "hidden",
-      }}
-    >
-      <AppHeader />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
 
       <Box
+        component="main"
         sx={{
-          p: 0.5,
-          flexGrow: 1,
+          minHeight: "100vh",
+          bgcolor: "#ffffff",
+          color: "#1e293b",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <Stack spacing={1.5}>
-          <CrmWorkspace />
-        </Stack>
+        <AppHeader />
+
+        <Box
+          sx={{
+            p: 0.5,
+            flexGrow: 1,
+            bgcolor: "#ffffff",
+          }}
+        >
+          <Stack spacing={1.5}>
+            <CrmWorkspace />
+          </Stack>
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }

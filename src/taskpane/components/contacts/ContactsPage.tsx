@@ -401,19 +401,7 @@ export default function ContactsPage() {
             loading={loadingContacts}
             deletingId={deletingId}
             onDelete={handleDeleteContact}
-            onEdit={handleOpenEdit}
-          />
-        </Box>
-      </Stack>
-
-      <ContactEditDialog
-        open={editDialogOpen}
-        contact={editingContact}
-        note={editingNote}
-        loading={savingContact}
-        onClose={handleCloseEdit}
-        onSave={handleUpdateContact}
-      />
+       
 
       <Dialog
         open={Boolean(pendingDeleteContact)}

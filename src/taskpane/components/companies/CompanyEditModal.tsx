@@ -105,28 +105,32 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
       slotProps={{
         paper: {
           sx: {
-            bgcolor: "#1e293b",
-            borderLeft: "3px solid #F5714E",
-            borderRadius: "0px 8px 8px 0px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            bgcolor: "#ffffff",
+            backgroundImage: "none",
+            borderRadius: "8px",
+            border: "1px solid #e2e8f0",
+            mx: 1.5,
+
+            width: "calc(100% - 24px)",
           },
         },
       }}
     >
       <DialogTitle
         sx={{
-          color: "#f8fafc",
-          fontWeight: 700,
-          fontSize: "15px",
-          py: 1.2,
+          color: "#1e293b",
+          fontWeight: 500,
+          fontSize: "14.5px",
+          pt: 2,
           px: 1.5,
+          pb: 0.5,
         }}
       >
         Edit Company
       </DialogTitle>
 
-      <DialogContent sx={{ px: 1.5, py: 0.8 }}>
-        <Stack spacing={1} sx={{ pt: 0.5 }}>
+      <DialogContent sx={{ px: 1.5, pb: 1.5 }}>
+        <Stack spacing={2.2} sx={{ pt: 1.5 }}>
           <TextField
             size="small"
             fullWidth
@@ -136,7 +140,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
             slotProps={{
               inputLabel: { shrink: true },
             }}
-            sx={darkFieldSx}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#64748b",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#ffffff",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#1e293b",
+                fontSize: "13px",
+                bgcolor: "#fff",
+                borderRadius: "6px",
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#1e293b" },
+              },
+            }}
           />
 
           <TextField
@@ -148,7 +173,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
             slotProps={{
               inputLabel: { shrink: true },
             }}
-            sx={darkFieldSx}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#64748b",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#ffffff",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#1e293b",
+                fontSize: "13px",
+                bgcolor: "#fff",
+                borderRadius: "6px",
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#1e293b" },
+              },
+            }}
           />
 
           <TextField
@@ -160,7 +206,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
             slotProps={{
               inputLabel: { shrink: true },
             }}
-            sx={darkFieldSx}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#64748b",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#ffffff",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#1e293b",
+                fontSize: "13px",
+                bgcolor: "#fff",
+                borderRadius: "6px",
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#1e293b" },
+              },
+            }}
           />
 
           <TextField
@@ -172,7 +239,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
             slotProps={{
               inputLabel: { shrink: true },
             }}
-            sx={darkFieldSx}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#64748b",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#ffffff",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#1e293b",
+                fontSize: "13px",
+                bgcolor: "#fff",
+                borderRadius: "6px",
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#1e293b" },
+              },
+            }}
           />
 
           <TextField
@@ -185,7 +273,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
             slotProps={{
               inputLabel: { shrink: true },
             }}
-            sx={darkFieldSx}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#64748b",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#ffffff",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#1e293b",
+                fontSize: "13px",
+                bgcolor: "#fff",
+                borderRadius: "6px",
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#1e293b" },
+              },
+            }}
           />
 
           <Box
@@ -203,7 +312,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
               slotProps={{
                 inputLabel: { shrink: true },
               }}
-              sx={darkFieldSx}
+              sx={{
+                "& .MuiInputLabel-root": {
+                  color: "#64748b",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  bgcolor: "#ffffff",
+                  px: 0.6,
+                },
+                "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+                "& .MuiOutlinedInput-root": {
+                  color: "#1e293b",
+                  fontSize: "13px",
+                  bgcolor: "#fff",
+                  borderRadius: "6px",
+                  transition: "background-color 150ms ease",
+                  "& fieldset": { borderColor: "#cbd5e1" },
+                  "&:hover fieldset": { borderColor: "#94a3b8" },
+                  "&.Mui-focused": { bgcolor: "#ffffff" },
+                  "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                  "& input": { color: "#1e293b" },
+                },
+              }}
             />
 
             <TextField
@@ -214,7 +344,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
               slotProps={{
                 inputLabel: { shrink: true },
               }}
-              sx={darkFieldSx}
+              sx={{
+                "& .MuiInputLabel-root": {
+                  color: "#64748b",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  bgcolor: "#ffffff",
+                  px: 0.6,
+                },
+                "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+                "& .MuiOutlinedInput-root": {
+                  color: "#1e293b",
+                  fontSize: "13px",
+                  bgcolor: "#fff",
+                  borderRadius: "6px",
+                  transition: "background-color 150ms ease",
+                  "& fieldset": { borderColor: "#cbd5e1" },
+                  "&:hover fieldset": { borderColor: "#94a3b8" },
+                  "&.Mui-focused": { bgcolor: "#ffffff" },
+                  "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                  "& input": { color: "#1e293b" },
+                },
+              }}
             />
           </Box>
 
@@ -227,7 +378,28 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
             slotProps={{
               inputLabel: { shrink: true },
             }}
-            sx={darkFieldSx}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#64748b",
+                fontSize: "13px",
+                fontWeight: 500,
+                bgcolor: "#ffffff",
+                px: 0.6,
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+              "& .MuiOutlinedInput-root": {
+                color: "#1e293b",
+                fontSize: "13px",
+                bgcolor: "#fff",
+                borderRadius: "6px",
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
+                "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+                "& input": { color: "#1e293b" },
+              },
+            }}
           />
         </Stack>
       </DialogContent>
@@ -238,12 +410,22 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
           onClick={onClose}
           disabled={loading}
           sx={{
+            flex: 1,
             textTransform: "none",
-            color: "#94a3b8",
-            fontSize: "12.5px",
-            px: 1.2,
+            fontSize: "12px",
+            fontWeight: 600,
+            bgcolor: "#f1f5f9",
+            color: "#1e293b",
+            borderRadius: "6px",
+            py: 0.9,
+            border: "1px solid #e2e8f0",
             "&:hover": {
-              bgcolor: "rgba(148, 163, 184, 0.12)",
+              bgcolor: "#e2e8f0",
+              boxShadow: "none",
+            },
+            "&.Mui-disabled": {
+              bgcolor: "rgba(241, 245, 249, 0.6)",
+              color: "rgba(30, 41, 59, 0.4)",
             },
           }}
         >
@@ -258,16 +440,22 @@ export default function CompanyEditModal({ open, company, loading, onClose, onSa
           }}
           disabled={loading}
           sx={{
+            flex: 1,
             textTransform: "none",
-            fontSize: "12.5px",
-            fontWeight: 600,
-            px: 1.5,
-            py: 0.5,
             bgcolor: "#F5714E",
+            color: "#fff",
+            fontSize: "12px",
+            fontWeight: 600,
+            borderRadius: "6px",
+            py: 0.9,
             boxShadow: "none",
             "&:hover": {
               bgcolor: "#e05e3b",
               boxShadow: "none",
+            },
+            "&.Mui-disabled": {
+              bgcolor: "rgba(245, 113, 78, 0.3)",
+              color: "rgba(255, 255, 255, 0.7)",
             },
           }}
         >

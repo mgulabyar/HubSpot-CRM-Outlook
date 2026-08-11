@@ -155,17 +155,6 @@ function TaskCard({
             >
               {properties.hs_task_subject || "Untitled Task"}
             </Typography>
-
-            <Typography
-              sx={{
-                color: "#64748b",
-                fontFamily: "Arial, sans-serif",
-                fontSize: "11px",
-                mt: 0.3,
-              }}
-            >
-              Task ID: {taskId}
-            </Typography>
           </Box>
 
           <IconButton

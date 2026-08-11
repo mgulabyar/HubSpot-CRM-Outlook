@@ -376,31 +376,9 @@ export default function ContactsPage() {
               }}
             >
               Recent Contacts
-            </Typography>
-
-            <Chip
-              label={`${contacts.length} Contacts`}
-              size="small"
-              variant="outlined"
-              sx={{
-                color: "#cbd5e1",
-                borderColor: "#334155",
-                bgcolor: "#1e293b",
-                fontSize: "10.5px",
-                fontWeight: 600,
-                height: 24,
-                borderRadius: "4px",
-                px: 0.5,
-              }}
-            />
+    
           </Box>
 
-          <ContactList
-            contacts={contacts}
-            notesByContact={notesByContact}
-            loading={loadingContacts}
-            deletingId={deletingId}
-            onDelete={handleDeleteContact}
        
 
       <Dialog

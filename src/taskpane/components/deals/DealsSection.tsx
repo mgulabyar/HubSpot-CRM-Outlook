@@ -266,7 +266,6 @@ export default function DealsSection() {
   const pendingDealName = pendingDelete?.properties?.dealname || "this deal";
 
   return (
-  
     <>
       <Stack spacing={1.5} sx={{ bgcolor: "#ffffff", p: 1, minHeight: "100vh" }}>
         <DealCreateForm

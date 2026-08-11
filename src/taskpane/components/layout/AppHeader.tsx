@@ -22,7 +22,7 @@ export default function AppHeader() {
           component="h1"
           sx={{
             textAlign: "center",
-            fontFamily: "Arial, sans-serif",
+            fontFamily: "Arial",
             fontSize: "20px",
             fontWeight: 500,
             color: "#F5714E",
@@ -44,7 +44,7 @@ export default function AppHeader() {
             letterSpacing: "0.2px",
           }}
         >
-          Outlook Add-in Workspace Engine
+          Outlook Add-in Connect with HubSpot
         </Typography>
       </Stack>
     </Box>

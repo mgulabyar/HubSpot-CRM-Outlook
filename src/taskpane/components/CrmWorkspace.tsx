@@ -56,7 +56,8 @@ function ComingSoonSection({ title, description }: { title: string; description:
       >
         <Typography
           sx={{
-            color: "#f8fafc",
+            color: "#1e293b",
+            fontFamily: "Arial, sans-serif",
             fontSize: "16px",
             fontWeight: 700,
           }}
@@ -66,7 +67,8 @@ function ComingSoonSection({ title, description }: { title: string; description:
 
         <Typography
           sx={{
-            color: "#94a3b8",
+            color: "#64748b",
+            fontFamily: "Arial, sans-serif",
             fontSize: "12px",
             maxWidth: 280,
           }}
@@ -82,6 +84,7 @@ function ComingSoonSection({ title, description }: { title: string; description:
             borderRadius: "5px",
             color: "#F5714E",
             bgcolor: "rgba(245, 113, 78, 0.1)",
+            fontFamily: "Arial, sans-serif",
             fontSize: "11px",
             fontWeight: 600,
           }}
@@ -105,14 +108,10 @@ function renderTabContent(value: CrmTabValue) {
       return <DealsSection />;
 
     case "tasks":
-      return (
-        <TasksSection/>
-      );
+      return <TasksSection />;
 
     case "associations":
-      return (
-       <AssociationsSection/>
-      );
+      return <AssociationsSection />;
 
     default:
       return null;
@@ -140,23 +139,25 @@ export default function CrmWorkspace() {
           minWidth: 0,
           overflow: "hidden",
           borderRadius: "5px",
+          border: "1px solid #e2e8f0",
         }}
       >
         <Box
           sx={{
             px: 1.2,
             pt: 1.2,
-            borderBottom: "1px solid #263449",
-            bgcolor: "#172033",
+            borderBottom: "1px solid #e2e8f0",
+            bgcolor: "#f8fafc",
           }}
         >
           <Typography
             sx={{
               px: 0.8,
               pb: 1,
-              color: "#f8fafc",
-              fontSize: "15px",
-              fontWeight: 700,
+              color: "#64748b",
+              fontFamily: "Arial",
+              fontSize: "13px",
+              fontWeight: 600,
               letterSpacing: "0.1px",
             }}
           >
@@ -205,7 +206,8 @@ export default function CrmWorkspace() {
                   minWidth: "auto",
                   px: 1.2,
                   py: 0.7,
-                  color: "#94a3b8",
+                  color: "#64748b",
+                  fontFamily: "Arial, sans-serif",
                   textTransform: "none",
                   fontSize: "11.5px",
                   fontWeight: 600,
@@ -213,7 +215,7 @@ export default function CrmWorkspace() {
                   transition: "color 160ms ease, background-color 160ms ease",
 
                   "&:hover": {
-                    color: "#f8fafc",
+                    color: "#1e293b",
                     bgcolor: "rgba(245, 113, 78, 0.08)",
                   },
 
@@ -231,7 +233,7 @@ export default function CrmWorkspace() {
           sx={{
             p: 1.5,
             minHeight: 400,
-            bgcolor: "#0f172a",
+            bgcolor: "#ffffff",
             overflowX: "hidden",
           }}
         >

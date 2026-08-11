@@ -291,7 +291,7 @@ export default function DealsSection() {
               sx={{
                 color: "#1e293b",
                 fontFamily: "Arial",
-                fontWeight: 600,
+                fontWeight: 500,
                 fontSize: "13px",
                 letterSpacing: "0.2px",
               }}
@@ -307,7 +307,7 @@ export default function DealsSection() {
                 color: "#475569",
                 borderColor: "#cbd5e1",
                 bgcolor: "#f1f5f9",
-                fontFamily: "Arial, sans-serif",
+                fontFamily: "Arial",
                 fontSize: "10.5px",
                 fontWeight: 600,
                 height: 24,
@@ -357,9 +357,9 @@ export default function DealsSection() {
       >
         <DialogTitle
           sx={{
-            fontFamily: "Arial, sans-serif",
-            fontSize: "15px",
-            fontWeight: 600,
+            fontFamily: "Arial",
+            fontSize: "14.5px",
+            fontWeight: 500,
             color: "#1e293b",
             pb: 1,
           }}
@@ -370,7 +370,7 @@ export default function DealsSection() {
         <DialogContent sx={{ pb: 2 }}>
           <DialogContentText
             sx={{
-              fontFamily: "Arial, sans-serif",
+              fontFamily: "Arial",
               fontSize: "12.5px",
               color: "#475569",
               lineHeight: 1.45,
@@ -389,7 +389,7 @@ export default function DealsSection() {
             onClick={handleCancelDelete}
             sx={{
               textTransform: "none",
-              fontFamily: "Arial, sans-serif",
+              fontFamily: "Arial",
               fontSize: "12.5px",
               color: "#64748b",
               fontWeight: 500,
@@ -409,9 +409,9 @@ export default function DealsSection() {
             }}
             sx={{
               textTransform: "none",
-              fontFamily: "Arial, sans-serif",
+              fontFamily: "Arial",
               fontSize: "12.5px",
-              fontWeight: 600,
+              fontWeight: 500,
               borderRadius: "6px",
               boxShadow: "none",
               bgcolor: "#dc2626",

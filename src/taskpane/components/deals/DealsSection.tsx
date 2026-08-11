@@ -266,8 +266,182 @@ export default function DealsSection() {
   const pendingDealName = pendingDelete?.properties?.dealname || "this deal";
 
   return (
+    // <>
+    //   <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+    //     <DealCreateForm
+    //       loading={saving}
+    //       pipelines={pipelines}
+    //       stages={stages}
+    //       onPipelineChange={handlePipelineChange}
+    //       onSubmit={handleCreate}
+    //     />
+
+    //     <Divider sx={{ borderColor: "#1e293b" }} />
+
+    //     <Box>
+    //       <Box
+    //         sx={{
+    //           display: "flex",
+    //           alignItems: "center",
+    //           justifyContent: "space-between",
+    //           mb: 1.5,
+    //         }}
+    //       >
+    //         <Typography
+    //           sx={{
+    //             color: "#f8fafc",
+    //             fontWeight: 600,
+    //             fontSize: "13.5px",
+    //             letterSpacing: "0.2px",
+    //           }}
+    //         >
+    //           Recent Deals
+    //         </Typography>
+
+    //         <Chip
+    //           label={`${deals.length} Deals`}
+    //           size="small"
+    //           variant="outlined"
+    //           sx={{
+    //             color: "#cbd5e1",
+    //             borderColor: "#334155",
+    //             bgcolor: "#1e293b",
+    //             fontSize: "10.5px",
+    //             fontWeight: 600,
+    //             height: 24,
+    //             borderRadius: "4px",
+    //             px: 0.5,
+    //           }}
+    //         />
+    //       </Box>
+
+    //       <DealCards
+    //         deals={deals}
+    //         loading={loading}
+    //         deletingId={deletingId}
+    //         onEdit={handleOpenEdit}
+    //         onDelete={handleRequestDelete}
+    //       />
+    //     </Box>
+    //   </Stack>
+
+    //   <DealEditModal
+    //     open={editOpen}
+    //     deal={editingDeal}
+    //     pipelines={pipelines}
+    //     stages={stages}
+    //     loading={saving}
+    //     onPipelineChange={handlePipelineChange}
+    //     onClose={handleCloseEdit}
+    //     onSave={handleUpdate}
+    //   />
+
+    //   <Dialog
+    //     open={Boolean(pendingDelete)}
+    //     onClose={deletingId ? undefined : handleCancelDelete}
+    //     maxWidth="xs"
+    //     fullWidth
+    //     slotProps={{
+    //       paper: {
+    //         sx: {
+    //           bgcolor: "#1e293b",
+    //           backgroundImage: "none",
+    //           borderRadius: "8px",
+    //           border: "1px solid #334155",
+    //         },
+    //       },
+    //     }}
+    //   >
+    //     <DialogTitle
+    //       sx={{
+    //         fontSize: "15px",
+    //         fontWeight: 600,
+    //         color: "#f8fafc",
+    //         pb: 1,
+    //       }}
+    //     >
+    //       Delete deal
+    //     </DialogTitle>
+
+    //     <DialogContent sx={{ pb: 2 }}>
+    //       <DialogContentText
+    //         sx={{
+    //           fontSize: "12.5px",
+    //           color: "#cbd5e1",
+    //           lineHeight: 1.45,
+    //         }}
+    //       >
+    //         Are you sure you want to delete{" "}
+    //         <strong style={{ color: "#f8fafc" }}>{pendingDealName}</strong>? This action cannot be
+    //         undone.
+    //       </DialogContentText>
+    //     </DialogContent>
+
+    //     <DialogActions sx={{ px: 3, pb: 2, gap: 0.5 }}>
+    //       <Button
+    //         type="button"
+    //         disabled={Boolean(deletingId)}
+    //         onClick={handleCancelDelete}
+    //         sx={{
+    //           textTransform: "none",
+    //           fontSize: "12.5px",
+    //           color: "#94a3b8",
+    //           fontWeight: 500,
+    //           "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" },
+    //         }}
+    //       >
+    //         Cancel
+    //       </Button>
+
+    //       <Button
+    //         type="button"
+    //         variant="contained"
+    //         color="error"
+    //         disabled={Boolean(deletingId)}
+    //         onClick={() => {
+    //           void handleConfirmDelete();
+    //         }}
+    //         sx={{
+    //           textTransform: "none",
+    //           fontSize: "12.5px",
+    //           fontWeight: 600,
+    //           borderRadius: "6px",
+    //           boxShadow: "none",
+    //           bgcolor: "#dc2626",
+    //           "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
+    //         }}
+    //       >
+    //         {deletingId ? "Deleting..." : "Delete"}
+    //       </Button>
+    //     </DialogActions>
+    //   </Dialog>
+
+    //   <Snackbar
+    //     open={toast.open}
+    //     autoHideDuration={3500}
+    //     onClose={closeToast}
+    //     anchorOrigin={{
+    //       vertical: "top",
+    //       horizontal: "right",
+    //     }}
+    //   >
+    //     <Alert
+    //       severity={toast.severity}
+    //       variant="filled"
+    //       onClose={closeToast}
+    //       sx={{
+    //         width: "100%",
+    //         fontSize: "12px",
+    //         borderRadius: "4px",
+    //       }}
+    //     >
+    //       {toast.message}
+    //     </Alert>
+    //   </Snackbar>
+    // </>
+
     <>
-      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+      <Stack spacing={1.5} sx={{ bgcolor: "#ffffff", p: 1, minHeight: "100vh" }}>
         <DealCreateForm
           loading={saving}
           pipelines={pipelines}
@@ -276,7 +450,7 @@ export default function DealsSection() {
           onSubmit={handleCreate}
         />
 
-        <Divider sx={{ borderColor: "#1e293b" }} />
+        <Divider sx={{ borderColor: "#e2e8f0" }} />
 
         <Box>
           <Box
@@ -289,7 +463,8 @@ export default function DealsSection() {
           >
             <Typography
               sx={{
-                color: "#f8fafc",
+                color: "#1e293b",
+                fontFamily: "Arial, sans-serif",
                 fontWeight: 600,
                 fontSize: "13.5px",
                 letterSpacing: "0.2px",
@@ -303,9 +478,10 @@ export default function DealsSection() {
               size="small"
               variant="outlined"
               sx={{
-                color: "#cbd5e1",
-                borderColor: "#334155",
-                bgcolor: "#1e293b",
+                color: "#475569",
+                borderColor: "#cbd5e1",
+                bgcolor: "#f1f5f9",
+                fontFamily: "Arial, sans-serif",
                 fontSize: "10.5px",
                 fontWeight: 600,
                 height: 24,
@@ -344,19 +520,21 @@ export default function DealsSection() {
         slotProps={{
           paper: {
             sx: {
-              bgcolor: "#1e293b",
+              bgcolor: "#ffffff",
               backgroundImage: "none",
               borderRadius: "8px",
-              border: "1px solid #334155",
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 12px 32px rgba(15, 23, 42, 0.12)",
             },
           },
         }}
       >
         <DialogTitle
           sx={{
+            fontFamily: "Arial, sans-serif",
             fontSize: "15px",
             fontWeight: 600,
-            color: "#f8fafc",
+            color: "#1e293b",
             pb: 1,
           }}
         >
@@ -366,13 +544,14 @@ export default function DealsSection() {
         <DialogContent sx={{ pb: 2 }}>
           <DialogContentText
             sx={{
+              fontFamily: "Arial, sans-serif",
               fontSize: "12.5px",
-              color: "#cbd5e1",
+              color: "#475569",
               lineHeight: 1.45,
             }}
           >
             Are you sure you want to delete{" "}
-            <strong style={{ color: "#f8fafc" }}>{pendingDealName}</strong>? This action cannot be
+            <strong style={{ color: "#1e293b" }}>{pendingDealName}</strong>? This action cannot be
             undone.
           </DialogContentText>
         </DialogContent>
@@ -384,10 +563,11 @@ export default function DealsSection() {
             onClick={handleCancelDelete}
             sx={{
               textTransform: "none",
+              fontFamily: "Arial, sans-serif",
               fontSize: "12.5px",
-              color: "#94a3b8",
+              color: "#64748b",
               fontWeight: 500,
-              "&:hover": { bgcolor: "rgba(148, 163, 184, 0.08)" },
+              "&:hover": { bgcolor: "rgba(100, 116, 139, 0.08)" },
             }}
           >
             Cancel
@@ -403,6 +583,7 @@ export default function DealsSection() {
             }}
             sx={{
               textTransform: "none",
+              fontFamily: "Arial, sans-serif",
               fontSize: "12.5px",
               fontWeight: 600,
               borderRadius: "6px",
@@ -431,6 +612,7 @@ export default function DealsSection() {
           onClose={closeToast}
           sx={{
             width: "100%",
+            fontFamily: "Arial, sans-serif",
             fontSize: "12px",
             borderRadius: "4px",
           }}

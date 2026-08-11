@@ -101,7 +101,6 @@ export default function ContactEditDialog({
             borderRadius: "8px",
             border: "1px solid #e2e8f0",
             mx: 1.5,
-
             width: "calc(100% - 24px)",
           },
         },

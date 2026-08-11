@@ -133,10 +133,10 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
       slotProps={{
         paper: {
           sx: {
-            bgcolor: "#1e293b",
+            bgcolor: "#ffffff",
             backgroundImage: "none",
             borderRadius: "8px",
-            border: "1px solid #334155",
+            border: "1px solid #e2e8f0",
             mx: 1.5,
             width: "calc(100% - 24px)",
           },
@@ -145,9 +145,9 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
     >
       <DialogTitle
         sx={{
-          color: "#f8fafc",
-          fontWeight: 600,
-          fontSize: "16px",
+          color: "#1e293b",
+          fontWeight: 500,
+          fontSize: "14.5px",
           pt: 2,
           px: 1.5,
           pb: 0.5,
@@ -193,23 +193,25 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+             "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& input": { color: "#f8fafc" },
+                "& input": { color: "#1e293b" },
               },
             }}
           />
@@ -226,23 +228,25 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+             "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& textarea": { color: "#f8fafc" },
+                "& input": { color: "#1e293b" },
               },
             }}
           />
@@ -258,24 +262,25 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+             "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& input": { color: "#f8fafc" },
-                "& input::-webkit-calendar-picker-indicator": { filter: "invert(1)" },
+                "& input": { color: "#1e293b" },
               },
             }}
           />
@@ -291,24 +296,25 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+             "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& .MuiSelect-select": { color: "#f8fafc" },
-                "& .MuiSvgIcon-root": { color: "#94a3b8" },
+                "& input": { color: "#1e293b" },
               },
             }}
           >
@@ -340,24 +346,25 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+             "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& .MuiSelect-select": { color: "#f8fafc" },
-                "& .MuiSvgIcon-root": { color: "#94a3b8" },
+                "& input": { color: "#1e293b" },
               },
             }}
           >
@@ -383,24 +390,25 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+            "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& .MuiSelect-select": { color: "#f8fafc" },
-                "& .MuiSvgIcon-root": { color: "#94a3b8" },
+                "& input": { color: "#1e293b" },
               },
             }}
           >
@@ -429,24 +437,25 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-              "& .MuiInputLabel-root": {
-                color: "#94a3b8",
+            "& .MuiInputLabel-root": {
+                color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
-                bgcolor: "#1e293b",
+                bgcolor: "#ffffff",
                 px: 0.6,
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
               "& .MuiOutlinedInput-root": {
-                color: "#f8fafc",
+                color: "#1e293b",
                 fontSize: "13px",
-                bgcolor: "#0f172a",
+                bgcolor: "#fff",
                 borderRadius: "6px",
-                "& fieldset": { borderColor: "#334155" },
-                "&:hover fieldset": { borderColor: "#475569" },
+                transition: "background-color 150ms ease",
+                "& fieldset": { borderColor: "#cbd5e1" },
+                "&:hover fieldset": { borderColor: "#94a3b8" },
+                "&.Mui-focused": { bgcolor: "#ffffff" },
                 "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-                "& .MuiSelect-select": { color: "#f8fafc" },
-                "& .MuiSvgIcon-root": { color: "#94a3b8" },
+                "& input": { color: "#1e293b" },
               },
             }}
           >
@@ -473,15 +482,22 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
           onClick={onClose}
           disabled={loading}
           sx={{
-            flex: 1,
+             flex: 1,
             textTransform: "none",
-            fontSize: "13px",
-            fontWeight: 500,
-            color: "#94a3b8",
+            fontSize: "12px",
+            fontWeight: 600,
+            bgcolor: "#f1f5f9",
+            color: "#1e293b",
             borderRadius: "6px",
-            py: 0.8,
+            py: 0.9,
+            border: "1px solid #e2e8f0",
             "&:hover": {
-              bgcolor: "rgba(148, 163, 184, 0.08)",
+              bgcolor: "#e2e8f0",
+              boxShadow: "none",
+            },
+            "&.Mui-disabled": {
+              bgcolor: "rgba(241, 245, 249, 0.6)",
+              color: "rgba(30, 41, 59, 0.4)",
             },
           }}
         >
@@ -500,10 +516,10 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
             textTransform: "none",
             bgcolor: "#F5714E",
             color: "#fff",
-            fontSize: "13px",
+            fontSize: "12px",
             fontWeight: 600,
             borderRadius: "6px",
-            py: 0.8,
+            py: 0.9,
             boxShadow: "none",
             "&:hover": {
               bgcolor: "#e05e3b",
@@ -511,7 +527,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
             },
             "&.Mui-disabled": {
               bgcolor: "rgba(245, 113, 78, 0.3)",
-              color: "rgba(248, 250, 252, 0.4)",
+              color: "rgba(255, 255, 255, 0.7)",
             },
           }}
         >

@@ -432,7 +432,7 @@ export default function ContactsPage() {
           },
         }}
       >
-        <DialogTitle sx={{ fontSize: "15px", fontWeight: 600, color: "#1e293b", pb: 1 }}>
+        <DialogTitle sx={{ fontSize: "14.5px", fontWeight: 500, color: "#1e293b", pb: 1 }}>
           Delete contact
         </DialogTitle>
 

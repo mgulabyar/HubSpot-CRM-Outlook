@@ -121,11 +121,11 @@ export default function DealEditModal({
     >
       <DialogTitle
         sx={{
-          color: "#f8fafc", // Bright crisp white header text
-          fontWeight: 600,
-          fontSize: "16px",
+         color: "#1e293b",
+          fontWeight: 500,
+          fontSize: "14.5px",
           pt: 2,
-          px: 1.5, // Reduced padding for narrow taskpanes
+          px: 1.5,
           pb: 0.5,
         }}
       >
@@ -134,12 +134,11 @@ export default function DealEditModal({
 
       <DialogContent
         sx={{
-          px: 1.5, // Tight padding to let text fields expand fully
+          px: 1.5, 
           pb: 1.5,
         }}
       >
         <Stack spacing={2.2} sx={{ pt: 1.5 }}>
-          {/* Deal Name Input */}
           <TextField
             size="small"
             fullWidth

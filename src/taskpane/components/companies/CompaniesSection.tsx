@@ -234,10 +234,10 @@ export default function CompaniesSection() {
 
   return (
     <>
-      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", p: 1, minHeight: "100vh" }}>
+      <Stack spacing={1.5} sx={{ bgcolor: "#ffffff", p: 1, minHeight: "100vh" }}>
         <CompanyCreateForm loading={saving} onSubmit={handleCreate} />
 
-        <Divider sx={{ borderColor: "#1e293b" }} />
+        <Divider sx={{ borderColor: "#e2e8f0" }} />
 
         <Box>
           <Box
@@ -250,9 +250,9 @@ export default function CompaniesSection() {
           >
             <Typography
               sx={{
-                color: "#f8fafc",
-                fontWeight: 600,
-                fontSize: "13.5px",
+                color: "#1e293b",
+                fontWeight: 500,
+                fontSize: "13px",
                 letterSpacing: "0.2px",
               }}
             >
@@ -264,9 +264,9 @@ export default function CompaniesSection() {
               size="small"
               variant="outlined"
               sx={{
-                color: "#cbd5e1",
-                borderColor: "#334155",
-                bgcolor: "#1e293b",
+                 color: "#475569",
+                borderColor: "#cbd5e1",
+                bgcolor: "#f1f5f9",
                 fontSize: "10.5px",
                 fontWeight: 600,
                 height: 24,
@@ -302,19 +302,20 @@ export default function CompaniesSection() {
         slotProps={{
           paper: {
             sx: {
-              bgcolor: "#1e293b",
+              bgcolor: "#ffffff",
               backgroundImage: "none",
               borderRadius: "8px",
-              border: "1px solid #334155",
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
             },
           },
         }}
       >
         <DialogTitle
           sx={{
-            fontSize: "15px",
-            fontWeight: 600,
-            color: "#f8fafc",
+            fontSize: "14.5px",
+            fontWeight: 500,
+            color: "#1e293b",
             pb: 1,
           }}
         >

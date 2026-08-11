@@ -349,33 +349,7 @@ export default function ContactsPage() {
   return (
     <>
       {/* <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", minHeight: "100vh" }}>
-        <ContactForm
-          loading={savingContact}
-          onSubmit={handleCreateContact}
-          onFindContact={handleFindContact}
-        />
-
-        <Divider sx={{ borderColor: "#1e293b" }} />
-
-        <Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              mb: 1.5,
-            }}
-          >
-            <Typography
-              variant="subtitle2"
-              sx={{
-                color: "#f8fafc",
-                fontWeight: 600,
-                fontSize: "13.5px",
-                letterSpacing: "0.2px",
-              }}
-            >
-              Recent Contacts
+       
     
           </Box>
 

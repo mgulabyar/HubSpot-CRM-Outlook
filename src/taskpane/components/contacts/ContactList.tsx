@@ -73,7 +73,7 @@ const detailLabelSx = {
 
 const detailValueSx = {
   color: "#1e293b",
-  fontFamily: "Arial, sans-serif",
+  fontFamily: "Arial",
   fontSize: "11.5px",
   textAlign: "left" as const,
   wordBreak: "break-word" as const,

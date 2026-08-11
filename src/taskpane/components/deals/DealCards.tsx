@@ -52,7 +52,7 @@ const detailLabelSx = {
 
 const detailValueSx = {
   color: "#1e293b",
-  fontFamily: "Arial, sans-serif",
+  fontFamily: "Arial",
   fontSize: "11.5px",
   textAlign: "left" as const,
   wordBreak: "break-word" as const,
@@ -160,7 +160,7 @@ function DealCard({
             <Typography
               sx={{
                 color: "#1e293b",
-                fontFamily: "Arial, sans-serif",
+                fontFamily: "Arial",
                 fontWeight: 500,
                 fontSize: "14px",
                 lineHeight: 1.2,
@@ -172,16 +172,6 @@ function DealCard({
               {properties.dealname || "Unnamed Deal"}
             </Typography>
 
-            <Typography
-              sx={{
-                color: "#64748b",
-                fontFamily: "Arial, sans-serif",
-                fontSize: "11px",
-                mt: 0.3,
-              }}
-            >
-              Deal ID: {dealId}
-            </Typography>
           </Box>
 
           <IconButton

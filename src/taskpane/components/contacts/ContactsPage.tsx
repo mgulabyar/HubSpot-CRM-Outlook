@@ -370,8 +370,8 @@ export default function ContactsPage() {
               variant="subtitle2"
               sx={{
                 color: "#1e293b",
-                fontWeight: 600,
-                fontSize: "13.5px",
+                fontWeight: 500,
+                fontSize: "13px",
                 letterSpacing: "0.2px",
               }}
             >

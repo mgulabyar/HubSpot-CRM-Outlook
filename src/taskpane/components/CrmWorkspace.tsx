@@ -207,7 +207,7 @@ export default function CrmWorkspace() {
                   px: 1.2,
                   py: 0.7,
                   color: "#64748b",
-                  fontFamily: "Arial, sans-serif",
+                  fontFamily: "Arial",
                   textTransform: "none",
                   fontSize: "11.5px",
                   fontWeight: 600,

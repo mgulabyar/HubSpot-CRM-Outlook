@@ -135,7 +135,7 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           inputLabel: { shrink: true },
         }}
         sx={{
-         "& .MuiInputLabel-root": {
+          "& .MuiInputLabel-root": {
             color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
@@ -245,25 +245,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           }}
           sx={{
             "& .MuiInputLabel-root": {
-            color: "#64748b",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#ffffff",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#1e293b",
-            fontSize: "13px",
-            bgcolor: "#fff",
-            borderRadius: "6px",
-            transition: "background-color 150ms ease",
-            "& fieldset": { borderColor: "#cbd5e1" },
-            "&:hover fieldset": { borderColor: "#94a3b8" },
-            "&.Mui-focused": { bgcolor: "#ffffff" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#1e293b" },
-          },
+              color: "#64748b",
+              fontSize: "13px",
+              fontWeight: 500,
+              bgcolor: "#ffffff",
+              px: 0.6,
+            },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+            "& .MuiOutlinedInput-root": {
+              color: "#1e293b",
+              fontSize: "13px",
+              bgcolor: "#fff",
+              borderRadius: "6px",
+              transition: "background-color 150ms ease",
+              "& fieldset": { borderColor: "#cbd5e1" },
+              "&:hover fieldset": { borderColor: "#94a3b8" },
+              "&.Mui-focused": { bgcolor: "#ffffff" },
+              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+              "& input": { color: "#1e293b" },
+            },
           }}
         >
           <MenuItem value="NOT_STARTED">Not Started</MenuItem>
@@ -284,25 +284,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           }}
           sx={{
             "& .MuiInputLabel-root": {
-            color: "#64748b",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#ffffff",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#1e293b",
-            fontSize: "13px",
-            bgcolor: "#fff",
-            borderRadius: "6px",
-            transition: "background-color 150ms ease",
-            "& fieldset": { borderColor: "#cbd5e1" },
-            "&:hover fieldset": { borderColor: "#94a3b8" },
-            "&.Mui-focused": { bgcolor: "#ffffff" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#1e293b" },
-          },
+              color: "#64748b",
+              fontSize: "13px",
+              fontWeight: 500,
+              bgcolor: "#ffffff",
+              px: 0.6,
+            },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+            "& .MuiOutlinedInput-root": {
+              color: "#1e293b",
+              fontSize: "13px",
+              bgcolor: "#fff",
+              borderRadius: "6px",
+              transition: "background-color 150ms ease",
+              "& fieldset": { borderColor: "#cbd5e1" },
+              "&:hover fieldset": { borderColor: "#94a3b8" },
+              "&.Mui-focused": { bgcolor: "#ffffff" },
+              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+              "& input": { color: "#1e293b" },
+            },
           }}
         >
           <MenuItem value="LOW">Low</MenuItem>
@@ -361,7 +361,7 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           inputLabel: { shrink: true },
         }}
         sx={{
-       "& .MuiInputLabel-root": {
+          "& .MuiInputLabel-root": {
             color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
@@ -448,25 +448,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           }}
           sx={{
             "& .MuiInputLabel-root": {
-            color: "#64748b",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#ffffff",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#1e293b",
-            fontSize: "13px",
-            bgcolor: "#fff",
-            borderRadius: "6px",
-            transition: "background-color 150ms ease",
-            "& fieldset": { borderColor: "#cbd5e1" },
-            "&:hover fieldset": { borderColor: "#94a3b8" },
-            "&.Mui-focused": { bgcolor: "#ffffff" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#1e293b" },
-          },
+              color: "#64748b",
+              fontSize: "13px",
+              fontWeight: 500,
+              bgcolor: "#ffffff",
+              px: 0.6,
+            },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+            "& .MuiOutlinedInput-root": {
+              color: "#1e293b",
+              fontSize: "13px",
+              bgcolor: "#fff",
+              borderRadius: "6px",
+              transition: "background-color 150ms ease",
+              "& fieldset": { borderColor: "#cbd5e1" },
+              "&:hover fieldset": { borderColor: "#94a3b8" },
+              "&.Mui-focused": { bgcolor: "#ffffff" },
+              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+              "& input": { color: "#1e293b" },
+            },
           }}
         />
       )}
@@ -480,12 +480,12 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           void handleSubmit();
         }}
         sx={{
-          width: "100%",
+          flex: 1,
           textTransform: "none",
           borderRadius: "6px",
           bgcolor: "#F5714E",
           color: "#fff",
-          fontSize: "13px",
+          fontSize: "12px",
           fontWeight: 600,
           py: 0.9,
           boxShadow: "none",
@@ -495,7 +495,7 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           },
           "&.Mui-disabled": {
             bgcolor: "rgba(245, 113, 78, 0.3)",
-            color: "rgba(248, 250, 252, 0.4)",
+            color: "rgba(255, 255, 255, 0.7)",
           },
         }}
       >

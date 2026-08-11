@@ -518,7 +518,7 @@ function ContactCard({
         boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
         transition: "all 200ms ease",
         "&:hover": {
-          bgcolor: "#f8fafc",
+          bgcolor: "#fff",
         },
       }}
     >
@@ -543,9 +543,9 @@ function ContactCard({
           <Typography
             sx={{
               color: "#1e293b",
-              fontFamily: "Arial, sans-serif",
-              fontWeight: 600,
-              fontSize: "14.5px",
+              fontFamily: "Arial",
+              fontWeight: 500,
+              fontSize: "14px",
               lineHeight: 1.2,
               whiteSpace: "nowrap",
               overflow: "hidden",
@@ -587,10 +587,10 @@ function ContactCard({
           <Stack spacing={1.2} sx={{ pt: 1.2 }}>
             <Box
               sx={{
-                bgcolor: "#f8fafc",
+                bgcolor: "#fff",
                 border: "1px solid #e2e8f0",
                 p: 1.2,
-                borderRadius: "6px",
+                borderRadius: "4px",
                 display: "flex",
                 flexDirection: "column",
                 gap: 1.2,

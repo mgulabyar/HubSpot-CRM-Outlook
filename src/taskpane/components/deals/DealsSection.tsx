@@ -291,7 +291,7 @@ export default function DealsSection() {
               sx={{
                 color: "#1e293b",
                 fontFamily: "Arial",
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: "13px",
                 letterSpacing: "0.2px",
               }}

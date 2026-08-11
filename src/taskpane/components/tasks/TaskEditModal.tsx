@@ -193,7 +193,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -228,7 +228,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -262,7 +262,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -296,7 +296,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -346,7 +346,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -390,7 +390,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-            "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -437,7 +437,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
               inputLabel: { shrink: true },
             }}
             sx={{
-            "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -482,7 +482,7 @@ export default function TaskEditModal({ open, task, owners, loading, onClose, on
           onClick={onClose}
           disabled={loading}
           sx={{
-             flex: 1,
+            flex: 1,
             textTransform: "none",
             fontSize: "12px",
             fontWeight: 600,

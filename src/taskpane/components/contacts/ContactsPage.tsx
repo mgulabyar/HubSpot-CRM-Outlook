@@ -27,12 +27,6 @@ import {
 import type { ContactFormValues, HubSpotRecord } from "../../types/hubspot";
 import { getApiErrorMessage } from "../../utils/apiError";
 
-const HUBSPOT_BRAND = {
-  primary: "#ff7a59",
-  charcoal: "#2d3e50",
-  border: "#cbd6e2",
-};
-
 type ToastSeverity = "success" | "error" | "info" | "warning";
 
 function splitFullName(fullName: string) {

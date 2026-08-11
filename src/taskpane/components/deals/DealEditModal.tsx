@@ -121,7 +121,7 @@ export default function DealEditModal({
     >
       <DialogTitle
         sx={{
-         color: "#1e293b",
+          color: "#1e293b",
           fontWeight: 500,
           fontSize: "14.5px",
           pt: 2,
@@ -134,7 +134,7 @@ export default function DealEditModal({
 
       <DialogContent
         sx={{
-          px: 1.5, 
+          px: 1.5,
           pb: 1.5,
         }}
       >
@@ -149,7 +149,7 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -183,7 +183,7 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -217,7 +217,7 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -257,7 +257,7 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-            "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -297,7 +297,7 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -332,7 +332,7 @@ export default function DealEditModal({
               inputLabel: { shrink: true },
             }}
             sx={{
-             "& .MuiInputLabel-root": {
+              "& .MuiInputLabel-root": {
                 color: "#64748b",
                 fontSize: "13px",
                 fontWeight: 500,
@@ -363,7 +363,7 @@ export default function DealEditModal({
           onClick={onClose}
           disabled={loading}
           sx={{
-           flex: 1,
+            flex: 1,
             textTransform: "none",
             fontSize: "12px",
             fontWeight: 600,
@@ -390,7 +390,7 @@ export default function DealEditModal({
           variant="contained"
           disabled={loading}
           onClick={() => {
-            void handleSave(); 
+            void handleSave();
           }}
           sx={{
             flex: 1,

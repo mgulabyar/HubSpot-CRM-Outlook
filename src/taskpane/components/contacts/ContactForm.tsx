@@ -61,7 +61,6 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
   };
 
   return (
- 
     <Stack
       spacing={2.2}
       sx={{

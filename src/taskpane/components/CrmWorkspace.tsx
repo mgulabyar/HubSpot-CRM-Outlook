@@ -161,7 +161,7 @@ export default function CrmWorkspace() {
               letterSpacing: "0.1px",
             }}
           >
-            CRM Workspace
+            HubSpot for Outlook
           </Typography>
 
           <Tabs
@@ -175,12 +175,12 @@ export default function CrmWorkspace() {
               width: "100%",
 
               "& .MuiTabs-flexContainer": {
-                gap: 0.5,
+                gap: 1.5,
               },
 
               "& .MuiTabs-indicator": {
-                height: "3px",
-                borderRadius: "3px 3px 0 0",
+                height: "2px",
+                borderRadius: "2px 2px 0 0",
                 bgcolor: "#F5714E",
               },
 
@@ -204,8 +204,9 @@ export default function CrmWorkspace() {
                 sx={{
                   minHeight: "32px",
                   minWidth: "auto",
-                  px: 1.2,
-                  py: 0.7,
+                  px: 0.8,
+                  pt: 0.7,
+                  pb: 1.1,
                   color: "#64748b",
                   fontFamily: "Arial",
                   textTransform: "none",
@@ -231,9 +232,8 @@ export default function CrmWorkspace() {
 
         <Box
           sx={{
-            p: 1.5,
+            p: 0.5,
             minHeight: 400,
-            bgcolor: "#ffffff",
             overflowX: "hidden",
           }}
         >

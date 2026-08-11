@@ -348,7 +348,7 @@ export default function ContactsPage() {
 
   return (
     <>
-      <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", minHeight: "100vh" }}>
+      {/* <Stack spacing={1.5} sx={{ bgcolor: "#0f172a", minHeight: "100vh" }}>
         <ContactForm
           loading={savingContact}
           onSubmit={handleCreateContact}
@@ -507,6 +507,173 @@ export default function ContactsPage() {
             },
             "& .MuiAlert-action": {
               color: "#94a3b8",
+            },
+          }}
+        >
+          {toast.message}
+        </Alert>
+      </Snackbar> */}
+
+      <Stack spacing={1.5} sx={{ bgcolor: "#ffffff", minHeight: "100vh" }}>
+        <ContactForm
+          loading={savingContact}
+          onSubmit={handleCreateContact}
+          onFindContact={handleFindContact}
+        />
+
+        <Divider sx={{ borderColor: "#e2e8f0" }} />
+
+        <Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 1.5,
+            }}
+          >
+            <Typography
+              variant="subtitle2"
+              sx={{
+                color: "#1e293b",
+                fontWeight: 600,
+                fontSize: "13.5px",
+                letterSpacing: "0.2px",
+              }}
+            >
+              Recent Contacts
+            </Typography>
+
+            <Chip
+              label={`${contacts.length} Contacts`}
+              size="small"
+              variant="outlined"
+              sx={{
+                color: "#475569",
+                borderColor: "#cbd5e1",
+                bgcolor: "#f1f5f9",
+                fontSize: "10.5px",
+                fontWeight: 600,
+                height: 24,
+                borderRadius: "4px",
+                px: 0.5,
+              }}
+            />
+          </Box>
+
+          <ContactList
+            contacts={contacts}
+            notesByContact={notesByContact}
+            loading={loadingContacts}
+            deletingId={deletingId}
+            onDelete={handleDeleteContact}
+            onEdit={handleOpenEdit}
+          />
+        </Box>
+      </Stack>
+
+      <ContactEditDialog
+        open={editDialogOpen}
+        contact={editingContact}
+        note={editingNote}
+        loading={savingContact}
+        onClose={handleCloseEdit}
+        onSave={handleUpdateContact}
+      />
+
+      <Dialog
+        open={Boolean(pendingDeleteContact)}
+        onClose={handleCancelDelete}
+        maxWidth="xs"
+        fullWidth
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "#ffffff",
+              backgroundImage: "none",
+              borderRadius: "8px",
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            },
+          },
+        }}
+      >
+        <DialogTitle sx={{ fontSize: "15px", fontWeight: 600, color: "#1e293b", pb: 1 }}>
+          Delete contact
+        </DialogTitle>
+
+        <DialogContent sx={{ pb: 2 }}>
+          <DialogContentText sx={{ fontSize: "12.5px", color: "#475569", lineHeight: 1.45 }}>
+            Are you sure you want to delete{" "}
+            <strong style={{ color: "#1e293b" }}>{pendingDeleteName}</strong>? This action cannot be
+            undone.
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions sx={{ px: 1.5, pb: 1.5, gap: 0.5 }}>
+          <Button
+            onClick={handleCancelDelete}
+            disabled={Boolean(deletingId)}
+            sx={{
+              textTransform: "none",
+              fontSize: "12.5px",
+              color: "#64748b",
+              fontWeight: 500,
+              "&:hover": { bgcolor: "rgba(100, 116, 139, 0.08)" },
+            }}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            onClick={handleConfirmDelete}
+            disabled={Boolean(deletingId)}
+            variant="contained"
+            color="error"
+            sx={{
+              textTransform: "none",
+              fontSize: "12.5px",
+              fontWeight: 600,
+              borderRadius: "6px",
+              boxShadow: "none",
+              bgcolor: "#dc2626",
+              "&:hover": { bgcolor: "#b91c1c", boxShadow: "none" },
+            }}
+          >
+            {deletingId ? "Deleting..." : "Delete"}
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Snackbar
+        open={toast.open}
+        autoHideDuration={3000}
+        onClose={closeToast}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        sx={{
+          zIndex: 2000,
+        }}
+      >
+        <Alert
+          severity={toast.severity}
+          variant="outlined"
+          onClose={closeToast}
+          sx={{
+            width: "100%",
+            fontSize: "12px",
+            borderRadius: "6px",
+            bgcolor: toast.severity === "error" ? "#fef2f2" : "#fffbeb",
+            color: toast.severity === "error" ? "#b91c1c" : "#92400e",
+            borderColor:
+              toast.severity === "error" ? "rgba(239, 68, 68, 0.35)" : "rgba(217, 119, 6, 0.35)",
+            "& .MuiAlert-icon": {
+              color: toast.severity === "error" ? "#dc2626" : "#d97706",
+            },
+            "& .MuiAlert-action": {
+              color: "#64748b",
             },
           }}
         >

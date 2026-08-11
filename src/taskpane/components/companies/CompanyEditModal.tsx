@@ -31,31 +31,7 @@ const emptyForm: CompanyFormValues = {
   numberofemployees: "",
 };
 
-const darkFieldSx = {
-  "& .MuiInputLabel-root": {
-    color: "#94a3b8",
-    fontSize: "12.5px",
-    fontWeight: 500,
-    bgcolor: "#1e293b",
-    px: 0.6,
-  },
-  "& .MuiInputLabel-root.Mui-focused": {
-    color: "#F5714E",
-  },
-  "& .MuiOutlinedInput-root": {
-    color: "#f8fafc",
-    fontSize: "12.5px",
-    bgcolor: "#0f172a",
-    borderRadius: "6px",
-    "& input": { color: "#f8fafc", padding: "8.5px 12px" },
-    "& fieldset": { borderColor: "#334155" },
-    "&:hover fieldset": { borderColor: "#475569" },
-    "&.Mui-focused fieldset": {
-      borderColor: "#F5714E",
-      borderWidth: "1.5px",
-    },
-  },
-};
+
 
 export default function CompanyEditModal({ open, company, loading, onClose, onSave }: Props) {
   const [form, setForm] = useState<CompanyFormValues>(emptyForm);

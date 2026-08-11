@@ -89,14 +89,14 @@ export default function AssociationCreateForm({ loading, onSubmit }: Props) {
       variant="outlined"
       onClose={() => setError("")}
       sx={{
-        borderRadius: "6px",
-        fontSize: "12px",
-        color: "#fef08a", // Soft premium yellow text for dark theme
-        borderColor: "rgba(234, 179, 8, 0.3)",
-        bgcolor: "rgba(234, 179, 8, 0.06)",
-        "& .MuiAlert-icon": {
-          color: "#eab308",
-        },
+         borderRadius: "6px",
+            fontSize: "12px",
+            color: "#92400e",
+            borderColor: "rgba(217, 119, 6, 0.35)",
+            bgcolor: "rgba(251, 191, 36, 0.1)",
+            "& .MuiAlert-icon": {
+              color: "#d97706",
+            },
       }}
     >
       {error}
@@ -122,19 +122,26 @@ export default function AssociationCreateForm({ loading, onSubmit }: Props) {
         inputLabel: { shrink: true },
       }}
       sx={{
-        "& .MuiInputLabel-root": { color: "#94a3b8", fontSize: "13px", fontWeight: 500, bgcolor: "#1e293b", px: 0.6 },
-        "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-        "& .MuiOutlinedInput-root": {
-          color: "#f8fafc", // Input Text Value Color (Crisp White)
-          fontSize: "13px",
-          bgcolor: "#0f172a", // Dark Pod Inner Style
-          borderRadius: "6px",
-          "& fieldset": { borderColor: "#334155" }, // Default Border
-          "&:hover fieldset": { borderColor: "#475569" }, // Hover Border
-          "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" }, // Focus Border
-          "& .MuiSelect-select": { color: "#f8fafc" },
-          "& .MuiSvgIcon-root": { color: "#94a3b8" }, // Dropdown Arrow Color Fix
-        },
+        "& .MuiInputLabel-root": {
+            color: "#64748b",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#ffffff",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#1e293b",
+            fontSize: "13px",
+            bgcolor: "#fff",
+            borderRadius: "6px",
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#1e293b" },
+          },
       }}
     >
       <MenuItem value="contacts" sx={{ fontSize: "13px" }}>Contact</MenuItem>
@@ -153,18 +160,26 @@ export default function AssociationCreateForm({ loading, onSubmit }: Props) {
         inputLabel: { shrink: true },
       }}
       sx={{
-        "& .MuiInputLabel-root": { color: "#94a3b8", fontSize: "13px", fontWeight: 500, bgcolor: "#1e293b", px: 0.6 },
-        "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-        "& .MuiOutlinedInput-root": {
-          color: "#f8fafc",
-          fontSize: "13px",
-          bgcolor: "#0f172a",
-          borderRadius: "6px",
-          "& fieldset": { borderColor: "#334155" },
-          "&:hover fieldset": { borderColor: "#475569" },
-          "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-          "& input": { color: "#f8fafc" },
-        },
+        "& .MuiInputLabel-root": {
+            color: "#64748b",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#ffffff",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#1e293b",
+            fontSize: "13px",
+            bgcolor: "#fff",
+            borderRadius: "6px",
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#1e293b" },
+          },
       }}
     />
   </Box>
@@ -188,19 +203,26 @@ export default function AssociationCreateForm({ loading, onSubmit }: Props) {
         inputLabel: { shrink: true },
       }}
       sx={{
-        "& .MuiInputLabel-root": { color: "#94a3b8", fontSize: "13px", fontWeight: 500, bgcolor: "#1e293b", px: 0.6 },
-        "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-        "& .MuiOutlinedInput-root": {
-          color: "#f8fafc",
-          fontSize: "13px",
-          bgcolor: "#0f172a",
-          borderRadius: "6px",
-          "& fieldset": { borderColor: "#334155" },
-          "&:hover fieldset": { borderColor: "#475569" },
-          "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-          "& .MuiSelect-select": { color: "#f8fafc" },
-          "& .MuiSvgIcon-root": { color: "#94a3b8" },
-        },
+        "& .MuiInputLabel-root": {
+            color: "#64748b",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#ffffff",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#1e293b",
+            fontSize: "13px",
+            bgcolor: "#fff",
+            borderRadius: "6px",
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#1e293b" },
+          },
       }}
     >
       <MenuItem value="contacts" sx={{ fontSize: "13px" }}>Contact</MenuItem>
@@ -219,18 +241,26 @@ export default function AssociationCreateForm({ loading, onSubmit }: Props) {
         inputLabel: { shrink: true },
       }}
       sx={{
-        "& .MuiInputLabel-root": { color: "#94a3b8", fontSize: "13px", fontWeight: 500, bgcolor: "#1e293b", px: 0.6 },
-        "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-        "& .MuiOutlinedInput-root": {
-          color: "#f8fafc",
-          fontSize: "13px",
-          bgcolor: "#0f172a",
-          borderRadius: "6px",
-          "& fieldset": { borderColor: "#334155" },
-          "&:hover fieldset": { borderColor: "#475569" },
-          "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-          "& input": { color: "#f8fafc" },
-        },
+        "& .MuiInputLabel-root": {
+            color: "#64748b",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#ffffff",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#1e293b",
+            fontSize: "13px",
+            bgcolor: "#fff",
+            borderRadius: "6px",
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#1e293b" },
+          },
       }}
     />
   </Box>
@@ -245,25 +275,26 @@ export default function AssociationCreateForm({ loading, onSubmit }: Props) {
       void handleSubmit(); // Original functional routine preserved safely
     }}
     sx={{
-      width: "100%", // Extends to 100% boundary width of your inputs flawlessly
-      textTransform: "none",
-      borderRadius: "6px",
-      bgcolor: "#F5714E", // Your exact unified premium orange color
-      fontSize: "13px",
-      fontWeight: 600,
-      py: 0.9,
-      boxShadow: "none",
-      "&:hover": {
-        bgcolor: "#e05e3b",
-        boxShadow: "none",
-      },
-      "&.Mui-disabled": {
-        bgcolor: "rgba(245, 113, 78, 0.3)",
-        color: "rgba(248, 250, 252, 0.4)",
-      },
+      flex: 1,
+            textTransform: "none",
+            borderRadius: "6px",
+            bgcolor: "#F5714E",
+            color: "#fff",
+            fontSize: "12px",
+            fontWeight: 600,
+            py: 0.9,
+            boxShadow: "none",
+            "&:hover": {
+              bgcolor: "#e05e3b",
+              boxShadow: "none",
+            },
+            "&.Mui-disabled": {
+              bgcolor: "rgba(245, 113, 78, 0.3)",
+              color: "rgba(255, 255, 255, 0.7)",
+            },
     }}
   >
-    {loading ? "Associating..." : "Create Association"}
+    {loading ? "Associating..." : "Save Association"}
   </Button>
 </Stack>
 

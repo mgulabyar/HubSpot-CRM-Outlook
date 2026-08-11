@@ -105,16 +105,16 @@ export default function DealEditModal({
       open={open}
       onClose={loading ? undefined : onClose}
       fullWidth
-      maxWidth="sm" // Increased from "xs" to "sm" for extra width control
+      maxWidth="sm"
       slotProps={{
         paper: {
           sx: {
-            bgcolor: "#1e293b", // Deep slate background
-            backgroundImage: "none", // Avoids generic MUI opacity elevation overlays
+            bgcolor: "#ffffff",
+            backgroundImage: "none",
             borderRadius: "8px",
-            border: "1px solid #334155",
-            mx: 1.5, // Sidebar layout safety margins
-            width: "calc(100% - 24px)", // Forces full space utilization in taskpane
+            border: "1px solid #e2e8f0",
+            mx: 1.5,
+            width: "calc(100% - 24px)",
           },
         },
       }}

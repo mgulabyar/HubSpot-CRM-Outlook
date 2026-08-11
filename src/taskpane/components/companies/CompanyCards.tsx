@@ -297,7 +297,7 @@ export default function CompanyCards({ companies, loading, deletingId, onEdit, o
       </Typography>
     );
   }
-
+// 
   if (companies.length === 0) {
     return (
       <Typography

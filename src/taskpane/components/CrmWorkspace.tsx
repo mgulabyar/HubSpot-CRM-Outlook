@@ -147,7 +147,7 @@ export default function CrmWorkspace() {
             px: 1.2,
             pt: 1.2,
             borderBottom: "1px solid #e2e8f0",
-            bgcolor: "#f8fafc",
+            bgcolor: "#fff",
           }}
         >
           <Typography

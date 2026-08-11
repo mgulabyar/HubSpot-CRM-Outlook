@@ -135,23 +135,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           inputLabel: { shrink: true },
         }}
         sx={{
-          "& .MuiInputLabel-root": {
-            color: "#94a3b8",
+         "& .MuiInputLabel-root": {
+            color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
-            bgcolor: "#1e293b",
+            bgcolor: "#ffffff",
             px: 0.6,
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
+            color: "#1e293b",
             fontSize: "13px",
-            bgcolor: "#0f172a",
+            bgcolor: "#fff",
             borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#f8fafc" },
+            "& input": { color: "#1e293b" },
           },
         }}
       />
@@ -169,22 +171,24 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         }}
         sx={{
           "& .MuiInputLabel-root": {
-            color: "#94a3b8",
+            color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
-            bgcolor: "#1e293b",
+            bgcolor: "#ffffff",
             px: 0.6,
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
+            color: "#1e293b",
             fontSize: "13px",
-            bgcolor: "#0f172a",
+            bgcolor: "#fff",
             borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& textarea": { color: "#f8fafc" },
+            "& input": { color: "#1e293b" },
           },
         }}
       />
@@ -201,23 +205,24 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         }}
         sx={{
           "& .MuiInputLabel-root": {
-            color: "#94a3b8",
+            color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
-            bgcolor: "#1e293b",
+            bgcolor: "#ffffff",
             px: 0.6,
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
+            color: "#1e293b",
             fontSize: "13px",
-            bgcolor: "#0f172a",
+            bgcolor: "#fff",
             borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#f8fafc" },
-            "& input::-webkit-calendar-picker-indicator": { filter: "invert(1)" },
+            "& input": { color: "#1e293b" },
           },
         }}
       />
@@ -240,24 +245,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           }}
           sx={{
             "& .MuiInputLabel-root": {
-              color: "#94a3b8",
-              fontSize: "13px",
-              fontWeight: 500,
-              bgcolor: "#1e293b",
-              px: 0.6,
-            },
-            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-            "& .MuiOutlinedInput-root": {
-              color: "#f8fafc",
-              fontSize: "13px",
-              bgcolor: "#0f172a",
-              borderRadius: "6px",
-              "& fieldset": { borderColor: "#334155" },
-              "&:hover fieldset": { borderColor: "#475569" },
-              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-              "& .MuiSelect-select": { color: "#f8fafc" },
-              "& .MuiSvgIcon-root": { color: "#94a3b8" },
-            },
+            color: "#64748b",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#ffffff",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#1e293b",
+            fontSize: "13px",
+            bgcolor: "#fff",
+            borderRadius: "6px",
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#1e293b" },
+          },
           }}
         >
           <MenuItem value="NOT_STARTED">Not Started</MenuItem>
@@ -278,24 +284,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           }}
           sx={{
             "& .MuiInputLabel-root": {
-              color: "#94a3b8",
-              fontSize: "13px",
-              fontWeight: 500,
-              bgcolor: "#1e293b",
-              px: 0.6,
-            },
-            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-            "& .MuiOutlinedInput-root": {
-              color: "#f8fafc",
-              fontSize: "13px",
-              bgcolor: "#0f172a",
-              borderRadius: "6px",
-              "& fieldset": { borderColor: "#334155" },
-              "&:hover fieldset": { borderColor: "#475569" },
-              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-              "& .MuiSelect-select": { color: "#f8fafc" },
-              "& .MuiSvgIcon-root": { color: "#94a3b8" },
-            },
+            color: "#64748b",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#ffffff",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#1e293b",
+            fontSize: "13px",
+            bgcolor: "#fff",
+            borderRadius: "6px",
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#1e293b" },
+          },
           }}
         >
           <MenuItem value="LOW">Low</MenuItem>
@@ -316,23 +323,24 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         }}
         sx={{
           "& .MuiInputLabel-root": {
-            color: "#94a3b8",
+            color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
-            bgcolor: "#1e293b",
+            bgcolor: "#ffffff",
             px: 0.6,
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
+            color: "#1e293b",
             fontSize: "13px",
-            bgcolor: "#0f172a",
+            bgcolor: "#fff",
             borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& .MuiSelect-select": { color: "#f8fafc" },
-            "& .MuiSvgIcon-root": { color: "#94a3b8" },
+            "& input": { color: "#1e293b" },
           },
         }}
       >
@@ -353,24 +361,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           inputLabel: { shrink: true },
         }}
         sx={{
-          "& .MuiInputLabel-root": {
-            color: "#94a3b8",
+       "& .MuiInputLabel-root": {
+            color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
-            bgcolor: "#1e293b",
+            bgcolor: "#ffffff",
             px: 0.6,
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
+            color: "#1e293b",
             fontSize: "13px",
-            bgcolor: "#0f172a",
+            bgcolor: "#fff",
             borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& .MuiSelect-select": { color: "#f8fafc" },
-            "& .MuiSvgIcon-root": { color: "#94a3b8" },
+            "& input": { color: "#1e293b" },
           },
         }}
       >
@@ -399,23 +408,24 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
         }}
         sx={{
           "& .MuiInputLabel-root": {
-            color: "#94a3b8",
+            color: "#64748b",
             fontSize: "13px",
             fontWeight: 500,
-            bgcolor: "#1e293b",
+            bgcolor: "#ffffff",
             px: 0.6,
           },
           "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
           "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
+            color: "#1e293b",
             fontSize: "13px",
-            bgcolor: "#0f172a",
+            bgcolor: "#fff",
             borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
             "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& .MuiSelect-select": { color: "#f8fafc" },
-            "& .MuiSvgIcon-root": { color: "#94a3b8" },
+            "& input": { color: "#1e293b" },
           },
         }}
       >
@@ -438,24 +448,25 @@ export default function TaskCreateForm({ loading, owners, onSubmit }: Props) {
           }}
           sx={{
             "& .MuiInputLabel-root": {
-              color: "#94a3b8",
-              fontSize: "13px",
-              fontWeight: 500,
-              bgcolor: "#1e293b",
-              px: 0.6,
-            },
-            "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-            "& .MuiFormHelperText-root": { color: "#64748b", fontSize: "10.5px", mt: 0.5 },
-            "& .MuiOutlinedInput-root": {
-              color: "#f8fafc",
-              fontSize: "13px",
-              bgcolor: "#0f172a",
-              borderRadius: "6px",
-              "& fieldset": { borderColor: "#334155" },
-              "&:hover fieldset": { borderColor: "#475569" },
-              "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-              "& input": { color: "#f8fafc" },
-            },
+            color: "#64748b",
+            fontSize: "13px",
+            fontWeight: 500,
+            bgcolor: "#ffffff",
+            px: 0.6,
+          },
+          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+          "& .MuiOutlinedInput-root": {
+            color: "#1e293b",
+            fontSize: "13px",
+            bgcolor: "#fff",
+            borderRadius: "6px",
+            transition: "background-color 150ms ease",
+            "& fieldset": { borderColor: "#cbd5e1" },
+            "&:hover fieldset": { borderColor: "#94a3b8" },
+            "&.Mui-focused": { bgcolor: "#ffffff" },
+            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+            "& input": { color: "#1e293b" },
+          },
           }}
         />
       )}

@@ -31,8 +31,6 @@ const emptyForm: CompanyFormValues = {
   numberofemployees: "",
 };
 
-
-
 export default function CompanyEditModal({ open, company, loading, onClose, onSave }: Props) {
   const [form, setForm] = useState<CompanyFormValues>(emptyForm);
 

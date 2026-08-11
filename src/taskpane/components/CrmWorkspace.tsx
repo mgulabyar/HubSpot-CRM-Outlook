@@ -156,8 +156,8 @@ export default function CrmWorkspace() {
               pb: 1,
               color: "#64748b",
               fontFamily: "Arial",
-              fontSize: "13px",
-              fontWeight: 600,
+              fontSize: "12px",
+              fontWeight: 500,
               letterSpacing: "0.1px",
             }}
           >

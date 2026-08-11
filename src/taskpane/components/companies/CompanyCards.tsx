@@ -183,7 +183,7 @@ function CompanyCard({
                 gap: 1.1,
               }}
             >
-              {/* asfand */}
+              {/*  */}
               <InfoRow label="ID" value={companyId} />
               <InfoRow label="Domain" value={properties.domain} />
               <InfoRow label="Phone" value={properties.phone} />

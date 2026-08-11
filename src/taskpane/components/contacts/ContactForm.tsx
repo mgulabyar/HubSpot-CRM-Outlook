@@ -61,258 +61,513 @@ export default function ContactForm({ loading, onSubmit, onFindContact }: Contac
   };
 
   return (
+    // <Stack
+    //   spacing={2.2}
+    //   sx={{
+    //     p: 1,
+    //   }}
+    // >
+    //   {validationError && (
+    //     <Alert
+    //       severity="warning"
+    //       variant="outlined"
+    //       onClose={() => setValidationError("")}
+    //       sx={{
+    //         borderRadius: "6px",
+    //         fontSize: "12px",
+    //         color: "#fef08a",
+    //         borderColor: "rgba(234, 179, 8, 0.3)",
+    //         bgcolor: "rgba(234, 179, 8, 0.06)",
+    //         "& .MuiAlert-icon": {
+    //           color: "#eab308",
+    //         },
+    //       }}
+    //     >
+    //       {validationError}
+    //     </Alert>
+    //   )}
+
+    //   <TextField
+    //     fullWidth
+    //     size="small"
+    //     label="Full Name"
+    //     value={form.name}
+    //     onChange={handleChange("name")}
+    //     slotProps={{
+    //       inputLabel: { shrink: true },
+    //     }}
+    //     sx={{
+    //       "& .MuiInputLabel-root": {
+    //         color: "#94a3b8",
+    //         fontSize: "13px",
+    //         fontWeight: 500,
+    //         bgcolor: "#1e293b",
+    //         px: 0.6,
+    //       },
+    //       "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+    //       "& .MuiOutlinedInput-root": {
+    //         color: "#f8fafc",
+    //         fontSize: "13px",
+    //         bgcolor: "#0f172a",
+    //         borderRadius: "6px",
+    //         "& fieldset": { borderColor: "#334155" },
+    //         "&:hover fieldset": { borderColor: "#475569" },
+    //         "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+    //         "& input": { color: "#f8fafc" },
+    //       },
+    //     }}
+    //   />
+
+    //   <TextField
+    //     fullWidth
+    //     size="small"
+    //     type="email"
+    //     label="Email Address"
+    //     value={form.email}
+    //     onChange={handleChange("email")}
+    //     slotProps={{
+    //       inputLabel: { shrink: true },
+    //     }}
+    //     sx={{
+    //       "& .MuiInputLabel-root": {
+    //         color: "#94a3b8",
+    //         fontSize: "13px",
+    //         fontWeight: 500,
+    //         bgcolor: "#1e293b",
+    //         px: 0.6,
+    //       },
+    //       "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+    //       "& .MuiOutlinedInput-root": {
+    //         color: "#f8fafc",
+    //         fontSize: "13px",
+    //         bgcolor: "#0f172a",
+    //         borderRadius: "6px",
+    //         "& fieldset": { borderColor: "#334155" },
+    //         "&:hover fieldset": { borderColor: "#475569" },
+    //         "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+    //         "& input": { color: "#f8fafc" },
+    //       },
+    //     }}
+    //   />
+
+    //   <TextField
+    //     fullWidth
+    //     size="small"
+    //     label="Company Name"
+    //     value={form.company}
+    //     onChange={handleChange("company")}
+    //     slotProps={{
+    //       inputLabel: { shrink: true },
+    //     }}
+    //     sx={{
+    //       "& .MuiInputLabel-root": {
+    //         color: "#94a3b8",
+    //         fontSize: "13px",
+    //         fontWeight: 500,
+    //         bgcolor: "#1e293b",
+    //         px: 0.6,
+    //       },
+    //       "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+    //       "& .MuiOutlinedInput-root": {
+    //         color: "#f8fafc",
+    //         fontSize: "13px",
+    //         bgcolor: "#0f172a",
+    //         borderRadius: "6px",
+    //         "& fieldset": { borderColor: "#334155" },
+    //         "&:hover fieldset": { borderColor: "#475569" },
+    //         "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+    //         "& input": { color: "#f8fafc" },
+    //       },
+    //     }}
+    //   />
+
+    //   <TextField
+    //     fullWidth
+    //     size="small"
+    //     label="Subject Line"
+    //     value={form.subject}
+    //     onChange={handleChange("subject")}
+    //     slotProps={{
+    //       inputLabel: { shrink: true },
+    //     }}
+    //     sx={{
+    //       "& .MuiInputLabel-root": {
+    //         color: "#94a3b8",
+    //         fontSize: "13px",
+    //         fontWeight: 500,
+    //         bgcolor: "#1e293b",
+    //         px: 0.6,
+    //       },
+    //       "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+    //       "& .MuiOutlinedInput-root": {
+    //         color: "#f8fafc",
+    //         fontSize: "13px",
+    //         bgcolor: "#0f172a",
+    //         borderRadius: "6px",
+    //         "& fieldset": { borderColor: "#334155" },
+    //         "&:hover fieldset": { borderColor: "#475569" },
+    //         "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+    //         "& input": { color: "#f8fafc" },
+    //       },
+    //     }}
+    //   />
+
+    //   <TextField
+    //     fullWidth
+    //     size="small"
+    //     multiline
+    //     minRows={3.5}
+    //     label="Internal Notes"
+    //     value={form.notes}
+    //     onChange={handleChange("notes")}
+    //     slotProps={{
+    //       inputLabel: { shrink: true },
+    //     }}
+    //     sx={{
+    //       "& .MuiInputLabel-root": {
+    //         color: "#94a3b8",
+    //         fontSize: "13px",
+    //         fontWeight: 500,
+    //         bgcolor: "#1e293b",
+    //         px: 0.6,
+    //       },
+    //       "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+    //       "& .MuiOutlinedInput-root": {
+    //         color: "#f8fafc",
+    //         fontSize: "13px",
+    //         bgcolor: "#0f172a",
+    //         borderRadius: "6px",
+    //         "& fieldset": { borderColor: "#334155" },
+    //         "&:hover fieldset": { borderColor: "#475569" },
+    //         "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+    //         "& textarea": { color: "#f8fafc" },
+    //       },
+    //     }}
+    //   />
+
+    //   <Box
+    //     sx={{
+    //       display: "flex",
+    //       alignItems: "center",
+    //       justifyContent: "space-between",
+    //       gap: 1.5,
+    //       width: "100%",
+    //       pt: 0.5,
+    //     }}
+    //   >
+    //     <Button
+    //       variant="contained"
+    //       disabled={loading}
+    //       onClick={() => {
+    //         void handleSubmit();
+    //       }}
+    //       sx={{
+    //         flex: 1,
+    //         textTransform: "none",
+    //         borderRadius: "6px",
+    //         bgcolor: "#F5714E",
+    //         color: "#fff",
+    //         fontSize: "12px",
+    //         fontWeight: 600,
+    //         py: 0.9,
+    //         boxShadow: "none",
+    //         "&:hover": {
+    //           bgcolor: "#e05e3b",
+    //           boxShadow: "none",
+    //         },
+    //         "&.Mui-disabled": {
+    //           bgcolor: "rgba(245, 113, 78, 0.3)",
+    //           color: "rgba(248, 250, 252, 0.4)",
+    //         },
+    //       }}
+    //     >
+    //       {loading ? "Saving..." : "Save Contact"}
+    //     </Button>
+
+    //     <Button
+    //       variant="contained"
+    //       disabled={loading}
+    //       onClick={() => {
+    //         void handleFindContact();
+    //       }}
+    //       sx={{
+    //         flex: 1,
+    //         textTransform: "none",
+    //         borderRadius: "6px",
+    //         bgcolor: "#334155",
+    //         color: "#f8fafc",
+    //         fontSize: "12px",
+    //         fontWeight: 600,
+    //         py: 0.9,
+    //         boxShadow: "none",
+    //         "&:hover": {
+    //           bgcolor: "#475569",
+    //           boxShadow: "none",
+    //         },
+    //         "&.Mui-disabled": {
+    //           bgcolor: "rgba(51, 65, 85, 0.3)",
+    //           color: "rgba(248, 250, 252, 0.4)",
+    //         },
+    //       }}
+    //     >
+    //       Search
+    //     </Button>
+    //   </Box>
+    // </Stack>
+
     <Stack
-      spacing={2.2}
+  spacing={2.2}
+  sx={{
+    p: 1,
+  }}
+>
+  {validationError && (
+    <Alert
+      severity="warning"
+      variant="outlined"
+      onClose={() => setValidationError("")}
       sx={{
-        p: 1,
+        borderRadius: "6px",
+        fontSize: "12px",
+        color: "#92400e",
+        borderColor: "rgba(217, 119, 6, 0.35)",
+        bgcolor: "rgba(251, 191, 36, 0.1)",
+        "& .MuiAlert-icon": {
+          color: "#d97706",
+        },
       }}
     >
-      {validationError && (
-        <Alert
-          severity="warning"
-          variant="outlined"
-          onClose={() => setValidationError("")}
-          sx={{
-            borderRadius: "6px",
-            fontSize: "12px",
-            color: "#fef08a",
-            borderColor: "rgba(234, 179, 8, 0.3)",
-            bgcolor: "rgba(234, 179, 8, 0.06)",
-            "& .MuiAlert-icon": {
-              color: "#eab308",
-            },
-          }}
-        >
-          {validationError}
-        </Alert>
-      )}
+      {validationError}
+    </Alert>
+  )}
 
-      <TextField
-        fullWidth
-        size="small"
-        label="Full Name"
-        value={form.name}
-        onChange={handleChange("name")}
-        slotProps={{
-          inputLabel: { shrink: true },
-        }}
-        sx={{
-          "& .MuiInputLabel-root": {
-            color: "#94a3b8",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#1e293b",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
-            fontSize: "13px",
-            bgcolor: "#0f172a",
-            borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#f8fafc" },
-          },
-        }}
-      />
+  <TextField
+    fullWidth
+    size="small"
+    label="Full Name"
+    value={form.name}
+    onChange={handleChange("name")}
+    slotProps={{
+      inputLabel: { shrink: true },
+    }}
+    sx={{
+      "& .MuiInputLabel-root": {
+        color: "#64748b",
+        fontSize: "13px",
+        fontWeight: 500,
+        bgcolor: "#ffffff",
+        px: 0.6,
+      },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+      "& .MuiOutlinedInput-root": {
+        color: "#1e293b",
+        fontSize: "13px",
+        bgcolor: "#f8fafc",
+        borderRadius: "6px",
+        "& fieldset": { borderColor: "#cbd5e1" },
+        "&:hover fieldset": { borderColor: "#94a3b8" },
+        "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+        "& input": { color: "#1e293b" },
+      },
+    }}
+  />
 
-      <TextField
-        fullWidth
-        size="small"
-        type="email"
-        label="Email Address"
-        value={form.email}
-        onChange={handleChange("email")}
-        slotProps={{
-          inputLabel: { shrink: true },
-        }}
-        sx={{
-          "& .MuiInputLabel-root": {
-            color: "#94a3b8",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#1e293b",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
-            fontSize: "13px",
-            bgcolor: "#0f172a",
-            borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#f8fafc" },
-          },
-        }}
-      />
+  <TextField
+    fullWidth
+    size="small"
+    type="email"
+    label="Email Address"
+    value={form.email}
+    onChange={handleChange("email")}
+    slotProps={{
+      inputLabel: { shrink: true },
+    }}
+    sx={{
+      "& .MuiInputLabel-root": {
+        color: "#64748b",
+        fontSize: "13px",
+        fontWeight: 500,
+        bgcolor: "#ffffff",
+        px: 0.6,
+      },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+      "& .MuiOutlinedInput-root": {
+        color: "#1e293b",
+        fontSize: "13px",
+        bgcolor: "#f8fafc",
+        borderRadius: "6px",
+        "& fieldset": { borderColor: "#cbd5e1" },
+        "&:hover fieldset": { borderColor: "#94a3b8" },
+        "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+        "& input": { color: "#1e293b" },
+      },
+    }}
+  />
 
-      <TextField
-        fullWidth
-        size="small"
-        label="Company Name"
-        value={form.company}
-        onChange={handleChange("company")}
-        slotProps={{
-          inputLabel: { shrink: true },
-        }}
-        sx={{
-          "& .MuiInputLabel-root": {
-            color: "#94a3b8",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#1e293b",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
-            fontSize: "13px",
-            bgcolor: "#0f172a",
-            borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#f8fafc" },
-          },
-        }}
-      />
+  <TextField
+    fullWidth
+    size="small"
+    label="Company Name"
+    value={form.company}
+    onChange={handleChange("company")}
+    slotProps={{
+      inputLabel: { shrink: true },
+    }}
+    sx={{
+      "& .MuiInputLabel-root": {
+        color: "#64748b",
+        fontSize: "13px",
+        fontWeight: 500,
+        bgcolor: "#ffffff",
+        px: 0.6,
+      },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+      "& .MuiOutlinedInput-root": {
+        color: "#1e293b",
+        fontSize: "13px",
+        bgcolor: "#f8fafc",
+        borderRadius: "6px",
+        "& fieldset": { borderColor: "#cbd5e1" },
+        "&:hover fieldset": { borderColor: "#94a3b8" },
+        "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+        "& input": { color: "#1e293b" },
+      },
+    }}
+  />
 
-      <TextField
-        fullWidth
-        size="small"
-        label="Subject Line"
-        value={form.subject}
-        onChange={handleChange("subject")}
-        slotProps={{
-          inputLabel: { shrink: true },
-        }}
-        sx={{
-          "& .MuiInputLabel-root": {
-            color: "#94a3b8",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#1e293b",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
-            fontSize: "13px",
-            bgcolor: "#0f172a",
-            borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& input": { color: "#f8fafc" },
-          },
-        }}
-      />
+  <TextField
+    fullWidth
+    size="small"
+    label="Subject Line"
+    value={form.subject}
+    onChange={handleChange("subject")}
+    slotProps={{
+      inputLabel: { shrink: true },
+    }}
+    sx={{
+      "& .MuiInputLabel-root": {
+        color: "#64748b",
+        fontSize: "13px",
+        fontWeight: 500,
+        bgcolor: "#ffffff",
+        px: 0.6,
+      },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+      "& .MuiOutlinedInput-root": {
+        color: "#1e293b",
+        fontSize: "13px",
+        bgcolor: "#f8fafc",
+        borderRadius: "6px",
+        "& fieldset": { borderColor: "#cbd5e1" },
+        "&:hover fieldset": { borderColor: "#94a3b8" },
+        "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+        "& input": { color: "#1e293b" },
+      },
+    }}
+  />
 
-      <TextField
-        fullWidth
-        size="small"
-        multiline
-        minRows={3.5}
-        label="Internal Notes"
-        value={form.notes}
-        onChange={handleChange("notes")}
-        slotProps={{
-          inputLabel: { shrink: true },
-        }}
-        sx={{
-          "& .MuiInputLabel-root": {
-            color: "#94a3b8",
-            fontSize: "13px",
-            fontWeight: 500,
-            bgcolor: "#1e293b",
-            px: 0.6,
-          },
-          "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
-          "& .MuiOutlinedInput-root": {
-            color: "#f8fafc",
-            fontSize: "13px",
-            bgcolor: "#0f172a",
-            borderRadius: "6px",
-            "& fieldset": { borderColor: "#334155" },
-            "&:hover fieldset": { borderColor: "#475569" },
-            "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
-            "& textarea": { color: "#f8fafc" },
-          },
-        }}
-      />
+  <TextField
+    fullWidth
+    size="small"
+    multiline
+    minRows={3.5}
+    label="Internal Notes"
+    value={form.notes}
+    onChange={handleChange("notes")}
+    slotProps={{
+      inputLabel: { shrink: true },
+    }}
+    sx={{
+      "& .MuiInputLabel-root": {
+        color: "#64748b",
+        fontSize: "13px",
+        fontWeight: 500,
+        bgcolor: "#ffffff",
+        px: 0.6,
+      },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#F5714E" },
+      "& .MuiOutlinedInput-root": {
+        color: "#1e293b",
+        fontSize: "13px",
+        bgcolor: "#f8fafc",
+        borderRadius: "6px",
+        "& fieldset": { borderColor: "#cbd5e1" },
+        "&:hover fieldset": { borderColor: "#94a3b8" },
+        "&.Mui-focused fieldset": { borderColor: "#F5714E", borderWidth: "1.5px" },
+        "& textarea": { color: "#1e293b" },
+      },
+    }}
+  />
 
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 1.5,
-          width: "100%",
-          pt: 0.5,
-        }}
-      >
-        <Button
-          variant="contained"
-          disabled={loading}
-          onClick={() => {
-            void handleSubmit();
-          }}
-          sx={{
-            flex: 1,
-            textTransform: "none",
-            borderRadius: "6px",
-            bgcolor: "#F5714E",
-            color: "#fff",
-            fontSize: "12px",
-            fontWeight: 600,
-            py: 0.9,
-            boxShadow: "none",
-            "&:hover": {
-              bgcolor: "#e05e3b",
-              boxShadow: "none",
-            },
-            "&.Mui-disabled": {
-              bgcolor: "rgba(245, 113, 78, 0.3)",
-              color: "rgba(248, 250, 252, 0.4)",
-            },
-          }}
-        >
-          {loading ? "Saving..." : "Save Contact"}
-        </Button>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 1.5,
+      width: "100%",
+      pt: 0.5,
+    }}
+  >
+    <Button
+      variant="contained"
+      disabled={loading}
+      onClick={() => {
+        void handleSubmit();
+      }}
+      sx={{
+        flex: 1,
+        textTransform: "none",
+        borderRadius: "6px",
+        bgcolor: "#F5714E",
+        color: "#fff",
+        fontSize: "12px",
+        fontWeight: 600,
+        py: 0.9,
+        boxShadow: "none",
+        "&:hover": {
+          bgcolor: "#e05e3b",
+          boxShadow: "none",
+        },
+        "&.Mui-disabled": {
+          bgcolor: "rgba(245, 113, 78, 0.3)",
+          color: "rgba(255, 255, 255, 0.7)",
+        },
+      }}
+    >
+      {loading ? "Saving..." : "Save Contact"}
+    </Button>
 
-        <Button
-          variant="contained"
-          disabled={loading}
-          onClick={() => {
-            void handleFindContact();
-          }}
-          sx={{
-            flex: 1,
-            textTransform: "none",
-            borderRadius: "6px",
-            bgcolor: "#334155",
-            color: "#f8fafc",
-            fontSize: "12px",
-            fontWeight: 600,
-            py: 0.9,
-            boxShadow: "none",
-            "&:hover": {
-              bgcolor: "#475569",
-              boxShadow: "none",
-            },
-            "&.Mui-disabled": {
-              bgcolor: "rgba(51, 65, 85, 0.3)",
-              color: "rgba(248, 250, 252, 0.4)",
-            },
-          }}
-        >
-          Search
-        </Button>
-      </Box>
-    </Stack>
+    <Button
+      variant="contained"
+      disabled={loading}
+      onClick={() => {
+        void handleFindContact();
+      }}
+      sx={{
+        flex: 1,
+        textTransform: "none",
+        borderRadius: "6px",
+        bgcolor: "#f1f5f9",
+        color: "#1e293b",
+        fontSize: "12px",
+        fontWeight: 600,
+        py: 0.9,
+        boxShadow: "none",
+        border: "1px solid #e2e8f0",
+        "&:hover": {
+          bgcolor: "#e2e8f0",
+          boxShadow: "none",
+        },
+        "&.Mui-disabled": {
+          bgcolor: "rgba(241, 245, 249, 0.6)",
+          color: "rgba(30, 41, 59, 0.4)",
+        },
+      }}
+    >
+      Search
+    </Button>
+  </Box>
+</Stack>
   );
 }
